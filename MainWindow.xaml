@@ -1,0 +1,14 @@
+﻿<Window x:Class="TPA_Desktop_NT20_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop_NT20_2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label Name="LabelOne" Visibility="Hidden" Content="Test" FontSize="20" HorizontalAlignment="Left" Margin="320,44,0,0" VerticalAlignment="Top" Height="50" Width="82" RenderTransformOrigin="4.013,3.505"/>
+        <Button Content="Show Label" Click="Button_Click" HorizontalAlignment="Left" Margin="99,56,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Show Label" Click="Button_Click" HorizontalAlignment="Left" Margin="264,74,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>
