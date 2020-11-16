@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Name="LabelOne" Visibility="Hidden" Content="Test" FontSize="20" HorizontalAlignment="Left" Margin="320,44,0,0" VerticalAlignment="Top" Height="50" Width="82" RenderTransformOrigin="4.013,3.505"/>
-        
+        <Label Name="LabelOne" Content="Test" FontSize="20" HorizontalAlignment="Center" Margin="346,103,366,0" VerticalAlignment="Top" Height="50" Width="82" RenderTransformOrigin="4.013,3.505"/>
+        <Button Content="Click me" Margin="320,196,366,198" Click="Button_Click"/>
     </Grid>
 </Window>

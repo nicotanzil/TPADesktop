@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
+using TPA_Desktop_NT20_2.Models.SQL; 
+
 
 namespace TPA_Desktop_NT20_2
 {
@@ -27,7 +30,11 @@ namespace TPA_Desktop_NT20_2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LabelOne.Visibility = Visibility.Visible; 
+            DataTable dataTable = new DataTable();
+            dataTable = DbManager.Get("SELECT * FROM Account WHERE name='Nico'");
+            string name = dataTable.Rows[0]["name"].ToString();
+            string balance = dataTable.Rows[0]["balance"].ToString();
+            LabelOne.Content = name + " " + balance; 
         }
     }
 }
