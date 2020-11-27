@@ -56,7 +56,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
@@ -79,10 +81,146 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Account1.cs">
+    <Compile Include="Models\Account.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ATM.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bill.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Branch.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BusinessAccount.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Card.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CardType.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CreditCard.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CreditCardCompany.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CreditCardTransaction.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Currency.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DebitCard.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DepositAccount.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOCCredit.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOCCreditDetail.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HouseCompany.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HouseCompanyPartner.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IndividualAccount.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Item.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemType.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KongBuBank.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Account.tt</DependentUpon>
+      <DependentUpon>KongBuBank.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KongBuBank.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KongBuBank.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KongBuBank.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Level.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Loan.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoanType.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Manager.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObservableObject.cs" />
+    <Compile Include="Models\PaymentType.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RegularAccount.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestExpense.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalaryRaiseRequest.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SavingAccount.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Transaction.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViolationReport.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VirtualAccount.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\CustomerAuthenticationViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeAuthenticationViewModel.cs" />
+    <Compile Include="ViewModels\Teller\TellerDepositViewModel.cs" />
+    <Compile Include="ViewModels\Teller\TellerViewModel.cs" />
+    <Compile Include="ViewModels\Teller\TellerWithdrawViewModel.cs" />
+    <Compile Include="Views\CustomerAuthenticationView.xaml.cs">
+      <DependentUpon>CustomerAuthenticationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeAuthenticationView.xaml.cs">
+      <DependentUpon>EmployeeAuthenticationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Teller\TellerDepositView.xaml.cs">
+      <DependentUpon>TellerDepositView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Teller\TellerWindow.xaml.cs">
+      <DependentUpon>TellerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Teller\TellerWithdrawView.xaml.cs">
+      <DependentUpon>TellerWithdrawView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -96,21 +234,28 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CustomerAuthenticationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeAuthenticationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Teller\TellerDepositView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Teller\TellerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Teller\TellerWithdrawView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Account.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Account.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Account.cs">
-      <DependentUpon>Account.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Account.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Account.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\SQL\DbManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -129,12 +274,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\Account.edmx">
+    <EntityDeploy Include="Models\KongBuBank.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Account.Designer.cs</LastGenOutput>
+      <LastGenOutput>KongBuBank.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\Account.edmx.diagram">
-      <DependentUpon>Account.edmx</DependentUpon>
+    <None Include="Models\KongBuBank.edmx.diagram">
+      <DependentUpon>KongBuBank.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -145,10 +290,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="KongBuBank.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -157,15 +299,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>KongBuBank.mdf</DependentUpon>
     </Content>
-    <Content Include="Models\Account.Context.tt">
+    <Content Include="Models\KongBuBank.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Account.Context.cs</LastGenOutput>
-      <DependentUpon>Account.edmx</DependentUpon>
+      <DependentUpon>KongBuBank.edmx</DependentUpon>
+      <LastGenOutput>KongBuBank.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Account.tt">
+    <Content Include="Models\KongBuBank.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Account.edmx</DependentUpon>
-      <LastGenOutput>Account1.cs</LastGenOutput>
+      <DependentUpon>KongBuBank.edmx</DependentUpon>
+      <LastGenOutput>KongBuBank.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

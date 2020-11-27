@@ -11,23 +11,41 @@ namespace TPA_Desktop_NT20_2.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     
-    public partial class Account : INotifyPropertyChanged
+    public partial class Account
     {
-        public string accountId { get; set; }
-        public string name { get; set; }
-        public Nullable<int> balance { get; set; }
-        public Nullable<System.DateTime> dob { get; set; }
-        public string email { get; set; }
-        public string PIN { get; set; }
-
-        public void OnPropertyChanged(string propertyName)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Account()
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); 
+            this.CreditCards = new HashSet<CreditCard>();
+            this.DebitCards = new HashSet<DebitCard>();
+            this.HOCCredits = new HashSet<HOCCredit>();
+            this.Loans = new HashSet<Loan>();
+            this.Transactions = new HashSet<Transaction>();
+            this.VirtualAccounts = new HashSet<VirtualAccount>();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+    
+        public string AccountId { get; set; }
+        public string Name { get; set; }
+        public decimal Balance { get; set; }
+        public System.DateTime Dob { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public string PIN { get; set; }
+        public System.DateTime CreatedAt { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CreditCard> CreditCards { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DebitCard> DebitCards { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOCCredit> HOCCredits { get; set; }
+        public virtual IndividualAccount IndividualAccount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Loan> Loans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction> Transactions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VirtualAccount> VirtualAccounts { get; set; }
     }
 }

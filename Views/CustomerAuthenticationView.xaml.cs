@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data;
 
-using TPA_Desktop_NT20_2.Models.SQL;
-using TPA_Desktop_NT20_2.ViewModels; 
-
-namespace TPA_Desktop_NT20_2
+namespace TPA_Desktop_NT20_2.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CustomerAuthenticationView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CustomerAuthenticationView : UserControl
     {
-        public MainWindow()
+        public CustomerAuthenticationView()
         {
             InitializeComponent();
-
-            DataContext = new ApplicationViewModel(); 
         }
     }
 }

@@ -1,0 +1,39 @@
+﻿<Window x:Class="TPA_Desktop_NT20_2.Views.Teller.TellerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.Teller"
+        mc:Ignorable="d"
+        Title="TellerWindow" Height="450" Width="600">
+    <Grid HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Kong Bu Bank" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" />
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right">
+            <Run Text="Welcome, " />
+            <Run Text="{Binding Path=Employee.Name}" FontWeight="Bold" Foreground="OrangeRed"/>
+            <Run Text="(" />
+            <Run Text="{Binding Path=Name}" />
+            <Run Text=")" />
+        </TextBlock>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Margin="10" Width="100" Content="Deposit" Command="{Binding ChangeViewCommand}" CommandParameter="TellerDeposit"/>
+            <Button Margin="10" Width="100" Content="Withdraw" Command="{Binding ChangeViewCommand}" CommandParameter="TellerWithdraw"/>
+            <Button Margin="10" Width="100" Content="Transfer" />
+            <Button Margin="10" Width="100" Content="Payment" />
+        </StackPanel>
+        <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="3" Grid.RowSpan="4"/>
+    </Grid>
+</Window>

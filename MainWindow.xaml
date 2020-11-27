@@ -5,9 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPA_Desktop_NT20_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Kong Bu Bank Authentication" Height="450" Width="500" 
+        xmlns:vw="clr-namespace:TPA_Desktop_NT20_2.Views">
     <Grid>
-        <Label Name="LabelOne" Content="Test" FontSize="20" HorizontalAlignment="Center" Margin="346,103,366,0" VerticalAlignment="Top" Height="50" Width="82" RenderTransformOrigin="4.013,3.505"/>
-        <Button Content="Click me" Margin="320,196,366,198" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <ContentControl Content="{Binding SelectedViewModel}" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Margin="10" Width="200" Content="Customer" Command="{Binding ChangeViewCommand}" CommandParameter="CustomerAuthentication"/>
+            <Button Margin="10" Width="200" Content="Employee" Command="{Binding ChangeViewCommand}" CommandParameter="EmployeeAuthentication"/>
+        </StackPanel>
     </Grid>
 </Window>

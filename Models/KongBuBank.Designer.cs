@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Nico\1. Bluejack\3. TPA\2. Desktop\TPA Desktop NT20-2\TPA Desktop NT20-2\Models\Account.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Nico\1. Bluejack\3. TPA\2. Desktop\TPA Desktop NT20-2\TPA Desktop NT20-2\Models\KongBuBank.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

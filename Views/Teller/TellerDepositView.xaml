@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="TPA_Desktop_NT20_2.Views.Teller.TellerDepositView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.Teller"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Deposit Transaction" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+        <TextBlock Text="Enter Account ID" Grid.Row="1" Grid.Column="0" />
+        <TextBlock Text="Enter Amount" Grid.Row="2" Grid.Column="0" />
+        <TextBox Text="" Grid.Row="1" Grid.Column="1" Margin="40 10"/>
+        <TextBox Text="" Grid.Row="2" Grid.Column="1" Margin="40 10"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button Content="DEPOSIT" Command="" Margin="10" Width="100" Height="25"/>
+        </StackPanel>
+        <!--Content control to show customer data-->
+        <ContentControl Content="" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
+    </Grid>
+</UserControl>

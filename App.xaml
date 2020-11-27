@@ -2,8 +2,23 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TPA_Desktop_NT20_2"
+             xmlns:views="clr-namespace:TPA_Desktop_NT20_2.Views"
+             xmlns:viewmodels="clr-namespace:TPA_Desktop_NT20_2.ViewModels"
+             xmlns:viewmodels_teller="clr-namespace:TPA_Desktop_NT20_2.ViewModels.Teller"
+             xmlns:views_teller="clr-namespace:TPA_Desktop_NT20_2.Views.Teller"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type viewmodels:EmployeeAuthenticationViewModel}">
+            <views:EmployeeAuthenticationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:CustomerAuthenticationViewModel}">
+            <views:CustomerAuthenticationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_teller:TellerDepositViewModel}">
+            <views_teller:TellerDepositView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_teller:TellerWithdrawViewModel}">
+            <views_teller:TellerWithdrawView />
+        </DataTemplate>
     </Application.Resources>
 </Application>

@@ -10,22 +10,25 @@ namespace TPA_Desktop_NT20_2.Models.SQL
 {
     public class DbManager
     {
-        static SqlConnection connection = null; 
+        private SqlConnection connection = null; 
 
-        private DbManager() { }
-
-        public static SqlConnection GetInstance()
+        public DbManager() 
         {
-            if(DbManager.connection == null)
-            {
-                string attachDbFilename = @"'D:\Nico\1. Bluejack\3. TPA\2. Desktop\TPA Desktop NT20-2\TPA Desktop NT20-2\KongBuBank.mdf'";
-                DbManager.connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + attachDbFilename + ";Integrated Security=True"); 
 
-            }
-            return DbManager.connection; 
         }
 
-        public static DataTable Get(string query)
+        public SqlConnection GetInstance()
+        {
+            if(connection == null)
+            {
+                string attachDbFilename = @"'D:\Nico\1. Bluejack\3. TPA\2. Desktop\TPA Desktop NT20-2\TPA Desktop NT20-2\KongBuBank.mdf'";
+                connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + attachDbFilename + ";Integrated Security=True"); 
+
+            }
+            return connection; 
+        }
+
+        public DataTable Get(string query)
         {
             DataTable dt = new DataTable();
 
@@ -34,7 +37,15 @@ namespace TPA_Desktop_NT20_2.Models.SQL
                 if (connection.State == ConnectionState.Open)
                     connection.Close();
 
-                connection.Open();
+                try
+                {
+                    connection.Open();
+
+                }catch(Exception e)
+                {
+                    Console.WriteLine("DB Connection Error");
+                    return null; 
+                }
                 SqlCommand cmd = new SqlCommand(query, connection);
                 SqlDataReader rd = cmd.ExecuteReader();
                 dt.Load(rd);
