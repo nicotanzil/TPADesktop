@@ -12,16 +12,50 @@ namespace TPA_Desktop_NT20_2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Transaction
+    public partial class Transaction : ObservableObject
     {
-        public string TransactionId { get; set; }
-        public string AccountId { get; set; }
-        public string EmployeeId { get; set; }
-        public string PaymentTypeId { get; set; }
-        public decimal Amount { get; set; }
-        public System.DateTime TransactionDate { get; set; }
-        public System.DateTime PaidDate { get; set; }
-    
+        private string transactionId;
+        private DateTime transactionDate;
+        private int amount;
+        private string transactionType;
+
+
+        public Transaction(string transactionId, DateTime transactionDate, int amount, string transactionType)
+        {
+            this.transactionId = transactionId;
+            this.transactionDate = transactionDate;
+            this.amount = amount;
+            this.transactionType = transactionType; 
+        }
+
+        public string TransactionId
+        {
+            get { return transactionId; }
+            set { transactionId = value; OnPropertyChanged("TransactionId");  }
+        }
+
+
+        public DateTime TransactionDate
+        {
+            get { return transactionDate; }
+            set { transactionDate = value; OnPropertyChanged("TransactionDate"); }
+        }
+
+
+        public int Amount
+        {
+            get { return amount; }
+            set { amount = value; OnPropertyChanged("Amount");  }
+        }
+
+
+        public string TransactionType
+        {
+            get { return transactionType; }
+            set { transactionType = value; OnPropertyChanged("TransactionType");  }
+        }
+
+
         public virtual Account Account { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual PaymentType PaymentType { get; set; }

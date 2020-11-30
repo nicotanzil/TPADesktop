@@ -12,19 +12,77 @@ namespace TPA_Desktop_NT20_2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class IndividualAccount
+    public partial class IndividualAccount : Account
     {
-        public string AccountId { get; set; }
-        public string LevelName { get; set; }
-        public decimal InterestRate { get; set; }
-        public decimal InitialDeposit { get; set; }
-        public decimal MinimumSaving { get; set; }
-        public decimal AdminFee { get; set; }
+        private Level level;
+        private Double interestRate;
+        private Double initialDeposit;
+        private Double minimumSaving;
+        private Double adminFee;
+
+        public IndividualAccount(){}
+
+        public IndividualAccount(string accountId, string name, double balance, DateTime dob, string address, string email, 
+            string pin, Level level, Double interestRate, Double initialDeposit, Double minimumSaving, Double adminFee) : base(accountId, name, balance, dob, address, email, pin)
+        {
+            AccountId = accountId;
+            Name = name;
+            Balance = balance;
+            Dob = dob;
+            Address = address;
+            Email = email;
+            Pin = pin;
+            CreatedAt = DateTime.Now;
+            LevelAtt = level;
+            InterestRate = interestRate;
+            InitialDeposit = initialDeposit;
+            MinimumSaving = minimumSaving;
+            AdminFee = adminFee; 
+        }
+
+        public Level LevelAtt
+        {
+            get { return level; }
+            set { level = value; OnPropertyChanged("LevelAtt");  }
+        }
+
+
+        public Double InterestRate
+        {
+            get { return interestRate; }
+            set { interestRate = value; OnPropertyChanged("InterestRate"); }
+        }
+
+
+        public Double InitialDeposit
+        {
+            get { return initialDeposit; }
+            set { initialDeposit = value; OnPropertyChanged("InitialDeposit"); }
+        }
+
+
+        public Double MinimumSaving
+        {
+            get { return minimumSaving; }
+            set { minimumSaving = value; OnPropertyChanged("MinimumSaving"); }
+        }
+
+
+        public Double AdminFee
+        {
+            get { return adminFee; }
+            set { adminFee = value; OnPropertyChanged("AdminFee"); }
+        }
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        
     
         public virtual Account Account { get; set; }
         public virtual BusinessAccount BusinessAccount { get; set; }
         public virtual Level Level { get; set; }
         public virtual RegularAccount RegularAccount { get; set; }
-        public virtual RegularAccount RegularAccount1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentAccount> StudentAccounts { get; set; }
     }
 }

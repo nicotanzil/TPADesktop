@@ -56,6 +56,7 @@ namespace TPA_Desktop_NT20_2.Models
         public virtual DbSet<RequestExpense> RequestExpenses { get; set; }
         public virtual DbSet<SalaryRaiseRequest> SalaryRaiseRequests { get; set; }
         public virtual DbSet<SavingAccount> SavingAccounts { get; set; }
+        public virtual DbSet<StudentAccount> StudentAccounts { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<ViolationReport> ViolationReports { get; set; }
         public virtual DbSet<VirtualAccount> VirtualAccounts { get; set; }

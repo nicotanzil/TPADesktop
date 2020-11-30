@@ -12,24 +12,40 @@ namespace TPA_Desktop_NT20_2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RegularAccount
+    public partial class RegularAccount : IndividualAccount
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RegularAccount()
+        private SavingAccount savingAccount;
+        private DepositAccount depositAccount;
+
+        public SavingAccount SavingAccount
         {
-            this.DepositAccounts = new HashSet<DepositAccount>();
-            this.SavingAccounts = new HashSet<SavingAccount>();
-            this.IndividualAccounts = new HashSet<IndividualAccount>();
+            get { return savingAccount; }
+            set { savingAccount = value; OnPropertyChanged("SavingAccount"); }
         }
-    
-        public string AccountId { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DepositAccount> DepositAccounts { get; set; }
-        public virtual IndividualAccount IndividualAccount { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SavingAccount> SavingAccounts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IndividualAccount> IndividualAccounts { get; set; }
+
+        public DepositAccount DepositAccount
+        {
+            get { return depositAccount; }
+            set { depositAccount = value; OnPropertyChanged("DepositAccount"); }
+        }
+
+        public RegularAccount(string accountId, string name, double balance, DateTime dob, string address, string email, 
+            string pin, Level level, double interestRate, double initialDeposit, double minimumSaving, double adminFee) 
+            : base(accountId, name, balance, dob, address, email, pin, level, interestRate, initialDeposit, minimumSaving, adminFee)
+        {
+            AccountId = accountId;
+            Name = name;
+            Balance = balance;
+            Dob = dob;
+            Address = address;
+            Email = email;
+            Pin = pin;
+            CreatedAt = DateTime.Now;
+            LevelAtt = level;
+            InterestRate = interestRate;
+            InitialDeposit = initialDeposit;
+            MinimumSaving = minimumSaving;
+            AdminFee = adminFee;
+        }
     }
 }

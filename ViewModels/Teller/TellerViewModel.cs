@@ -37,18 +37,18 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
             Name = "Teller"; 
             Employee = _employee;
             Console.WriteLine("Teller: " + Employee.Name); 
-            SelectedViewModel = new TellerDepositViewModel(); 
+            SelectedViewModel = new TellerDepositViewModel(Employee); 
         }
 
         protected override void changeViewMethod(object parameter)
         {
             if(parameter.ToString() == "TellerDeposit")
             {
-                this.SelectedViewModel = new TellerDepositViewModel(); 
+                this.SelectedViewModel = new TellerDepositViewModel(Employee); 
             }
             else if(parameter.ToString() == "TellerWithdraw")
             {
-                this.SelectedViewModel = new TellerWithdrawViewModel(); 
+                this.SelectedViewModel = new TellerWithdrawViewModel(Employee); 
             }
         }
     }

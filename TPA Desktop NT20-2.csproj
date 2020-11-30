@@ -190,6 +190,9 @@
     <Compile Include="Models\SavingAccount.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StudentAccount.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Transaction.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
@@ -215,6 +218,9 @@
     </Compile>
     <Compile Include="Views\Teller\TellerDepositView.xaml.cs">
       <DependentUpon>TellerDepositView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Teller\TellerTransferView.xaml.cs">
+      <DependentUpon>TellerTransferView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Teller\TellerWindow.xaml.cs">
       <DependentUpon>TellerWindow.xaml</DependentUpon>
@@ -243,6 +249,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Teller\TellerDepositView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Teller\TellerTransferView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

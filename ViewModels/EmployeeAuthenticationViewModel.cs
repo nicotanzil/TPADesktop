@@ -14,14 +14,13 @@ using TPA_Desktop_NT20_2.Views.Teller;
 
 namespace TPA_Desktop_NT20_2.ViewModels
 {
-    public class EmployeeAuthenticationViewModel : BaseViewModel,IDataErrorInfo
+    public class EmployeeAuthenticationViewModel : BaseViewModel
     {
         #region attributes
         private string message;
         private Employee employee;
         private RelayCommand loginCommand;
         private Employee currentEmployee;
-        public string Error { get { return null;  } }
         #endregion
 
 
@@ -29,24 +28,6 @@ namespace TPA_Desktop_NT20_2.ViewModels
         {
             Name = "EmployeeAuthentication";
             employee = new Employee(); 
-        }
-
-        public string this[string email] //TOFIX Error Message
-        {
-            get
-            {
-                string result = null; 
-
-                switch(email)
-                {
-                    case "Email":
-                        if (string.IsNullOrWhiteSpace(Employee.Email))
-                            result = "Email must be filled!";
-                        break; 
-                }
-
-                return result;
-            }
         }
 
         public string Message
@@ -88,16 +69,6 @@ namespace TPA_Desktop_NT20_2.ViewModels
             }
         }
 
-
-        public DataTable GetData(string query)
-        {
-            DbManager db = new DbManager(); 
-            DataTable dt = new DataTable();
-            dt = db.Get(query);
-
-            return dt;
-        }
-
         private bool CanExecute(object parameter)
         {
             return true; 
@@ -106,13 +77,13 @@ namespace TPA_Desktop_NT20_2.ViewModels
         private void LoadData(object parameter)
         {
             DataTable dt = GetData("SELECT * FROM Employee WHERE Email = '" + employee.Email + "' AND Password = '" + employee.Password + "'");
-            if(dt.Rows.Count == 0)
+            if(IsEmpty(dt))
             {
                 //Account not found
                 Message = "Invalid Email / Password!";
                 MessageBox.Show("Invalid Email / Password!", "Authentication Error"); 
             }
-            else if (dt.Rows.Count == 1) //Employee account is found
+            else //Employee account is found
             {
                 int index = 0;
                 string id = dt.Rows[index]["employeeId"].ToString();
@@ -140,11 +111,16 @@ namespace TPA_Desktop_NT20_2.ViewModels
             Console.WriteLine("Rows: " + dt.Rows.Count);
             if (dt.Rows.Count == 1)
             {
-                if ((string)dt.Rows[0]["name"] == "Teller")
+                string dep = (string)dt.Rows[0]["name"]; 
+                if (dep == "Teller")
                 {
-                    //goto teller page
+                    //GOTO teller page
                     TellerWindow tellerWin = new TellerWindow(currentEmployee);
                     tellerWin.ShowDialog(); 
+                }
+                else if(dep == "Customer Service")
+                {
+                    //GOTO customer service page
                 }
             }
         }

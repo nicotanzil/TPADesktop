@@ -26,12 +26,11 @@
                     HorizontalAlignment="Center" />
         <TextBlock Text="Enter Email" Grid.Row="2" Grid.Column="0" />
         <TextBlock Text="Enter Password" Grid.Row="3" Grid.Column="0" />
-        <TextBox Name="emailTxt" Text="{Binding Path=Employee.Email, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Margin="40 10"/>
+        <TextBox Name="emailTxt" Text="{Binding Path=Employee.Email, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Margin="40 10"/>
         <TextBox Name="passwordTxt" Text="{Binding Path=Employee.Password, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Margin="40 10"/>
         <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Button Name="loginBtn" Content="LOGIN" Command="{Binding Path=LoginCommand}" Margin="10" Width="100" Height="25"/>
         </StackPanel>
-        <TextBlock Text="{Binding Path=CurrentEmployee.Name, Mode=TwoWay}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
         <TextBlock Text="{Binding Path=Message, Mode=TwoWay}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
     </Grid>
 </UserControl>

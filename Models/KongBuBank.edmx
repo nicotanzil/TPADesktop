@@ -304,8 +304,9 @@
         </EntityType>
         <EntityType Name="StudentAccount">
           <Key>
-            <PropertyRef Name="AccountId" />
+            <PropertyRef Name="StudentAccountId" />
           </Key>
+          <Property Name="StudentAccountId" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="AccountId" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="GuardianAccountId" Type="varchar" MaxLength="5" Nullable="false" />
         </EntityType>
@@ -337,7 +338,7 @@
           <Property Name="VirtualId" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="AccountId" Type="varchar" MaxLength="5" Nullable="false" />
         </EntityType>
-        <Association Name="FK__ATM__BranchId__59B045BD">
+        <Association Name="FK__ATM__BranchId__0E7913B7">
           <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
           <End Role="ATM" Type="Self.ATM" Multiplicity="*" />
           <ReferentialConstraint>
@@ -349,7 +350,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bill__Department__4E3E9311">
+        <Association Name="FK__Bill__Department__0307610B">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
           <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -361,7 +362,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Branch__ManagerI__4885B9BB">
+        <Association Name="FK__Branch__ManagerI__7D4E87B5">
           <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
           <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
           <ReferentialConstraint>
@@ -373,7 +374,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BusinessA__Accou__4944D3CA">
+        <Association Name="FK__BusinessA__Accou__396371BC">
           <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="1" />
           <End Role="BusinessAccount" Type="Self.BusinessAccount" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -385,7 +386,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Card__AccountId__4E0988E7">
+        <Association Name="FK__Card__AccountId__3E2826D9">
           <End Role="BusinessAccount" Type="Self.BusinessAccount" Multiplicity="1" />
           <End Role="Card" Type="Self.Card" Multiplicity="*" />
           <ReferentialConstraint>
@@ -397,7 +398,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Card__CardTypeId__4EFDAD20">
+        <Association Name="FK__Card__CardTypeId__3F1C4B12">
           <End Role="CardType" Type="Self.CardType" Multiplicity="1" />
           <End Role="Card" Type="Self.Card" Multiplicity="*" />
           <ReferentialConstraint>
@@ -409,7 +410,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditCar__Accou__55AAAAAF">
+        <Association Name="FK__CreditCar__Accou__45C948A1">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -421,7 +422,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditCar__Compa__569ECEE8">
+        <Association Name="FK__CreditCar__Compa__46BD6CDA">
           <End Role="CreditCardCompany" Type="Self.CreditCardCompany" Multiplicity="1" />
           <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -433,7 +434,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditCar__Credi__597B3B93">
+        <Association Name="FK__CreditCar__Credi__4999D985">
           <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="1" />
           <End Role="CreditCardTransaction" Type="Self.CreditCardTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -445,7 +446,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditCar__Payme__5A6F5FCC">
+        <Association Name="FK__CreditCar__Payme__4A8DFDBE">
           <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="1" />
           <End Role="CreditCardTransaction" Type="Self.CreditCardTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -457,7 +458,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitCard__Accou__2E90DD8E">
+        <Association Name="FK__DebitCard__Accou__1EAF7B80">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="DebitCard" Type="Self.DebitCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -469,7 +470,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Departmen__Branc__4B622666">
+        <Association Name="FK__Departmen__Branc__002AF460">
           <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
           <End Role="Department" Type="Self.Department" Multiplicity="*" />
           <ReferentialConstraint>
@@ -481,7 +482,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DepositAc__Accou__457442E6">
+        <Association Name="FK__DepositAc__Accou__3592E0D8">
           <End Role="RegularAccount" Type="Self.RegularAccount" Multiplicity="1" />
           <End Role="DepositAccount" Type="Self.DepositAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -493,7 +494,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DepositAc__Curre__4668671F">
+        <Association Name="FK__DepositAc__Curre__36870511">
           <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
           <End Role="DepositAccount" Type="Self.DepositAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -505,7 +506,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee__Depart__5C8CB268">
+        <Association Name="FK__Employee__Depart__11558062">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -517,7 +518,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOCCredit__Accou__63F8CA06">
+        <Association Name="FK__HOCCredit__Accou__541767F8">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="HOCCredit" Type="Self.HOCCredit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -529,7 +530,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOCCredit__Compa__64ECEE3F">
+        <Association Name="FK__HOCCredit__Compa__550B8C31">
           <End Role="HouseCompany" Type="Self.HouseCompany" Multiplicity="1" />
           <End Role="HOCCredit" Type="Self.HOCCredit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -541,7 +542,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOCCredit__HOCId__67C95AEA">
+        <Association Name="FK__HOCCredit__HOCId__57E7F8DC">
           <End Role="HOCCredit" Type="Self.HOCCredit" Multiplicity="1" />
           <End Role="HOCCreditDetail" Type="Self.HOCCreditDetail" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -553,7 +554,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOCCredit__Payme__68BD7F23">
+        <Association Name="FK__HOCCredit__Payme__58DC1D15">
           <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="1" />
           <End Role="HOCCreditDetail" Type="Self.HOCCreditDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -565,7 +566,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HouseComp__Branc__56D3D912">
+        <Association Name="FK__HouseComp__Branc__0B9CA70C">
           <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
           <End Role="HouseCompanyPartner" Type="Self.HouseCompanyPartner" Multiplicity="*" />
           <ReferentialConstraint>
@@ -577,7 +578,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Individua__Accou__3726238F">
+        <Association Name="FK__Individua__Accou__2744C181">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -589,7 +590,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Individua__Level__3631FF56">
+        <Association Name="FK__Individua__Level__26509D48">
           <End Role="Level" Type="Self.Level" Multiplicity="1" />
           <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -601,7 +602,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__Department__53F76C67">
+        <Association Name="FK__Item__Department__08C03A61">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -613,7 +614,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__ItemTypeId__5303482E">
+        <Association Name="FK__Item__ItemTypeId__07CC1628">
           <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -625,7 +626,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Loan__AccountId__6D823440">
+        <Association Name="FK__Loan__AccountId__5DA0D232">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -637,7 +638,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Loan__LoanTypeNa__6E765879">
+        <Association Name="FK__Loan__LoanTypeNa__5E94F66B">
           <End Role="LoanType" Type="Self.LoanType" Multiplicity="1" />
           <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -649,7 +650,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RegularAc__Accou__3A02903A">
+        <Association Name="FK__RegularAc__Accou__2A212E2C">
           <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="1" />
           <End Role="RegularAccount" Type="Self.RegularAccount" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -661,7 +662,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RequestEx__Emplo__62458BBE">
+        <Association Name="FK__RequestEx__Emplo__170E59B8">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="RequestExpense" Type="Self.RequestExpense" Multiplicity="*" />
           <ReferentialConstraint>
@@ -673,7 +674,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryRai__Emplo__6521F869">
+        <Association Name="FK__SalaryRai__Emplo__19EAC663">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="SalaryRaiseRequest" Type="Self.SalaryRaiseRequest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -685,7 +686,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SavingAcc__Accou__40AF8DC9">
+        <Association Name="FK__SavingAcc__Accou__30CE2BBB">
           <End Role="RegularAccount" Type="Self.RegularAccount" Multiplicity="1" />
           <End Role="SavingAccount" Type="Self.SavingAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -697,9 +698,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentAc__Accou__3CDEFCE5">
+        <Association Name="FK__StudentAc__Accou__2CFD9AD7">
           <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="1" />
-          <End Role="StudentAccount" Type="Self.StudentAccount" Multiplicity="0..1" />
+          <End Role="StudentAccount" Type="Self.StudentAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="IndividualAccount">
               <PropertyRef Name="AccountId" />
@@ -709,7 +710,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentAc__Guard__3DD3211E">
+        <Association Name="FK__StudentAc__Guard__2DF1BF10">
           <End Role="RegularAccount" Type="Self.RegularAccount" Multiplicity="1" />
           <End Role="StudentAccount" Type="Self.StudentAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -721,7 +722,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transacti__Accou__5D4BCC77">
+        <Association Name="FK__Transacti__Accou__4D6A6A69">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -733,7 +734,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transacti__Emplo__5E3FF0B0">
+        <Association Name="FK__Transacti__Emplo__4E5E8EA2">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -745,7 +746,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transacti__Payme__5F3414E9">
+        <Association Name="FK__Transacti__Payme__4F52B2DB">
           <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -757,7 +758,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Violation__Emplo__5F691F13">
+        <Association Name="FK__Violation__Emplo__1431ED0D">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="ViolationReport" Type="Self.ViolationReport" Multiplicity="*" />
           <ReferentialConstraint>
@@ -769,7 +770,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VirtualAc__Accou__316D4A39">
+        <Association Name="FK__VirtualAc__Accou__218BE82B">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="VirtualAccount" Type="Self.VirtualAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -817,151 +818,151 @@
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ViolationReport" EntityType="Self.ViolationReport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VirtualAccount" EntityType="Self.VirtualAccount" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ATM__BranchId__59B045BD" Association="Self.FK__ATM__BranchId__59B045BD">
+          <AssociationSet Name="FK__ATM__BranchId__0E7913B7" Association="Self.FK__ATM__BranchId__0E7913B7">
             <End Role="Branch" EntitySet="Branch" />
             <End Role="ATM" EntitySet="ATM" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bill__Department__4E3E9311" Association="Self.FK__Bill__Department__4E3E9311">
+          <AssociationSet Name="FK__Bill__Department__0307610B" Association="Self.FK__Bill__Department__0307610B">
             <End Role="Department" EntitySet="Department" />
             <End Role="Bill" EntitySet="Bill" />
           </AssociationSet>
-          <AssociationSet Name="FK__Branch__ManagerI__4885B9BB" Association="Self.FK__Branch__ManagerI__4885B9BB">
+          <AssociationSet Name="FK__Branch__ManagerI__7D4E87B5" Association="Self.FK__Branch__ManagerI__7D4E87B5">
             <End Role="Manager" EntitySet="Manager" />
             <End Role="Branch" EntitySet="Branch" />
           </AssociationSet>
-          <AssociationSet Name="FK__BusinessA__Accou__4944D3CA" Association="Self.FK__BusinessA__Accou__4944D3CA">
+          <AssociationSet Name="FK__BusinessA__Accou__396371BC" Association="Self.FK__BusinessA__Accou__396371BC">
             <End Role="IndividualAccount" EntitySet="IndividualAccount" />
             <End Role="BusinessAccount" EntitySet="BusinessAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK__Card__AccountId__4E0988E7" Association="Self.FK__Card__AccountId__4E0988E7">
+          <AssociationSet Name="FK__Card__AccountId__3E2826D9" Association="Self.FK__Card__AccountId__3E2826D9">
             <End Role="BusinessAccount" EntitySet="BusinessAccount" />
             <End Role="Card" EntitySet="Card" />
           </AssociationSet>
-          <AssociationSet Name="FK__Card__CardTypeId__4EFDAD20" Association="Self.FK__Card__CardTypeId__4EFDAD20">
+          <AssociationSet Name="FK__Card__CardTypeId__3F1C4B12" Association="Self.FK__Card__CardTypeId__3F1C4B12">
             <End Role="CardType" EntitySet="CardType" />
             <End Role="Card" EntitySet="Card" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditCar__Accou__55AAAAAF" Association="Self.FK__CreditCar__Accou__55AAAAAF">
+          <AssociationSet Name="FK__CreditCar__Accou__45C948A1" Association="Self.FK__CreditCar__Accou__45C948A1">
             <End Role="Account" EntitySet="Account" />
             <End Role="CreditCard" EntitySet="CreditCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditCar__Compa__569ECEE8" Association="Self.FK__CreditCar__Compa__569ECEE8">
+          <AssociationSet Name="FK__CreditCar__Compa__46BD6CDA" Association="Self.FK__CreditCar__Compa__46BD6CDA">
             <End Role="CreditCardCompany" EntitySet="CreditCardCompany" />
             <End Role="CreditCard" EntitySet="CreditCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditCar__Credi__597B3B93" Association="Self.FK__CreditCar__Credi__597B3B93">
+          <AssociationSet Name="FK__CreditCar__Credi__4999D985" Association="Self.FK__CreditCar__Credi__4999D985">
             <End Role="CreditCard" EntitySet="CreditCard" />
             <End Role="CreditCardTransaction" EntitySet="CreditCardTransaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditCar__Payme__5A6F5FCC" Association="Self.FK__CreditCar__Payme__5A6F5FCC">
+          <AssociationSet Name="FK__CreditCar__Payme__4A8DFDBE" Association="Self.FK__CreditCar__Payme__4A8DFDBE">
             <End Role="PaymentType" EntitySet="PaymentType" />
             <End Role="CreditCardTransaction" EntitySet="CreditCardTransaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitCard__Accou__2E90DD8E" Association="Self.FK__DebitCard__Accou__2E90DD8E">
+          <AssociationSet Name="FK__DebitCard__Accou__1EAF7B80" Association="Self.FK__DebitCard__Accou__1EAF7B80">
             <End Role="Account" EntitySet="Account" />
             <End Role="DebitCard" EntitySet="DebitCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Departmen__Branc__4B622666" Association="Self.FK__Departmen__Branc__4B622666">
+          <AssociationSet Name="FK__Departmen__Branc__002AF460" Association="Self.FK__Departmen__Branc__002AF460">
             <End Role="Branch" EntitySet="Branch" />
             <End Role="Department" EntitySet="Department" />
           </AssociationSet>
-          <AssociationSet Name="FK__DepositAc__Accou__457442E6" Association="Self.FK__DepositAc__Accou__457442E6">
+          <AssociationSet Name="FK__DepositAc__Accou__3592E0D8" Association="Self.FK__DepositAc__Accou__3592E0D8">
             <End Role="RegularAccount" EntitySet="RegularAccount" />
             <End Role="DepositAccount" EntitySet="DepositAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK__DepositAc__Curre__4668671F" Association="Self.FK__DepositAc__Curre__4668671F">
+          <AssociationSet Name="FK__DepositAc__Curre__36870511" Association="Self.FK__DepositAc__Curre__36870511">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="DepositAccount" EntitySet="DepositAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee__Depart__5C8CB268" Association="Self.FK__Employee__Depart__5C8CB268">
+          <AssociationSet Name="FK__Employee__Depart__11558062" Association="Self.FK__Employee__Depart__11558062">
             <End Role="Department" EntitySet="Department" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOCCredit__Accou__63F8CA06" Association="Self.FK__HOCCredit__Accou__63F8CA06">
+          <AssociationSet Name="FK__HOCCredit__Accou__541767F8" Association="Self.FK__HOCCredit__Accou__541767F8">
             <End Role="Account" EntitySet="Account" />
             <End Role="HOCCredit" EntitySet="HOCCredit" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOCCredit__Compa__64ECEE3F" Association="Self.FK__HOCCredit__Compa__64ECEE3F">
+          <AssociationSet Name="FK__HOCCredit__Compa__550B8C31" Association="Self.FK__HOCCredit__Compa__550B8C31">
             <End Role="HouseCompany" EntitySet="HouseCompany" />
             <End Role="HOCCredit" EntitySet="HOCCredit" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOCCredit__HOCId__67C95AEA" Association="Self.FK__HOCCredit__HOCId__67C95AEA">
+          <AssociationSet Name="FK__HOCCredit__HOCId__57E7F8DC" Association="Self.FK__HOCCredit__HOCId__57E7F8DC">
             <End Role="HOCCredit" EntitySet="HOCCredit" />
             <End Role="HOCCreditDetail" EntitySet="HOCCreditDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOCCredit__Payme__68BD7F23" Association="Self.FK__HOCCredit__Payme__68BD7F23">
+          <AssociationSet Name="FK__HOCCredit__Payme__58DC1D15" Association="Self.FK__HOCCredit__Payme__58DC1D15">
             <End Role="PaymentType" EntitySet="PaymentType" />
             <End Role="HOCCreditDetail" EntitySet="HOCCreditDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__HouseComp__Branc__56D3D912" Association="Self.FK__HouseComp__Branc__56D3D912">
+          <AssociationSet Name="FK__HouseComp__Branc__0B9CA70C" Association="Self.FK__HouseComp__Branc__0B9CA70C">
             <End Role="Branch" EntitySet="Branch" />
             <End Role="HouseCompanyPartner" EntitySet="HouseCompanyPartner" />
           </AssociationSet>
-          <AssociationSet Name="FK__Individua__Accou__3726238F" Association="Self.FK__Individua__Accou__3726238F">
+          <AssociationSet Name="FK__Individua__Accou__2744C181" Association="Self.FK__Individua__Accou__2744C181">
             <End Role="Account" EntitySet="Account" />
             <End Role="IndividualAccount" EntitySet="IndividualAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK__Individua__Level__3631FF56" Association="Self.FK__Individua__Level__3631FF56">
+          <AssociationSet Name="FK__Individua__Level__26509D48" Association="Self.FK__Individua__Level__26509D48">
             <End Role="Level" EntitySet="Level" />
             <End Role="IndividualAccount" EntitySet="IndividualAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__Department__53F76C67" Association="Self.FK__Item__Department__53F76C67">
+          <AssociationSet Name="FK__Item__Department__08C03A61" Association="Self.FK__Item__Department__08C03A61">
             <End Role="Department" EntitySet="Department" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__ItemTypeId__5303482E" Association="Self.FK__Item__ItemTypeId__5303482E">
+          <AssociationSet Name="FK__Item__ItemTypeId__07CC1628" Association="Self.FK__Item__ItemTypeId__07CC1628">
             <End Role="ItemType" EntitySet="ItemType" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
-          <AssociationSet Name="FK__Loan__AccountId__6D823440" Association="Self.FK__Loan__AccountId__6D823440">
+          <AssociationSet Name="FK__Loan__AccountId__5DA0D232" Association="Self.FK__Loan__AccountId__5DA0D232">
             <End Role="Account" EntitySet="Account" />
             <End Role="Loan" EntitySet="Loan" />
           </AssociationSet>
-          <AssociationSet Name="FK__Loan__LoanTypeNa__6E765879" Association="Self.FK__Loan__LoanTypeNa__6E765879">
+          <AssociationSet Name="FK__Loan__LoanTypeNa__5E94F66B" Association="Self.FK__Loan__LoanTypeNa__5E94F66B">
             <End Role="LoanType" EntitySet="LoanType" />
             <End Role="Loan" EntitySet="Loan" />
           </AssociationSet>
-          <AssociationSet Name="FK__RegularAc__Accou__3A02903A" Association="Self.FK__RegularAc__Accou__3A02903A">
+          <AssociationSet Name="FK__RegularAc__Accou__2A212E2C" Association="Self.FK__RegularAc__Accou__2A212E2C">
             <End Role="IndividualAccount" EntitySet="IndividualAccount" />
             <End Role="RegularAccount" EntitySet="RegularAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK__RequestEx__Emplo__62458BBE" Association="Self.FK__RequestEx__Emplo__62458BBE">
+          <AssociationSet Name="FK__RequestEx__Emplo__170E59B8" Association="Self.FK__RequestEx__Emplo__170E59B8">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="RequestExpense" EntitySet="RequestExpense" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryRai__Emplo__6521F869" Association="Self.FK__SalaryRai__Emplo__6521F869">
+          <AssociationSet Name="FK__SalaryRai__Emplo__19EAC663" Association="Self.FK__SalaryRai__Emplo__19EAC663">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="SalaryRaiseRequest" EntitySet="SalaryRaiseRequest" />
           </AssociationSet>
-          <AssociationSet Name="FK__SavingAcc__Accou__40AF8DC9" Association="Self.FK__SavingAcc__Accou__40AF8DC9">
+          <AssociationSet Name="FK__SavingAcc__Accou__30CE2BBB" Association="Self.FK__SavingAcc__Accou__30CE2BBB">
             <End Role="RegularAccount" EntitySet="RegularAccount" />
             <End Role="SavingAccount" EntitySet="SavingAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentAc__Accou__3CDEFCE5" Association="Self.FK__StudentAc__Accou__3CDEFCE5">
+          <AssociationSet Name="FK__StudentAc__Accou__2CFD9AD7" Association="Self.FK__StudentAc__Accou__2CFD9AD7">
             <End Role="IndividualAccount" EntitySet="IndividualAccount" />
             <End Role="StudentAccount" EntitySet="StudentAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentAc__Guard__3DD3211E" Association="Self.FK__StudentAc__Guard__3DD3211E">
+          <AssociationSet Name="FK__StudentAc__Guard__2DF1BF10" Association="Self.FK__StudentAc__Guard__2DF1BF10">
             <End Role="RegularAccount" EntitySet="RegularAccount" />
             <End Role="StudentAccount" EntitySet="StudentAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transacti__Accou__5D4BCC77" Association="Self.FK__Transacti__Accou__5D4BCC77">
+          <AssociationSet Name="FK__Transacti__Accou__4D6A6A69" Association="Self.FK__Transacti__Accou__4D6A6A69">
             <End Role="Account" EntitySet="Account" />
             <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transacti__Emplo__5E3FF0B0" Association="Self.FK__Transacti__Emplo__5E3FF0B0">
+          <AssociationSet Name="FK__Transacti__Emplo__4E5E8EA2" Association="Self.FK__Transacti__Emplo__4E5E8EA2">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transacti__Payme__5F3414E9" Association="Self.FK__Transacti__Payme__5F3414E9">
+          <AssociationSet Name="FK__Transacti__Payme__4F52B2DB" Association="Self.FK__Transacti__Payme__4F52B2DB">
             <End Role="PaymentType" EntitySet="PaymentType" />
             <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__Violation__Emplo__5F691F13" Association="Self.FK__Violation__Emplo__5F691F13">
+          <AssociationSet Name="FK__Violation__Emplo__1431ED0D" Association="Self.FK__Violation__Emplo__1431ED0D">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ViolationReport" EntitySet="ViolationReport" />
           </AssociationSet>
-          <AssociationSet Name="FK__VirtualAc__Accou__316D4A39" Association="Self.FK__VirtualAc__Accou__316D4A39">
+          <AssociationSet Name="FK__VirtualAc__Accou__218BE82B" Association="Self.FK__VirtualAc__Accou__218BE82B">
             <End Role="Account" EntitySet="Account" />
             <End Role="VirtualAccount" EntitySet="VirtualAccount" />
           </AssociationSet>
@@ -983,13 +984,13 @@
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PIN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CreditCards" Relationship="Self.FK__CreditCar__Accou__55AAAAAF" FromRole="Account" ToRole="CreditCard" />
-          <NavigationProperty Name="DebitCards" Relationship="Self.FK__DebitCard__Accou__2E90DD8E" FromRole="Account" ToRole="DebitCard" />
-          <NavigationProperty Name="HOCCredits" Relationship="Self.FK__HOCCredit__Accou__63F8CA06" FromRole="Account" ToRole="HOCCredit" />
-          <NavigationProperty Name="IndividualAccount" Relationship="Self.FK__Individua__Accou__3726238F" FromRole="Account" ToRole="IndividualAccount" />
-          <NavigationProperty Name="Loans" Relationship="Self.FK__Loan__AccountId__6D823440" FromRole="Account" ToRole="Loan" />
-          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Accou__5D4BCC77" FromRole="Account" ToRole="Transaction" />
-          <NavigationProperty Name="VirtualAccounts" Relationship="Self.FK__VirtualAc__Accou__316D4A39" FromRole="Account" ToRole="VirtualAccount" />
+          <NavigationProperty Name="CreditCards" Relationship="Self.FK__CreditCar__Accou__45C948A1" FromRole="Account" ToRole="CreditCard" />
+          <NavigationProperty Name="DebitCards" Relationship="Self.FK__DebitCard__Accou__1EAF7B80" FromRole="Account" ToRole="DebitCard" />
+          <NavigationProperty Name="HOCCredits" Relationship="Self.FK__HOCCredit__Accou__541767F8" FromRole="Account" ToRole="HOCCredit" />
+          <NavigationProperty Name="IndividualAccount" Relationship="Self.FK__Individua__Accou__2744C181" FromRole="Account" ToRole="IndividualAccount" />
+          <NavigationProperty Name="Loans" Relationship="Self.FK__Loan__AccountId__5DA0D232" FromRole="Account" ToRole="Loan" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Accou__4D6A6A69" FromRole="Account" ToRole="Transaction" />
+          <NavigationProperty Name="VirtualAccounts" Relationship="Self.FK__VirtualAc__Accou__218BE82B" FromRole="Account" ToRole="VirtualAccount" />
         </EntityType>
         <EntityType Name="ATM">
           <Key>
@@ -999,7 +1000,7 @@
           <Property Name="BranchId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MonthlyBill" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Branch" Relationship="Self.FK__ATM__BranchId__59B045BD" FromRole="ATM" ToRole="Branch" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK__ATM__BranchId__0E7913B7" FromRole="ATM" ToRole="Branch" />
         </EntityType>
         <EntityType Name="Bill">
           <Key>
@@ -1011,7 +1012,7 @@
           <Property Name="Amount" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="IsPaid" Type="Boolean" Nullable="false" />
           <Property Name="PaidDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Department" Relationship="Self.FK__Bill__Department__4E3E9311" FromRole="Bill" ToRole="Department" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Bill__Department__0307610B" FromRole="Bill" ToRole="Department" />
         </EntityType>
         <EntityType Name="Branch">
           <Key>
@@ -1020,18 +1021,18 @@
           <Property Name="BranchId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ManagerId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ATMs" Relationship="Self.FK__ATM__BranchId__59B045BD" FromRole="Branch" ToRole="ATM" />
-          <NavigationProperty Name="Manager" Relationship="Self.FK__Branch__ManagerI__4885B9BB" FromRole="Branch" ToRole="Manager" />
-          <NavigationProperty Name="Departments" Relationship="Self.FK__Departmen__Branc__4B622666" FromRole="Branch" ToRole="Department" />
-          <NavigationProperty Name="HouseCompanyPartners" Relationship="Self.FK__HouseComp__Branc__56D3D912" FromRole="Branch" ToRole="HouseCompanyPartner" />
+          <NavigationProperty Name="ATMs" Relationship="Self.FK__ATM__BranchId__0E7913B7" FromRole="Branch" ToRole="ATM" />
+          <NavigationProperty Name="Manager" Relationship="Self.FK__Branch__ManagerI__7D4E87B5" FromRole="Branch" ToRole="Manager" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK__Departmen__Branc__002AF460" FromRole="Branch" ToRole="Department" />
+          <NavigationProperty Name="HouseCompanyPartners" Relationship="Self.FK__HouseComp__Branc__0B9CA70C" FromRole="Branch" ToRole="HouseCompanyPartner" />
         </EntityType>
         <EntityType Name="BusinessAccount">
           <Key>
             <PropertyRef Name="AccountId" />
           </Key>
           <Property Name="AccountId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="IndividualAccount" Relationship="Self.FK__BusinessA__Accou__4944D3CA" FromRole="BusinessAccount" ToRole="IndividualAccount" />
-          <NavigationProperty Name="Cards" Relationship="Self.FK__Card__AccountId__4E0988E7" FromRole="BusinessAccount" ToRole="Card" />
+          <NavigationProperty Name="IndividualAccount" Relationship="Self.FK__BusinessA__Accou__396371BC" FromRole="BusinessAccount" ToRole="IndividualAccount" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK__Card__AccountId__3E2826D9" FromRole="BusinessAccount" ToRole="Card" />
         </EntityType>
         <EntityType Name="Card">
           <Key>
@@ -1041,8 +1042,8 @@
           <Property Name="AccountId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CardTypeId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TransactionLimit" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
-          <NavigationProperty Name="BusinessAccount" Relationship="Self.FK__Card__AccountId__4E0988E7" FromRole="Card" ToRole="BusinessAccount" />
-          <NavigationProperty Name="CardType" Relationship="Self.FK__Card__CardTypeId__4EFDAD20" FromRole="Card" ToRole="CardType" />
+          <NavigationProperty Name="BusinessAccount" Relationship="Self.FK__Card__AccountId__3E2826D9" FromRole="Card" ToRole="BusinessAccount" />
+          <NavigationProperty Name="CardType" Relationship="Self.FK__Card__CardTypeId__3F1C4B12" FromRole="Card" ToRole="CardType" />
         </EntityType>
         <EntityType Name="CardType">
           <Key>
@@ -1050,7 +1051,7 @@
           </Key>
           <Property Name="CardTypeId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CardTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Cards" Relationship="Self.FK__Card__CardTypeId__4EFDAD20" FromRole="CardType" ToRole="Card" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK__Card__CardTypeId__3F1C4B12" FromRole="CardType" ToRole="Card" />
         </EntityType>
         <EntityType Name="CreditCard">
           <Key>
@@ -1064,9 +1065,9 @@
           <Property Name="Limit" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__CreditCar__Accou__55AAAAAF" FromRole="CreditCard" ToRole="Account" />
-          <NavigationProperty Name="CreditCardCompany" Relationship="Self.FK__CreditCar__Compa__569ECEE8" FromRole="CreditCard" ToRole="CreditCardCompany" />
-          <NavigationProperty Name="CreditCardTransactions" Relationship="Self.FK__CreditCar__Credi__597B3B93" FromRole="CreditCard" ToRole="CreditCardTransaction" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__CreditCar__Accou__45C948A1" FromRole="CreditCard" ToRole="Account" />
+          <NavigationProperty Name="CreditCardCompany" Relationship="Self.FK__CreditCar__Compa__46BD6CDA" FromRole="CreditCard" ToRole="CreditCardCompany" />
+          <NavigationProperty Name="CreditCardTransactions" Relationship="Self.FK__CreditCar__Credi__4999D985" FromRole="CreditCard" ToRole="CreditCardTransaction" />
         </EntityType>
         <EntityType Name="CreditCardCompany">
           <Key>
@@ -1074,7 +1075,7 @@
           </Key>
           <Property Name="CompanyId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CreditCards" Relationship="Self.FK__CreditCar__Compa__569ECEE8" FromRole="CreditCardCompany" ToRole="CreditCard" />
+          <NavigationProperty Name="CreditCards" Relationship="Self.FK__CreditCar__Compa__46BD6CDA" FromRole="CreditCardCompany" ToRole="CreditCard" />
         </EntityType>
         <EntityType Name="CreditCardTransaction">
           <Key>
@@ -1089,8 +1090,8 @@
           <Property Name="Amount" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="AdditionalCharge" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="LatePenalty" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="CreditCard" Relationship="Self.FK__CreditCar__Credi__597B3B93" FromRole="CreditCardTransaction" ToRole="CreditCard" />
-          <NavigationProperty Name="PaymentType" Relationship="Self.FK__CreditCar__Payme__5A6F5FCC" FromRole="CreditCardTransaction" ToRole="PaymentType" />
+          <NavigationProperty Name="CreditCard" Relationship="Self.FK__CreditCar__Credi__4999D985" FromRole="CreditCardTransaction" ToRole="CreditCard" />
+          <NavigationProperty Name="PaymentType" Relationship="Self.FK__CreditCar__Payme__4A8DFDBE" FromRole="CreditCardTransaction" ToRole="PaymentType" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -1099,7 +1100,7 @@
           <Property Name="CurrencyId" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ExchangeRate" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="DepositAccounts" Relationship="Self.FK__DepositAc__Curre__4668671F" FromRole="Currency" ToRole="DepositAccount" />
+          <NavigationProperty Name="DepositAccounts" Relationship="Self.FK__DepositAc__Curre__36870511" FromRole="Currency" ToRole="DepositAccount" />
         </EntityType>
         <EntityType Name="DebitCard">
           <Key>
@@ -1108,7 +1109,7 @@
           <Property Name="CardId" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AccountId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__DebitCard__Accou__2E90DD8E" FromRole="DebitCard" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__DebitCard__Accou__1EAF7B80" FromRole="DebitCard" ToRole="Account" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -1117,10 +1118,10 @@
           <Property Name="DepartmentId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BranchId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__Department__4E3E9311" FromRole="Department" ToRole="Bill" />
-          <NavigationProperty Name="Branch" Relationship="Self.FK__Departmen__Branc__4B622666" FromRole="Department" ToRole="Branch" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Depart__5C8CB268" FromRole="Department" ToRole="Employee" />
-          <NavigationProperty Name="Items" Relationship="Self.FK__Item__Department__53F76C67" FromRole="Department" ToRole="Item" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__Department__0307610B" FromRole="Department" ToRole="Bill" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK__Departmen__Branc__002AF460" FromRole="Department" ToRole="Branch" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Depart__11558062" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Items" Relationship="Self.FK__Item__Department__08C03A61" FromRole="Department" ToRole="Item" />
         </EntityType>
         <EntityType Name="DepositAccount">
           <Key>
@@ -1131,8 +1132,8 @@
           <Property Name="CurrencyId" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MinimumDeposit" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="DepositBalance" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__DepositAc__Curre__4668671F" FromRole="DepositAccount" ToRole="Currency" />
-          <NavigationProperty Name="RegularAccount" Relationship="Self.FK__DepositAc__Accou__457442E6" FromRole="DepositAccount" ToRole="RegularAccount" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__DepositAc__Curre__36870511" FromRole="DepositAccount" ToRole="Currency" />
+          <NavigationProperty Name="RegularAccount" Relationship="Self.FK__DepositAc__Accou__3592E0D8" FromRole="DepositAccount" ToRole="RegularAccount" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -1145,11 +1146,11 @@
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Department" Relationship="Self.FK__Employee__Depart__5C8CB268" FromRole="Employee" ToRole="Department" />
-          <NavigationProperty Name="RequestExpenses" Relationship="Self.FK__RequestEx__Emplo__62458BBE" FromRole="Employee" ToRole="RequestExpense" />
-          <NavigationProperty Name="SalaryRaiseRequests" Relationship="Self.FK__SalaryRai__Emplo__6521F869" FromRole="Employee" ToRole="SalaryRaiseRequest" />
-          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Emplo__5E3FF0B0" FromRole="Employee" ToRole="Transaction" />
-          <NavigationProperty Name="ViolationReports" Relationship="Self.FK__Violation__Emplo__5F691F13" FromRole="Employee" ToRole="ViolationReport" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Employee__Depart__11558062" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="RequestExpenses" Relationship="Self.FK__RequestEx__Emplo__170E59B8" FromRole="Employee" ToRole="RequestExpense" />
+          <NavigationProperty Name="SalaryRaiseRequests" Relationship="Self.FK__SalaryRai__Emplo__19EAC663" FromRole="Employee" ToRole="SalaryRaiseRequest" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Emplo__4E5E8EA2" FromRole="Employee" ToRole="Transaction" />
+          <NavigationProperty Name="ViolationReports" Relationship="Self.FK__Violation__Emplo__1431ED0D" FromRole="Employee" ToRole="ViolationReport" />
         </EntityType>
         <EntityType Name="HOCCredit">
           <Key>
@@ -1165,9 +1166,9 @@
           <Property Name="GrossIncome" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__HOCCredit__Accou__63F8CA06" FromRole="HOCCredit" ToRole="Account" />
-          <NavigationProperty Name="HouseCompany" Relationship="Self.FK__HOCCredit__Compa__64ECEE3F" FromRole="HOCCredit" ToRole="HouseCompany" />
-          <NavigationProperty Name="HOCCreditDetail" Relationship="Self.FK__HOCCredit__HOCId__67C95AEA" FromRole="HOCCredit" ToRole="HOCCreditDetail" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__HOCCredit__Accou__541767F8" FromRole="HOCCredit" ToRole="Account" />
+          <NavigationProperty Name="HouseCompany" Relationship="Self.FK__HOCCredit__Compa__550B8C31" FromRole="HOCCredit" ToRole="HouseCompany" />
+          <NavigationProperty Name="HOCCreditDetail" Relationship="Self.FK__HOCCredit__HOCId__57E7F8DC" FromRole="HOCCredit" ToRole="HOCCreditDetail" />
         </EntityType>
         <EntityType Name="HOCCreditDetail">
           <Key>
@@ -1182,8 +1183,8 @@
           <Property Name="AdditionalCharge" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="LatePenalty" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="TotalAmount" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
-          <NavigationProperty Name="HOCCredit" Relationship="Self.FK__HOCCredit__HOCId__67C95AEA" FromRole="HOCCreditDetail" ToRole="HOCCredit" />
-          <NavigationProperty Name="PaymentType" Relationship="Self.FK__HOCCredit__Payme__68BD7F23" FromRole="HOCCreditDetail" ToRole="PaymentType" />
+          <NavigationProperty Name="HOCCredit" Relationship="Self.FK__HOCCredit__HOCId__57E7F8DC" FromRole="HOCCreditDetail" ToRole="HOCCredit" />
+          <NavigationProperty Name="PaymentType" Relationship="Self.FK__HOCCredit__Payme__58DC1D15" FromRole="HOCCreditDetail" ToRole="PaymentType" />
         </EntityType>
         <EntityType Name="HouseCompany">
           <Key>
@@ -1191,7 +1192,7 @@
           </Key>
           <Property Name="HouseCompanyId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="HOCCredits" Relationship="Self.FK__HOCCredit__Compa__64ECEE3F" FromRole="HouseCompany" ToRole="HOCCredit" />
+          <NavigationProperty Name="HOCCredits" Relationship="Self.FK__HOCCredit__Compa__550B8C31" FromRole="HouseCompany" ToRole="HOCCredit" />
         </EntityType>
         <EntityType Name="HouseCompanyPartner">
           <Key>
@@ -1200,7 +1201,7 @@
           <Property Name="CompanyId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CompanyName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BranchId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Branch" Relationship="Self.FK__HouseComp__Branc__56D3D912" FromRole="HouseCompanyPartner" ToRole="Branch" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK__HouseComp__Branc__0B9CA70C" FromRole="HouseCompanyPartner" ToRole="Branch" />
         </EntityType>
         <EntityType Name="IndividualAccount">
           <Key>
@@ -1212,11 +1213,11 @@
           <Property Name="InitialDeposit" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="MinimumSaving" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="AdminFee" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Individua__Accou__3726238F" FromRole="IndividualAccount" ToRole="Account" />
-          <NavigationProperty Name="BusinessAccount" Relationship="Self.FK__BusinessA__Accou__4944D3CA" FromRole="IndividualAccount" ToRole="BusinessAccount" />
-          <NavigationProperty Name="Level" Relationship="Self.FK__Individua__Level__3631FF56" FromRole="IndividualAccount" ToRole="Level" />
-          <NavigationProperty Name="RegularAccount" Relationship="Self.FK__RegularAc__Accou__3A02903A" FromRole="IndividualAccount" ToRole="RegularAccount" />
-          <NavigationProperty Name="RegularAccount1" Relationship="Self.StudentAccount" FromRole="IndividualAccount" ToRole="RegularAccount" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Individua__Accou__2744C181" FromRole="IndividualAccount" ToRole="Account" />
+          <NavigationProperty Name="BusinessAccount" Relationship="Self.FK__BusinessA__Accou__396371BC" FromRole="IndividualAccount" ToRole="BusinessAccount" />
+          <NavigationProperty Name="Level" Relationship="Self.FK__Individua__Level__26509D48" FromRole="IndividualAccount" ToRole="Level" />
+          <NavigationProperty Name="RegularAccount" Relationship="Self.FK__RegularAc__Accou__2A212E2C" FromRole="IndividualAccount" ToRole="RegularAccount" />
+          <NavigationProperty Name="StudentAccounts" Relationship="Self.FK__StudentAc__Accou__2CFD9AD7" FromRole="IndividualAccount" ToRole="StudentAccount" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -1228,8 +1229,8 @@
           <Property Name="DepartmentId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Value" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Department" Relationship="Self.FK__Item__Department__53F76C67" FromRole="Item" ToRole="Department" />
-          <NavigationProperty Name="ItemType" Relationship="Self.FK__Item__ItemTypeId__5303482E" FromRole="Item" ToRole="ItemType" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Item__Department__08C03A61" FromRole="Item" ToRole="Department" />
+          <NavigationProperty Name="ItemType" Relationship="Self.FK__Item__ItemTypeId__07CC1628" FromRole="Item" ToRole="ItemType" />
         </EntityType>
         <EntityType Name="ItemType">
           <Key>
@@ -1237,7 +1238,7 @@
           </Key>
           <Property Name="ItemTypeId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Items" Relationship="Self.FK__Item__ItemTypeId__5303482E" FromRole="ItemType" ToRole="Item" />
+          <NavigationProperty Name="Items" Relationship="Self.FK__Item__ItemTypeId__07CC1628" FromRole="ItemType" ToRole="Item" />
         </EntityType>
         <EntityType Name="Level">
           <Key>
@@ -1247,7 +1248,7 @@
           <Property Name="MaximumWithdrawal" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="MaximumTransfers" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="MonthlyInterest" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="IndividualAccounts" Relationship="Self.FK__Individua__Level__3631FF56" FromRole="Level" ToRole="IndividualAccount" />
+          <NavigationProperty Name="IndividualAccounts" Relationship="Self.FK__Individua__Level__26509D48" FromRole="Level" ToRole="IndividualAccount" />
         </EntityType>
         <EntityType Name="Loan">
           <Key>
@@ -1263,8 +1264,8 @@
           <Property Name="IsPaid" Type="Boolean" Nullable="false" />
           <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PaidDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Loan__AccountId__6D823440" FromRole="Loan" ToRole="Account" />
-          <NavigationProperty Name="LoanType" Relationship="Self.FK__Loan__LoanTypeNa__6E765879" FromRole="Loan" ToRole="LoanType" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Loan__AccountId__5DA0D232" FromRole="Loan" ToRole="Account" />
+          <NavigationProperty Name="LoanType" Relationship="Self.FK__Loan__LoanTypeNa__5E94F66B" FromRole="Loan" ToRole="LoanType" />
         </EntityType>
         <EntityType Name="LoanType">
           <Key>
@@ -1273,7 +1274,7 @@
           <Property Name="LoanTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MinimumAmount" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="MaximumAmount" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Loans" Relationship="Self.FK__Loan__LoanTypeNa__6E765879" FromRole="LoanType" ToRole="Loan" />
+          <NavigationProperty Name="Loans" Relationship="Self.FK__Loan__LoanTypeNa__5E94F66B" FromRole="LoanType" ToRole="Loan" />
         </EntityType>
         <EntityType Name="Manager">
           <Key>
@@ -1281,7 +1282,7 @@
           </Key>
           <Property Name="ManagerId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Branches" Relationship="Self.FK__Branch__ManagerI__4885B9BB" FromRole="Manager" ToRole="Branch" />
+          <NavigationProperty Name="Branches" Relationship="Self.FK__Branch__ManagerI__7D4E87B5" FromRole="Manager" ToRole="Branch" />
         </EntityType>
         <EntityType Name="PaymentType">
           <Key>
@@ -1289,19 +1290,19 @@
           </Key>
           <Property Name="PaymentTypeId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CreditCardTransactions" Relationship="Self.FK__CreditCar__Payme__5A6F5FCC" FromRole="PaymentType" ToRole="CreditCardTransaction" />
-          <NavigationProperty Name="HOCCreditDetails" Relationship="Self.FK__HOCCredit__Payme__68BD7F23" FromRole="PaymentType" ToRole="HOCCreditDetail" />
-          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Payme__5F3414E9" FromRole="PaymentType" ToRole="Transaction" />
+          <NavigationProperty Name="CreditCardTransactions" Relationship="Self.FK__CreditCar__Payme__4A8DFDBE" FromRole="PaymentType" ToRole="CreditCardTransaction" />
+          <NavigationProperty Name="HOCCreditDetails" Relationship="Self.FK__HOCCredit__Payme__58DC1D15" FromRole="PaymentType" ToRole="HOCCreditDetail" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Payme__4F52B2DB" FromRole="PaymentType" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="RegularAccount">
           <Key>
             <PropertyRef Name="AccountId" />
           </Key>
           <Property Name="AccountId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="DepositAccounts" Relationship="Self.FK__DepositAc__Accou__457442E6" FromRole="RegularAccount" ToRole="DepositAccount" />
-          <NavigationProperty Name="IndividualAccount" Relationship="Self.FK__RegularAc__Accou__3A02903A" FromRole="RegularAccount" ToRole="IndividualAccount" />
-          <NavigationProperty Name="SavingAccounts" Relationship="Self.FK__SavingAcc__Accou__40AF8DC9" FromRole="RegularAccount" ToRole="SavingAccount" />
-          <NavigationProperty Name="IndividualAccounts" Relationship="Self.StudentAccount" FromRole="RegularAccount" ToRole="IndividualAccount" />
+          <NavigationProperty Name="DepositAccounts" Relationship="Self.FK__DepositAc__Accou__3592E0D8" FromRole="RegularAccount" ToRole="DepositAccount" />
+          <NavigationProperty Name="IndividualAccount" Relationship="Self.FK__RegularAc__Accou__2A212E2C" FromRole="RegularAccount" ToRole="IndividualAccount" />
+          <NavigationProperty Name="SavingAccounts" Relationship="Self.FK__SavingAcc__Accou__30CE2BBB" FromRole="RegularAccount" ToRole="SavingAccount" />
+          <NavigationProperty Name="StudentAccounts" Relationship="Self.FK__StudentAc__Guard__2DF1BF10" FromRole="RegularAccount" ToRole="StudentAccount" />
         </EntityType>
         <EntityType Name="RequestExpense">
           <Key>
@@ -1313,7 +1314,7 @@
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
           <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__RequestEx__Emplo__62458BBE" FromRole="RequestExpense" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__RequestEx__Emplo__170E59B8" FromRole="RequestExpense" ToRole="Employee" />
         </EntityType>
         <EntityType Name="SalaryRaiseRequest">
           <Key>
@@ -1324,7 +1325,7 @@
           <Property Name="Amount" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
           <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__SalaryRai__Emplo__6521F869" FromRole="SalaryRaiseRequest" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__SalaryRai__Emplo__19EAC663" FromRole="SalaryRaiseRequest" ToRole="Employee" />
         </EntityType>
         <EntityType Name="SavingAccount">
           <Key>
@@ -1333,7 +1334,17 @@
           <Property Name="SavingAccountId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AccountId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Balance" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
-          <NavigationProperty Name="RegularAccount" Relationship="Self.FK__SavingAcc__Accou__40AF8DC9" FromRole="SavingAccount" ToRole="RegularAccount" />
+          <NavigationProperty Name="RegularAccount" Relationship="Self.FK__SavingAcc__Accou__30CE2BBB" FromRole="SavingAccount" ToRole="RegularAccount" />
+        </EntityType>
+        <EntityType Name="StudentAccount">
+          <Key>
+            <PropertyRef Name="StudentAccountId" />
+          </Key>
+          <Property Name="StudentAccountId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GuardianAccountId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="IndividualAccount" Relationship="Self.FK__StudentAc__Accou__2CFD9AD7" FromRole="StudentAccount" ToRole="IndividualAccount" />
+          <NavigationProperty Name="RegularAccount" Relationship="Self.FK__StudentAc__Guard__2DF1BF10" FromRole="StudentAccount" ToRole="RegularAccount" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -1346,9 +1357,9 @@
           <Property Name="Amount" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
           <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PaidDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Transacti__Accou__5D4BCC77" FromRole="Transaction" ToRole="Account" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__Transacti__Emplo__5E3FF0B0" FromRole="Transaction" ToRole="Employee" />
-          <NavigationProperty Name="PaymentType" Relationship="Self.FK__Transacti__Payme__5F3414E9" FromRole="Transaction" ToRole="PaymentType" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Transacti__Accou__4D6A6A69" FromRole="Transaction" ToRole="Account" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Transacti__Emplo__4E5E8EA2" FromRole="Transaction" ToRole="Employee" />
+          <NavigationProperty Name="PaymentType" Relationship="Self.FK__Transacti__Payme__4F52B2DB" FromRole="Transaction" ToRole="PaymentType" />
         </EntityType>
         <EntityType Name="ViolationReport">
           <Key>
@@ -1358,7 +1369,7 @@
           <Property Name="EmployeeId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Score" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__Violation__Emplo__5F691F13" FromRole="ViolationReport" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Violation__Emplo__1431ED0D" FromRole="ViolationReport" ToRole="Employee" />
         </EntityType>
         <EntityType Name="VirtualAccount">
           <Key>
@@ -1366,9 +1377,9 @@
           </Key>
           <Property Name="VirtualId" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AccountId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__VirtualAc__Accou__316D4A39" FromRole="VirtualAccount" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__VirtualAc__Accou__218BE82B" FromRole="VirtualAccount" ToRole="Account" />
         </EntityType>
-        <Association Name="FK__CreditCar__Accou__55AAAAAF">
+        <Association Name="FK__CreditCar__Accou__45C948A1">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1380,7 +1391,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitCard__Accou__2E90DD8E">
+        <Association Name="FK__DebitCard__Accou__1EAF7B80">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="DebitCard" Type="Self.DebitCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1392,7 +1403,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOCCredit__Accou__63F8CA06">
+        <Association Name="FK__HOCCredit__Accou__541767F8">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="HOCCredit" Type="Self.HOCCredit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1404,7 +1415,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Individua__Accou__3726238F">
+        <Association Name="FK__Individua__Accou__2744C181">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1416,7 +1427,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Loan__AccountId__6D823440">
+        <Association Name="FK__Loan__AccountId__5DA0D232">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1428,7 +1439,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transacti__Accou__5D4BCC77">
+        <Association Name="FK__Transacti__Accou__4D6A6A69">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1440,7 +1451,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VirtualAc__Accou__316D4A39">
+        <Association Name="FK__VirtualAc__Accou__218BE82B">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="VirtualAccount" Type="Self.VirtualAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1452,7 +1463,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ATM__BranchId__59B045BD">
+        <Association Name="FK__ATM__BranchId__0E7913B7">
           <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
           <End Role="ATM" Type="Self.ATM" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1464,7 +1475,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bill__Department__4E3E9311">
+        <Association Name="FK__Bill__Department__0307610B">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
           <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1476,7 +1487,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Branch__ManagerI__4885B9BB">
+        <Association Name="FK__Branch__ManagerI__7D4E87B5">
           <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
           <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1488,7 +1499,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Departmen__Branc__4B622666">
+        <Association Name="FK__Departmen__Branc__002AF460">
           <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
           <End Role="Department" Type="Self.Department" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1500,7 +1511,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HouseComp__Branc__56D3D912">
+        <Association Name="FK__HouseComp__Branc__0B9CA70C">
           <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
           <End Role="HouseCompanyPartner" Type="Self.HouseCompanyPartner" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1512,7 +1523,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BusinessA__Accou__4944D3CA">
+        <Association Name="FK__BusinessA__Accou__396371BC">
           <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="1" />
           <End Role="BusinessAccount" Type="Self.BusinessAccount" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1524,7 +1535,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Card__AccountId__4E0988E7">
+        <Association Name="FK__Card__AccountId__3E2826D9">
           <End Role="BusinessAccount" Type="Self.BusinessAccount" Multiplicity="1" />
           <End Role="Card" Type="Self.Card" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1536,7 +1547,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Card__CardTypeId__4EFDAD20">
+        <Association Name="FK__Card__CardTypeId__3F1C4B12">
           <End Role="CardType" Type="Self.CardType" Multiplicity="1" />
           <End Role="Card" Type="Self.Card" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1548,7 +1559,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditCar__Compa__569ECEE8">
+        <Association Name="FK__CreditCar__Compa__46BD6CDA">
           <End Role="CreditCardCompany" Type="Self.CreditCardCompany" Multiplicity="1" />
           <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1560,7 +1571,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditCar__Credi__597B3B93">
+        <Association Name="FK__CreditCar__Credi__4999D985">
           <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="1" />
           <End Role="CreditCardTransaction" Type="Self.CreditCardTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1572,7 +1583,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditCar__Payme__5A6F5FCC">
+        <Association Name="FK__CreditCar__Payme__4A8DFDBE">
           <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="1" />
           <End Role="CreditCardTransaction" Type="Self.CreditCardTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1584,7 +1595,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DepositAc__Curre__4668671F">
+        <Association Name="FK__DepositAc__Curre__36870511">
           <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
           <End Role="DepositAccount" Type="Self.DepositAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1596,7 +1607,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee__Depart__5C8CB268">
+        <Association Name="FK__Employee__Depart__11558062">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1608,7 +1619,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__Department__53F76C67">
+        <Association Name="FK__Item__Department__08C03A61">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1620,7 +1631,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DepositAc__Accou__457442E6">
+        <Association Name="FK__DepositAc__Accou__3592E0D8">
           <End Role="RegularAccount" Type="Self.RegularAccount" Multiplicity="1" />
           <End Role="DepositAccount" Type="Self.DepositAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1632,7 +1643,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RequestEx__Emplo__62458BBE">
+        <Association Name="FK__RequestEx__Emplo__170E59B8">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="RequestExpense" Type="Self.RequestExpense" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1644,7 +1655,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryRai__Emplo__6521F869">
+        <Association Name="FK__SalaryRai__Emplo__19EAC663">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="SalaryRaiseRequest" Type="Self.SalaryRaiseRequest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1656,7 +1667,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transacti__Emplo__5E3FF0B0">
+        <Association Name="FK__Transacti__Emplo__4E5E8EA2">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1668,7 +1679,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Violation__Emplo__5F691F13">
+        <Association Name="FK__Violation__Emplo__1431ED0D">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="ViolationReport" Type="Self.ViolationReport" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1680,7 +1691,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOCCredit__Compa__64ECEE3F">
+        <Association Name="FK__HOCCredit__Compa__550B8C31">
           <End Role="HouseCompany" Type="Self.HouseCompany" Multiplicity="1" />
           <End Role="HOCCredit" Type="Self.HOCCredit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1692,7 +1703,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOCCredit__HOCId__67C95AEA">
+        <Association Name="FK__HOCCredit__HOCId__57E7F8DC">
           <End Role="HOCCredit" Type="Self.HOCCredit" Multiplicity="1" />
           <End Role="HOCCreditDetail" Type="Self.HOCCreditDetail" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1704,7 +1715,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOCCredit__Payme__68BD7F23">
+        <Association Name="FK__HOCCredit__Payme__58DC1D15">
           <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="1" />
           <End Role="HOCCreditDetail" Type="Self.HOCCreditDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1716,7 +1727,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Individua__Level__3631FF56">
+        <Association Name="FK__Individua__Level__26509D48">
           <End Role="Level" Type="Self.Level" Multiplicity="1" />
           <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1728,7 +1739,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RegularAc__Accou__3A02903A">
+        <Association Name="FK__RegularAc__Accou__2A212E2C">
           <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="1" />
           <End Role="RegularAccount" Type="Self.RegularAccount" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1740,7 +1751,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__ItemTypeId__5303482E">
+        <Association Name="FK__StudentAc__Accou__2CFD9AD7">
+          <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="1" />
+          <End Role="StudentAccount" Type="Self.StudentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndividualAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="StudentAccount">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item__ItemTypeId__07CC1628">
           <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1752,7 +1775,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Loan__LoanTypeNa__6E765879">
+        <Association Name="FK__Loan__LoanTypeNa__5E94F66B">
           <End Role="LoanType" Type="Self.LoanType" Multiplicity="1" />
           <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1764,7 +1787,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Transacti__Payme__5F3414E9">
+        <Association Name="FK__Transacti__Payme__4F52B2DB">
           <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1776,7 +1799,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SavingAcc__Accou__40AF8DC9">
+        <Association Name="FK__SavingAcc__Accou__30CE2BBB">
           <End Role="RegularAccount" Type="Self.RegularAccount" Multiplicity="1" />
           <End Role="SavingAccount" Type="Self.SavingAccount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1788,9 +1811,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="StudentAccount">
-          <End Role="IndividualAccount" Type="Self.IndividualAccount" Multiplicity="*" />
-          <End Role="RegularAccount" Type="Self.RegularAccount" Multiplicity="0..1" />
+        <Association Name="FK__StudentAc__Guard__2DF1BF10">
+          <End Role="RegularAccount" Type="Self.RegularAccount" Multiplicity="1" />
+          <End Role="StudentAccount" Type="Self.StudentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegularAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="StudentAccount">
+              <PropertyRef Name="GuardianAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <EntityContainer Name="KongBuBankEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
@@ -1824,152 +1855,157 @@
           <EntitySet Name="RequestExpenses" EntityType="Self.RequestExpense" />
           <EntitySet Name="SalaryRaiseRequests" EntityType="Self.SalaryRaiseRequest" />
           <EntitySet Name="SavingAccounts" EntityType="Self.SavingAccount" />
+          <EntitySet Name="StudentAccounts" EntityType="Self.StudentAccount" />
           <EntitySet Name="Transactions" EntityType="Self.Transaction" />
           <EntitySet Name="ViolationReports" EntityType="Self.ViolationReport" />
           <EntitySet Name="VirtualAccounts" EntityType="Self.VirtualAccount" />
-          <AssociationSet Name="FK__CreditCar__Accou__55AAAAAF" Association="Self.FK__CreditCar__Accou__55AAAAAF">
+          <AssociationSet Name="FK__CreditCar__Accou__45C948A1" Association="Self.FK__CreditCar__Accou__45C948A1">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="CreditCard" EntitySet="CreditCards" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitCard__Accou__2E90DD8E" Association="Self.FK__DebitCard__Accou__2E90DD8E">
+          <AssociationSet Name="FK__DebitCard__Accou__1EAF7B80" Association="Self.FK__DebitCard__Accou__1EAF7B80">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="DebitCard" EntitySet="DebitCards" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOCCredit__Accou__63F8CA06" Association="Self.FK__HOCCredit__Accou__63F8CA06">
+          <AssociationSet Name="FK__HOCCredit__Accou__541767F8" Association="Self.FK__HOCCredit__Accou__541767F8">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="HOCCredit" EntitySet="HOCCredits" />
           </AssociationSet>
-          <AssociationSet Name="FK__Individua__Accou__3726238F" Association="Self.FK__Individua__Accou__3726238F">
+          <AssociationSet Name="FK__Individua__Accou__2744C181" Association="Self.FK__Individua__Accou__2744C181">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="IndividualAccount" EntitySet="IndividualAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Loan__AccountId__6D823440" Association="Self.FK__Loan__AccountId__6D823440">
+          <AssociationSet Name="FK__Loan__AccountId__5DA0D232" Association="Self.FK__Loan__AccountId__5DA0D232">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Loan" EntitySet="Loans" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transacti__Accou__5D4BCC77" Association="Self.FK__Transacti__Accou__5D4BCC77">
+          <AssociationSet Name="FK__Transacti__Accou__4D6A6A69" Association="Self.FK__Transacti__Accou__4D6A6A69">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__VirtualAc__Accou__316D4A39" Association="Self.FK__VirtualAc__Accou__316D4A39">
+          <AssociationSet Name="FK__VirtualAc__Accou__218BE82B" Association="Self.FK__VirtualAc__Accou__218BE82B">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="VirtualAccount" EntitySet="VirtualAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__ATM__BranchId__59B045BD" Association="Self.FK__ATM__BranchId__59B045BD">
+          <AssociationSet Name="FK__ATM__BranchId__0E7913B7" Association="Self.FK__ATM__BranchId__0E7913B7">
             <End Role="Branch" EntitySet="Branches" />
             <End Role="ATM" EntitySet="ATMs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bill__Department__4E3E9311" Association="Self.FK__Bill__Department__4E3E9311">
+          <AssociationSet Name="FK__Bill__Department__0307610B" Association="Self.FK__Bill__Department__0307610B">
             <End Role="Department" EntitySet="Departments" />
             <End Role="Bill" EntitySet="Bills" />
           </AssociationSet>
-          <AssociationSet Name="FK__Branch__ManagerI__4885B9BB" Association="Self.FK__Branch__ManagerI__4885B9BB">
+          <AssociationSet Name="FK__Branch__ManagerI__7D4E87B5" Association="Self.FK__Branch__ManagerI__7D4E87B5">
             <End Role="Manager" EntitySet="Managers" />
             <End Role="Branch" EntitySet="Branches" />
           </AssociationSet>
-          <AssociationSet Name="FK__Departmen__Branc__4B622666" Association="Self.FK__Departmen__Branc__4B622666">
+          <AssociationSet Name="FK__Departmen__Branc__002AF460" Association="Self.FK__Departmen__Branc__002AF460">
             <End Role="Branch" EntitySet="Branches" />
             <End Role="Department" EntitySet="Departments" />
           </AssociationSet>
-          <AssociationSet Name="FK__HouseComp__Branc__56D3D912" Association="Self.FK__HouseComp__Branc__56D3D912">
+          <AssociationSet Name="FK__HouseComp__Branc__0B9CA70C" Association="Self.FK__HouseComp__Branc__0B9CA70C">
             <End Role="Branch" EntitySet="Branches" />
             <End Role="HouseCompanyPartner" EntitySet="HouseCompanyPartners" />
           </AssociationSet>
-          <AssociationSet Name="FK__BusinessA__Accou__4944D3CA" Association="Self.FK__BusinessA__Accou__4944D3CA">
+          <AssociationSet Name="FK__BusinessA__Accou__396371BC" Association="Self.FK__BusinessA__Accou__396371BC">
             <End Role="IndividualAccount" EntitySet="IndividualAccounts" />
             <End Role="BusinessAccount" EntitySet="BusinessAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Card__AccountId__4E0988E7" Association="Self.FK__Card__AccountId__4E0988E7">
+          <AssociationSet Name="FK__Card__AccountId__3E2826D9" Association="Self.FK__Card__AccountId__3E2826D9">
             <End Role="BusinessAccount" EntitySet="BusinessAccounts" />
             <End Role="Card" EntitySet="Cards" />
           </AssociationSet>
-          <AssociationSet Name="FK__Card__CardTypeId__4EFDAD20" Association="Self.FK__Card__CardTypeId__4EFDAD20">
+          <AssociationSet Name="FK__Card__CardTypeId__3F1C4B12" Association="Self.FK__Card__CardTypeId__3F1C4B12">
             <End Role="CardType" EntitySet="CardTypes" />
             <End Role="Card" EntitySet="Cards" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditCar__Compa__569ECEE8" Association="Self.FK__CreditCar__Compa__569ECEE8">
+          <AssociationSet Name="FK__CreditCar__Compa__46BD6CDA" Association="Self.FK__CreditCar__Compa__46BD6CDA">
             <End Role="CreditCardCompany" EntitySet="CreditCardCompanies" />
             <End Role="CreditCard" EntitySet="CreditCards" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditCar__Credi__597B3B93" Association="Self.FK__CreditCar__Credi__597B3B93">
+          <AssociationSet Name="FK__CreditCar__Credi__4999D985" Association="Self.FK__CreditCar__Credi__4999D985">
             <End Role="CreditCard" EntitySet="CreditCards" />
             <End Role="CreditCardTransaction" EntitySet="CreditCardTransactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditCar__Payme__5A6F5FCC" Association="Self.FK__CreditCar__Payme__5A6F5FCC">
+          <AssociationSet Name="FK__CreditCar__Payme__4A8DFDBE" Association="Self.FK__CreditCar__Payme__4A8DFDBE">
             <End Role="PaymentType" EntitySet="PaymentTypes" />
             <End Role="CreditCardTransaction" EntitySet="CreditCardTransactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__DepositAc__Curre__4668671F" Association="Self.FK__DepositAc__Curre__4668671F">
+          <AssociationSet Name="FK__DepositAc__Curre__36870511" Association="Self.FK__DepositAc__Curre__36870511">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="DepositAccount" EntitySet="DepositAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee__Depart__5C8CB268" Association="Self.FK__Employee__Depart__5C8CB268">
+          <AssociationSet Name="FK__Employee__Depart__11558062" Association="Self.FK__Employee__Depart__11558062">
             <End Role="Department" EntitySet="Departments" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__Department__53F76C67" Association="Self.FK__Item__Department__53F76C67">
+          <AssociationSet Name="FK__Item__Department__08C03A61" Association="Self.FK__Item__Department__08C03A61">
             <End Role="Department" EntitySet="Departments" />
             <End Role="Item" EntitySet="Items" />
           </AssociationSet>
-          <AssociationSet Name="FK__DepositAc__Accou__457442E6" Association="Self.FK__DepositAc__Accou__457442E6">
+          <AssociationSet Name="FK__DepositAc__Accou__3592E0D8" Association="Self.FK__DepositAc__Accou__3592E0D8">
             <End Role="RegularAccount" EntitySet="RegularAccounts" />
             <End Role="DepositAccount" EntitySet="DepositAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__RequestEx__Emplo__62458BBE" Association="Self.FK__RequestEx__Emplo__62458BBE">
+          <AssociationSet Name="FK__RequestEx__Emplo__170E59B8" Association="Self.FK__RequestEx__Emplo__170E59B8">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="RequestExpense" EntitySet="RequestExpenses" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryRai__Emplo__6521F869" Association="Self.FK__SalaryRai__Emplo__6521F869">
+          <AssociationSet Name="FK__SalaryRai__Emplo__19EAC663" Association="Self.FK__SalaryRai__Emplo__19EAC663">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="SalaryRaiseRequest" EntitySet="SalaryRaiseRequests" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transacti__Emplo__5E3FF0B0" Association="Self.FK__Transacti__Emplo__5E3FF0B0">
+          <AssociationSet Name="FK__Transacti__Emplo__4E5E8EA2" Association="Self.FK__Transacti__Emplo__4E5E8EA2">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Violation__Emplo__5F691F13" Association="Self.FK__Violation__Emplo__5F691F13">
+          <AssociationSet Name="FK__Violation__Emplo__1431ED0D" Association="Self.FK__Violation__Emplo__1431ED0D">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="ViolationReport" EntitySet="ViolationReports" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOCCredit__Compa__64ECEE3F" Association="Self.FK__HOCCredit__Compa__64ECEE3F">
+          <AssociationSet Name="FK__HOCCredit__Compa__550B8C31" Association="Self.FK__HOCCredit__Compa__550B8C31">
             <End Role="HouseCompany" EntitySet="HouseCompanies" />
             <End Role="HOCCredit" EntitySet="HOCCredits" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOCCredit__HOCId__67C95AEA" Association="Self.FK__HOCCredit__HOCId__67C95AEA">
+          <AssociationSet Name="FK__HOCCredit__HOCId__57E7F8DC" Association="Self.FK__HOCCredit__HOCId__57E7F8DC">
             <End Role="HOCCredit" EntitySet="HOCCredits" />
             <End Role="HOCCreditDetail" EntitySet="HOCCreditDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOCCredit__Payme__68BD7F23" Association="Self.FK__HOCCredit__Payme__68BD7F23">
+          <AssociationSet Name="FK__HOCCredit__Payme__58DC1D15" Association="Self.FK__HOCCredit__Payme__58DC1D15">
             <End Role="PaymentType" EntitySet="PaymentTypes" />
             <End Role="HOCCreditDetail" EntitySet="HOCCreditDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Individua__Level__3631FF56" Association="Self.FK__Individua__Level__3631FF56">
+          <AssociationSet Name="FK__Individua__Level__26509D48" Association="Self.FK__Individua__Level__26509D48">
             <End Role="Level" EntitySet="Levels" />
             <End Role="IndividualAccount" EntitySet="IndividualAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__RegularAc__Accou__3A02903A" Association="Self.FK__RegularAc__Accou__3A02903A">
+          <AssociationSet Name="FK__RegularAc__Accou__2A212E2C" Association="Self.FK__RegularAc__Accou__2A212E2C">
             <End Role="IndividualAccount" EntitySet="IndividualAccounts" />
             <End Role="RegularAccount" EntitySet="RegularAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__ItemTypeId__5303482E" Association="Self.FK__Item__ItemTypeId__5303482E">
+          <AssociationSet Name="FK__StudentAc__Accou__2CFD9AD7" Association="Self.FK__StudentAc__Accou__2CFD9AD7">
+            <End Role="IndividualAccount" EntitySet="IndividualAccounts" />
+            <End Role="StudentAccount" EntitySet="StudentAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__ItemTypeId__07CC1628" Association="Self.FK__Item__ItemTypeId__07CC1628">
             <End Role="ItemType" EntitySet="ItemTypes" />
             <End Role="Item" EntitySet="Items" />
           </AssociationSet>
-          <AssociationSet Name="FK__Loan__LoanTypeNa__6E765879" Association="Self.FK__Loan__LoanTypeNa__6E765879">
+          <AssociationSet Name="FK__Loan__LoanTypeNa__5E94F66B" Association="Self.FK__Loan__LoanTypeNa__5E94F66B">
             <End Role="LoanType" EntitySet="LoanTypes" />
             <End Role="Loan" EntitySet="Loans" />
           </AssociationSet>
-          <AssociationSet Name="FK__Transacti__Payme__5F3414E9" Association="Self.FK__Transacti__Payme__5F3414E9">
+          <AssociationSet Name="FK__Transacti__Payme__4F52B2DB" Association="Self.FK__Transacti__Payme__4F52B2DB">
             <End Role="PaymentType" EntitySet="PaymentTypes" />
             <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__SavingAcc__Accou__40AF8DC9" Association="Self.FK__SavingAcc__Accou__40AF8DC9">
+          <AssociationSet Name="FK__SavingAcc__Accou__30CE2BBB" Association="Self.FK__SavingAcc__Accou__30CE2BBB">
             <End Role="RegularAccount" EntitySet="RegularAccounts" />
             <End Role="SavingAccount" EntitySet="SavingAccounts" />
           </AssociationSet>
-          <AssociationSet Name="StudentAccount" Association="Self.StudentAccount">
-            <End Role="IndividualAccount" EntitySet="IndividualAccounts" />
+          <AssociationSet Name="FK__StudentAc__Guard__2DF1BF10" Association="Self.FK__StudentAc__Guard__2DF1BF10">
             <End Role="RegularAccount" EntitySet="RegularAccounts" />
+            <End Role="StudentAccount" EntitySet="StudentAccounts" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -2306,6 +2342,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="StudentAccounts">
+            <EntityTypeMapping TypeName="KongBuBankModel.StudentAccount">
+              <MappingFragment StoreEntitySet="StudentAccount">
+                <ScalarProperty Name="StudentAccountId" ColumnName="StudentAccountId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="GuardianAccountId" ColumnName="GuardianAccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Transactions">
             <EntityTypeMapping TypeName="KongBuBankModel.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
@@ -2337,14 +2382,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="StudentAccount" TypeName="KongBuBankModel.StudentAccount" StoreEntitySet="StudentAccount">
-            <EndProperty Name="IndividualAccount">
-              <ScalarProperty Name="AccountId" ColumnName="AccountId" />
-            </EndProperty>
-            <EndProperty Name="RegularAccount">
-              <ScalarProperty Name="AccountId" ColumnName="GuardianAccountId" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

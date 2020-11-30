@@ -12,14 +12,40 @@ namespace TPA_Desktop_NT20_2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DepositAccount
+    public partial class DepositAccount : ObservableObject
     {
-        public string DepositAccountId { get; set; }
-        public string AccountId { get; set; }
-        public string CurrencyId { get; set; }
-        public decimal MinimumDeposit { get; set; }
-        public decimal DepositBalance { get; set; }
-    
+        private string depositAccountId;
+        private Double minimumDeposit;
+        private Double balance;
+        private Currency currency;
+
+        public string DepositAccountId
+        {
+            get { return depositAccountId; }
+            set { depositAccountId = value; OnPropertyChanged("DepositAccountId");  }
+        }
+
+
+        public Double MinimumDeposit
+        {
+            get { return minimumDeposit; }
+            set { minimumDeposit = value; OnPropertyChanged("MinimumDeposit"); }
+        }
+
+
+        public Double Balance
+        {
+            get { return balance; }
+            set { balance = value; OnPropertyChanged("Balance"); }
+        }
+
+
+        public Currency CurrencyAtt
+        {
+            get { return currency; }
+            set { currency = value; OnPropertyChanged("CurrencyAtt"); }
+        }
+
         public virtual Currency Currency { get; set; }
         public virtual RegularAccount RegularAccount { get; set; }
     }

@@ -37,7 +37,8 @@ CREATE TABLE [Account](
 )
 INSERT INTO Account VALUES
 ('AC001', 'Nico', 15000000, '2001-07-02 12:00:00', 'Jakarta', 'nico@mail.com', '123123', GETDATE()), 
-('AC002', 'Michael', 7500000, '2001-06-25 12:00:00', 'Alam Sutera', 'john@mail.com', '123123', GETDATE()) 
+('AC002', 'Michael', 7500000, '2001-06-25 12:00:00', 'Alam Sutera', 'john@mail.com', '123123', GETDATE()), 
+('AC003', 'Donald', 500000, '2005-10-12 12:00:00', 'Jakarta', 'donald@mail.com', '123123', GETDATE())
 ------------------------------------------------
 
 ------------DEBIT CARD------------
@@ -51,7 +52,8 @@ CREATE TABLE [DebitCard] (
 
 INSERT INTO [DebitCard] VALUES
 ('123123123123', 'AC001', '2021-01-01 12:00:00'), 
-('234234234234', 'AC002', '2021-03-01 12:00:00') 
+('234234234234', 'AC002', '2021-03-01 12:00:00'),
+('345345345345', 'AC003', '2021-03-01 12:00:00')
 ------------------------------------------------
 
 ------------VIRTUAL ACCOUNT------------
@@ -64,7 +66,8 @@ CREATE TABLE [VirtualAccount] (
 
 INSERT INTO [VirtualAccount] VALUES
 ('456456456456', 'AC001'), 
-('987987987987', 'AC002')
+('987987987987', 'AC002'),
+('123123123123', 'AC003')
 
 ------------------------------------------------
 
@@ -99,7 +102,8 @@ CREATE TABLE [IndividualAccount] (
 
 INSERT INTO [IndividualAccount] VALUES
 ('AC001', 'Black', 0.05, 2000000, 100000, 15000), 
-('AC002', 'Gold', 0.05, 2000000, 100000, 15000)
+('AC002', 'Gold', 0.05, 2000000, 100000, 15000), 
+('AC003', 'Gold', 0.05, 2000000, 100000, 15000)
 
 ------------------------------------------------
 
@@ -120,12 +124,16 @@ INSERT INTO [RegularAccount] VALUES
 
 ------------STUDENT ACCOUNT------------
 CREATE TABLE [StudentAccount] (
-	AccountId VARCHAR(5) PRIMARY KEY, 
+	StudentAccountId VARCHAR(5) PRIMARY KEY, 
+	AccountId VARCHAR(5) NOT NULL, 
 	GuardianAccountId VARCHAR(5) NOT NULL, 
 
 	FOREIGN KEY (AccountId) REFERENCES IndividualAccount(AccountId), 
 	FOREIGN KEY (GuardianAccountId) REFERENCES RegularAccount(AccountId)
 )
+
+INSERT INTO [StudentAccount] VALUES 
+('ST001', 'AC003', 'AC001') 
 
 ------------------------------------------------------------
 
@@ -283,8 +291,8 @@ CREATE TABLE [Transaction] (
 	EmployeeId VARCHAR(5) NOT NULL, 
 	PaymentTypeId VARCHAR(5) NOT NULL, 
 	Amount DECIMAL(20, 2) NOT NULL, 
-	TransactionDate DATETIME NOT NULL, 
-	PaidDate DATETIME NOT NULL, 
+	TransactionDate DATETIME NOT NULL,
+	TransactionType VARCHAR(30) NOT NULL, 
 
 	FOREIGN KEY (AccountId) REFERENCES Account(AccountId), 
 	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId), 

@@ -14,17 +14,8 @@ namespace TPA_Desktop_NT20_2.Models
     
     public partial class Department : ObservableObject
     {
-        #region Attribute
         private string departmentId;
         private string name;
-
-
-        #endregion
-        public Department(string departmentId, string name)
-        {
-            this.departmentId = departmentId;
-            this.name = name;
-        }
 
         public string DepartmentId
         {
@@ -38,5 +29,28 @@ namespace TPA_Desktop_NT20_2.Models
             get { return name; }
             set { name = value; OnPropertyChanged("Name"); }
         }
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Department()
+        {
+            this.Bills = new HashSet<Bill>();
+            this.Employees = new HashSet<Employee>();
+            this.Items = new HashSet<Item>();
+        }
+
+        public Department(string departmentId, string name)
+        {
+            this.departmentId = departmentId;
+            this.name = name;
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual Branch Branch { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

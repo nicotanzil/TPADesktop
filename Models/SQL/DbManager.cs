@@ -53,5 +53,26 @@ namespace TPA_Desktop_NT20_2.Models.SQL
             }
             return dt; 
         }
+
+        public void Execute(string query)
+        {
+            using(SqlConnection connection = GetInstance())
+            {
+                if(connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+
+                connection.Open();
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                connection.Close(); 
+            }
+        }
+
+        public int Count(string tableName)
+        {
+            return Get("SELECT * FROM [" + tableName + "]").Rows.Count;  
+        }
     }
 }

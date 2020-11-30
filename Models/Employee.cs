@@ -23,12 +23,9 @@ namespace TPA_Desktop_NT20_2.Models
         private Department department;
         #endregion
 
-        public Department Department
-        {
-            get { return department; }
-            set { department = value; OnPropertyChanged("Department"); }
-        }
+        public Employee() { }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee(string employeeId, string name, DateTime dob, string email, string password, Department department)
         {
             this.employeeId = employeeId;
@@ -37,11 +34,16 @@ namespace TPA_Desktop_NT20_2.Models
             this.email = email;
             this.password = password;
             this.department = department;
+            this.RequestExpenses = new HashSet<RequestExpense>();
+            this.SalaryRaiseRequests = new HashSet<SalaryRaiseRequest>();
+            this.Transactions = new HashSet<Transaction>();
+            this.ViolationReports = new HashSet<ViolationReport>();
         }
 
-        public Employee()
+        public Department Department
         {
-
+            get { return department; }
+            set { department = value; OnPropertyChanged("Department"); }
         }
 
         #region properties 
@@ -79,5 +81,13 @@ namespace TPA_Desktop_NT20_2.Models
         }
 
         #endregion
+
+        public virtual ICollection<RequestExpense> RequestExpenses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalaryRaiseRequest> SalaryRaiseRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction> Transactions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ViolationReport> ViolationReports { get; set; }
     }
 }
