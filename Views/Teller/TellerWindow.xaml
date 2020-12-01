@@ -31,8 +31,8 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button Margin="10" Width="100" Content="Deposit" Command="{Binding ChangeViewCommand}" CommandParameter="TellerDeposit"/>
             <Button Margin="10" Width="100" Content="Withdraw" Command="{Binding ChangeViewCommand}" CommandParameter="TellerWithdraw"/>
-            <Button Margin="10" Width="100" Content="Transfer" />
-            <Button Margin="10" Width="100" Content="Payment" />
+            <Button Margin="10" Width="100" Content="Transfer" Command="{Binding ChangeViewCommand}" CommandParameter="TellerTransfer" />
+            <Button Margin="10" Width="100" Content="Payment" Command="{Binding ChangeViewCommand}" CommandParameter="TellerPayment" />
         </StackPanel>
         <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="3" Grid.RowSpan="4"/>
     </Grid>

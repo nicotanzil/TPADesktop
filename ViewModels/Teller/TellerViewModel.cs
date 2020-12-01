@@ -50,6 +50,14 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
             {
                 this.SelectedViewModel = new TellerWithdrawViewModel(Employee); 
             }
+            else if(parameter.ToString() == "TellerTransfer")
+            {
+                this.SelectedViewModel = new TellerTransferViewModel(Employee);
+            }
+            else if(parameter.ToString() == "TellerPayment")
+            {
+                this.SelectedViewModel = new TellerPaymentViewModel(Employee); 
+            }
         }
     }
 }

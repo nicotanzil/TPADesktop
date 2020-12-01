@@ -288,15 +288,21 @@ CREATE TABLE CreditCardTransaction (
 CREATE TABLE [Transaction] (
 	TransactionId VARCHAR(5) PRIMARY KEY, 
 	AccountId VARCHAR(5) NOT NULL, 
+	RelatedAccountId VARCHAR(5), 
 	EmployeeId VARCHAR(5) NOT NULL, 
 	PaymentTypeId VARCHAR(5) NOT NULL, 
+	DebitCardId VARCHAR(12), 
+	VirtualAccountId VARCHAR(12), 
 	Amount DECIMAL(20, 2) NOT NULL, 
 	TransactionDate DATETIME NOT NULL,
 	TransactionType VARCHAR(30) NOT NULL, 
 
 	FOREIGN KEY (AccountId) REFERENCES Account(AccountId), 
+	FOREIGN KEY (RelatedAccountId) REFERENCES Account(AccountId), 
 	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId), 
-	FOREIGN KEY (PaymentTypeId) REFERENCES PaymentType(PaymentTypeId)
+	FOREIGN KEY (PaymentTypeId) REFERENCES PaymentType(PaymentTypeId),
+	FOREIGN KEY (DebitCardId) REFERENCES DebitCard(CardId), 
+	FOREIGN KEY (VirtualAccountId) REFERENCES VirtualAccount(VirtualId)
 )
 
 ------------------------------------------------

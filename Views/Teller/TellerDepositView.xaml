@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.Teller"
              mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -38,10 +38,10 @@
                     <TextBlock Text="Account Email: " Width="100"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" >
-                    <TextBlock Text="{Binding Path=CurrentAccount.AccountId}" Width="100"/>
-                    <TextBlock Text="{Binding Path=CurrentAccount.Name}" Width="100"/>
-                    <TextBlock Text="{Binding Path=CurrentAccount.Balance}" Width="100"/>
-                    <TextBlock Text="{Binding Path=CurrentAccount.Email}" Width="100"/>
+                    <TextBlock Text="{Binding Path=Account.AccountId}" Width="100"/>
+                    <TextBlock Text="{Binding Path=Account.Name}" Width="100"/>
+                    <TextBlock Text="{Binding Path=Account.Balance}" Width="100"/>
+                    <TextBlock Text="{Binding Path=Account.Email}" Width="100"/>
                 </StackPanel>
             </StackPanel>
         </Border>

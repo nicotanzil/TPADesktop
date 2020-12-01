@@ -20,5 +20,11 @@
         <DataTemplate DataType="{x:Type viewmodels_teller:TellerWithdrawViewModel}">
             <views_teller:TellerWithdrawView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_teller:TellerTransferViewModel}">
+            <views_teller:TellerTransferView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_teller:TellerPaymentViewModel}">
+            <views_teller:TellerPaymentView />
+        </DataTemplate>
     </Application.Resources>
 </Application>

@@ -1,8 +1,9 @@
 ﻿--Dropping all table 
-
 DROP TABLE SalaryRaiseRequest
 DROP TABLE RequestExpense
 DROP TABLE ViolationReport
+DROP TABLE MaintenanceSchedule
+DROP TABLE MaintenanceReport
 DROP TABLE Employee
 DROP TABLE ATM
 DROP TABLE HouseCompanyPartner
@@ -125,6 +126,8 @@ CREATE TABLE ATM (
 	FOREIGN KEY (BranchId) REFERENCES Branch(BranchId)
 )
 
+------------------------------------------------
+
 ------------EMPLOYEE------------
 
 CREATE TABLE [Employee] (
@@ -144,6 +147,32 @@ INSERT INTO Employee VALUES
 ('EM002', 'James', '2000-05-12', 'DE002', 'james@mail.com', 'password', 1)
 
 ------------------------------------------------
+
+------------MAINTENANCE REPORT------------
+
+CREATE TABLE [MaintenanceReport] (
+	ReportId VARCHAR(5) PRIMARY KEY, 
+	EmployeeId VARCHAR(5) NOT NULL, 
+	ItemId VARCHAR(5) NOT NULL, 
+	ReportDate DATETIME NOT NULL, 
+
+	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId), 
+	FOREIGN KEY (ItemId) REFERENCES Item(ItemId)
+)
+
+------------------------------------------------
+
+------------MAINTENANCE SCHEDULE------------
+CREATE TABLE [MaintenanceSchedule] (
+	ReportId VARCHAR(5) PRIMARY KEY, 
+	[Status] VARCHAR(15) NOT NULL, 
+	StartDate DATETIME, 
+	EndDate DATETIME, 
+	EstimateCost DECIMAL(20, 2), 
+	[Description] VARCHAR(255), 
+
+	FOREIGN KEY (ReportId) REFERENCES MaintenanceReport(ReportId) 
+)
 
 ------------VIOLATION REPORT------------
 

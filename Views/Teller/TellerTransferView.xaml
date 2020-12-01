@@ -24,38 +24,50 @@
         <TextBlock Text="Enter Account ID" Grid.Row="1" Grid.Column="0" />
         <TextBlock Text="Enter Target ID" Grid.Row="2" Grid.Column="0" />
         <TextBlock Text="Enter Amount" Grid.Row="3" Grid.Column="0" />
-        <TextBox Text="" Grid.Row="1" Grid.Column="1" Margin="40 10"/>
-        <TextBox Text="" Grid.Row="2" Grid.Column="1" Margin="40 10"/>
-        <TextBox Text="" Grid.Row="3" Grid.Column="1" Margin="40 10"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <Button Content="VIEW ACCOUNT" Command="" Margin="10" Width="100" Height="25" />
-            <Button Content="TRANSFER" Command="" Margin="10" Width="100" Height="25" />
+        <TextBox Text="{Binding Path=Account.AccountId, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="40 10"/>
+        <TextBox Text="{Binding Path=TargetAccount.AccountId, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Margin="40 10"/>
+        <TextBox Text="{Binding Path=Amount}" Grid.Row="3" Grid.Column="1" Margin="40 10"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button Content="VIEW ACCOUNT" Command="{Binding Path=ViewCommand}" Margin="10" Width="100" Height="25" />
+            <Button Content="TRANSFER" Command="{Binding Path=TransferCommand}" Margin="10" Width="100" Height="25" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3" HorizontalAlignment="Center" >
-            <StackPanel Orientation="Vertical" >
-                <TextBlock Text="Account Id: " Width="100"/>
-                <TextBlock Text="Account Name: " Width="100"/>
-                <TextBlock Text="Account Balance: " Width="100"/>
-                <TextBlock Text="Account Email: " Width="100"/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical" >
-                <TextBlock Text="" Width="100"/>
-                <TextBlock Text="" Width="100"/>
-                <TextBlock Text="" Width="100"/>
-                <TextBlock Text="" Width="100"/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical" >
-                <TextBlock Text="Account Id: " Width="100"/>
-                <TextBlock Text="Account Name: " Width="100"/>
-                <TextBlock Text="Account Balance: " Width="100"/>
-                <TextBlock Text="Account Email: " Width="100"/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical" >
-                <TextBlock Text="" Width="100"/>
-                <TextBlock Text="" Width="100"/>
-                <TextBlock Text="" Width="100"/>
-                <TextBlock Text="" Width="100"/>
-            </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3" HorizontalAlignment="Center" >
+            <Border CornerRadius="6" BorderBrush="CadetBlue" Background="LightBlue" BorderThickness="2">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock Text="Account" Width="100" TextAlignment="Center"/>
+                        <TextBlock Text="Account Id: " Width="100"/>
+                        <TextBlock Text="Account Name: " Width="100"/>
+                        <TextBlock Text="Account Balance: " Width="100"/>
+                        <TextBlock Text="Account Email: " Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock Text="" Width="100" />
+                        <TextBlock Text="{Binding Path=Account.AccountId}" Width="100"/>
+                        <TextBlock Text="{Binding Path=Account.Name}" Width="100"/>
+                        <TextBlock Text="{Binding Path=Account.Balance}" Width="100"/>
+                        <TextBlock Text="{Binding Path=Account.Email}" Width="100"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="6" BorderBrush="CadetBlue" Background="LightGoldenrodYellow" BorderThickness="2">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock Text="Transfer Account" Width="100" TextAlignment="Center"/>
+                        <TextBlock Text="Account Id: " Width="100"/>
+                        <TextBlock Text="Account Name: " Width="100"/>
+                        <TextBlock Text="Account Balance: " Width="100"/>
+                        <TextBlock Text="Account Email: " Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock Text="" Width="100" />
+                        <TextBlock Text="{Binding Path=TargetAccount.AccountId}" Width="100"/>
+                        <TextBlock Text="{Binding Path=TargetAccount.Name}" Width="100"/>
+                        <TextBlock Text="{Binding Path=TargetAccount.Balance}" Width="100"/>
+                        <TextBlock Text="{Binding Path=TargetAccount.Email}" Width="100"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>

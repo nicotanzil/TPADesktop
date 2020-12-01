@@ -14,7 +14,7 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
     {
         #region Attributes
         private string message;
-        private IndividualAccount account, currentAccount;
+        private IndividualAccount account;
         private RelayCommand viewCommand, depositCommand;
         private Employee currentEmployee;
         private int amount; 
@@ -24,7 +24,6 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
         {
             Name = "TellerDeposit";
             account = new IndividualAccount();
-            currentAccount = new IndividualAccount();
             CurrentEmployee = _employee; 
         }
 
@@ -32,12 +31,6 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
         {
             get { return account; }
             set { account = value; OnPropertyChanged("Account"); }
-        }
-
-        public IndividualAccount CurrentAccount
-        {
-            get { return currentAccount; }
-            set { currentAccount = value; OnPropertyChanged("CurrentAccount"); }
         }
 
         public Employee CurrentEmployee
@@ -114,10 +107,10 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
                 string balance = dt.Rows[index]["Balance"].ToString();
                 string email = dt.Rows[index]["Email"].ToString();
 
-                currentAccount.AccountId = id;
-                currentAccount.Name = name;
-                currentAccount.Balance = Convert.ToDouble(balance); 
-                currentAccount.Email = email; 
+                Account.AccountId = id;
+                Account.Name = name;
+                Account.Balance = Convert.ToDouble(balance); 
+                Account.Email = email; 
                 Message = "Success!";
             }
         }
@@ -133,7 +126,7 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
         {
             //Transaction
             LoadAccount(null); 
-            if(IsAccountExists(CurrentAccount.AccountId))
+            if(IsAccountExists(Account.AccountId))
             {
                 //Account exist
                 if(Amount > 0)
@@ -144,12 +137,13 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
                     Double amount = Amount;
                     string trType = "Deposit";
                     string paymentTypeId = "PA001";
+                    string debitCard = GetDebitCard(Account.AccountId); 
 
                     Console.WriteLine(id + " " + amount + " " + trType + " " + paymentTypeId); 
-                    AddTransaction(id, CurrentAccount.AccountId, CurrentEmployee.EmployeeId, paymentTypeId, amount, trType);
+                    AddTransaction(id, Account.AccountId, CurrentEmployee.EmployeeId, paymentTypeId, debitCard, amount, trType);
 
                     //Update account balance
-                    UpdateBalance(CurrentAccount.AccountId);
+                    UpdateBalance(Account.AccountId);
 
                     Console.WriteLine("Deposit Success!");
                     MessageBox.Show("Deposit Success!", "Success");
@@ -158,10 +152,10 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
             LoadAccount(null); 
         }
 
-        private void AddTransaction(string transactionId, string accountId, string employeeId, string paymentTypeId, Double amount, string transactionType)
+        private void AddTransaction(string transactionId, string accountId, string employeeId, string paymentTypeId, string debitCardId, Double amount, string transactionType)
         {
-            Console.WriteLine("INSERT INTO [Transaction] VALUES ('" + transactionId + "', '" + accountId + "', '" + employeeId + "', '" + paymentTypeId + "', GETDATE(), " + amount + ", '" + transactionType + "')"); 
-            Execute("INSERT INTO [Transaction] VALUES ('" + transactionId + "', '" + accountId + "', '" + employeeId + "', '" + paymentTypeId + "', " + amount + ", GETDATE(), '" + transactionType + "')"); 
+            Console.WriteLine("INSERT INTO [Transaction] VALUES ('" + transactionId + "', '" + accountId + "', NULL, '" + employeeId + "', '" + paymentTypeId + "', '" + debitCardId + "', NULL, " + amount + ", GETDATE(), '" + transactionType + "')"); 
+            Execute("INSERT INTO [Transaction] VALUES ('" + transactionId + "', '" + accountId + "', NULL, '" + employeeId + "', '" + paymentTypeId + "', '" + debitCardId + "', NULL, " + amount + ", GETDATE(), '" + transactionType + "')"); 
         }
 
         private void UpdateBalance(String _id)
@@ -169,6 +163,11 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
             Double balance = Convert.ToDouble(GetData("SELECT * FROM Account WHERE AccountId = '" + _id + "'").Rows[0]["Balance"]);
             balance += Amount;
             Execute("UPDATE Account SET Balance = " + balance + " WHERE AccountId = '" + _id + "'"); 
+        }
+
+        private string GetDebitCard(string _id)
+        {
+            return GetData("SELECT * FROM DebitCard WHERE AccountId = '" + _id + "'").Rows[0]["CardId"].ToString(); 
         }
     }
 }

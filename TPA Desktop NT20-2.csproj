@@ -56,6 +56,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="QRCoder, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\QRCoder.1.4.1\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
@@ -208,6 +211,8 @@
     <Compile Include="ViewModels\CustomerAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\EmployeeAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerDepositViewModel.cs" />
+    <Compile Include="ViewModels\Teller\TellerPaymentViewModel.cs" />
+    <Compile Include="ViewModels\Teller\TellerTransferViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerWithdrawViewModel.cs" />
     <Compile Include="Views\CustomerAuthenticationView.xaml.cs">
@@ -218,6 +223,9 @@
     </Compile>
     <Compile Include="Views\Teller\TellerDepositView.xaml.cs">
       <DependentUpon>TellerDepositView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Teller\TellerPaymentView.xaml.cs">
+      <DependentUpon>TellerPaymentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Teller\TellerTransferView.xaml.cs">
       <DependentUpon>TellerTransferView.xaml</DependentUpon>
@@ -249,6 +257,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Teller\TellerDepositView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Teller\TellerPaymentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

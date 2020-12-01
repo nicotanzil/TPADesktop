@@ -5,26 +5,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using TPA_Desktop_NT20_2.Models;
 using TPA_Desktop_NT20_2.ViewModels.Commands;
 
 namespace TPA_Desktop_NT20_2.ViewModels.Teller
 {
-    class TellerWithdrawViewModel : BaseViewModel
+    class TellerPaymentViewModel : BaseViewModel
     {
         #region Attributes
         private string message;
         private IndividualAccount account;
-        private RelayCommand viewCommand, withdrawCommand;
+        private RelayCommand viewCommand, paymentCommand;
         private Employee currentEmployee;
         private int amount;
+        private CollectionView paymentTypes;
+        private string paymentType;
         #endregion
 
-        public TellerWithdrawViewModel(Employee _employee)
+        public TellerPaymentViewModel(Employee _employee)
         {
-            Name = "TellerWithdraw";
+            Name = "TellerPayment";
             account = new IndividualAccount();
             CurrentEmployee = _employee; 
+            IList<string> list = new List<string>();
+            list.Add("Electricity");
+            list.Add("Water");
+            paymentTypes = new CollectionView(list); 
         }
 
         public IndividualAccount Account
@@ -37,6 +44,18 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
         {
             get { return currentEmployee; }
             set { currentEmployee = value; OnPropertyChanged("CurrentEmployee"); }
+        }
+
+
+        public CollectionView PaymentTypes
+        {
+            get { return paymentTypes; }
+        }
+
+        public string PaymentType
+        {
+            get { return paymentType; }
+            set { paymentType = value; OnPropertyChanged("PaymentType"); }
         }
 
         public int Amount
@@ -70,17 +89,17 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
             }
         }
 
-        public RelayCommand WithdrawCommand
+        public RelayCommand PaymentCommand
         {
             get
             {
-                withdrawCommand = new RelayCommand(Withdraw, CanExecute);
-                return withdrawCommand;
+                paymentCommand = new RelayCommand(Payment, CanExecute);
+                return paymentCommand;
             }
             set
             {
-                withdrawCommand = value;
-                OnPropertyChanged("WithdrawCommand");
+                paymentCommand = value;
+                OnPropertyChanged("PaymentCommand");
             }
         }
 
@@ -114,34 +133,41 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
             }
         }
 
-        private void Withdraw(object parameter)
+        private void Payment(object parameter)
         {
-            //Transaction
-            LoadAccount(null);
-            if (IsAccountExists(Account.AccountId))
+            LoadAccount(null); 
+            if(IsAccountExists(Account.AccountId))
             {
                 //Account exists
-                if (Amount > 0)
+                if(Amount > 0)
                 {
                     //Generate transaction data
                     int count = Count("Transaction");
                     string id = "TR" + IdFormat(count + 1);
                     Double amount = Amount;
-                    string trType = "Withdraw";
+                    string trType = PaymentType; 
                     string paymentTypeId = "PA001";
                     string debitCard = GetDebitCard(Account.AccountId);
 
                     Console.WriteLine(id + " " + amount + " " + trType + " " + paymentTypeId);
 
+                    Console.WriteLine("Payment Type: " + PaymentType); 
+                    //Validate combobox
+                    if(PaymentType == null)
+                    {
+                        MessageBox.Show("Payment Type must be choosed!");
+                        return; 
+                    }
+
                     //Update account balance
                     if (UpdateBalance(Account.AccountId))
                     {
-                        Console.WriteLine("Withdraw Success!");
+                        Console.WriteLine("Payment Success!");
                         //Create Transaction Log
                         AddTransaction(id, Account.AccountId, CurrentEmployee.EmployeeId, paymentTypeId, debitCard, amount, trType);
-                        MessageBox.Show("Withdraw Success!", "Success");
+                        MessageBox.Show("Payment: " + PaymentType + " Success!", "Success");
                     }
-                    else MessageBox.Show("Insufficient Balance! Minimum IDR20,000 Balance in account", "Error"); 
+                    else MessageBox.Show("Insufficient Balance! Minimum IDR20,000 Balance in account", "Error");
                 }
             }
             LoadAccount(null);
@@ -164,10 +190,10 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
         {
             Double balance = Convert.ToDouble(GetData("SELECT * FROM Account WHERE AccountId = '" + _id + "'").Rows[0]["Balance"]);
             balance -= Amount;
-            if(balance > 20000)
+            if (balance > 20000)
             {
                 Execute("UPDATE Account SET Balance = " + balance + " WHERE AccountId = '" + _id + "'");
-                return true; 
+                return true;
             }
             return false;
         }
