@@ -14,8 +14,8 @@ namespace TPA_Desktop_NT20_2.ViewModels
     public class ApplicationViewModel : BaseViewModel
     {
         private BaseViewModel _selectedViewModel;
-        private RelayCommand changeViewCommand; 
-
+        private RelayCommand changeViewCommand;
+        private RelayCommand reportItemCommand; 
 
         public ApplicationViewModel()
         {
@@ -32,7 +32,7 @@ namespace TPA_Desktop_NT20_2.ViewModels
         {
             get
             {
-                changeViewCommand = new RelayCommand(changeViewMethod, CanExecute);
+                changeViewCommand = new RelayCommand(ChangeViewMethod, CanExecute);
                 return changeViewCommand; 
             }
             set
@@ -42,7 +42,21 @@ namespace TPA_Desktop_NT20_2.ViewModels
             }
         }
 
-        protected virtual void changeViewMethod(object parameter)
+        public RelayCommand ReportItemCommand
+        {
+            get
+            {
+                reportItemCommand = new RelayCommand(ReportItemMethod, CanExecute);
+                return reportItemCommand;
+            }
+            set
+            {
+                reportItemCommand = value;
+                OnPropertyChanged("ReportItemCommand");
+            }
+        }
+
+        protected virtual void ChangeViewMethod(object parameter)
         {
             if(parameter.ToString() == "EmployeeAuthentication")
             {
@@ -53,6 +67,11 @@ namespace TPA_Desktop_NT20_2.ViewModels
                 this.SelectedViewModel = new CustomerAuthenticationViewModel(); 
             }
         }
+
+        protected virtual void ReportItemMethod(object parameter)
+        {
+
+        } 
 
         protected bool CanExecute(object parameter)
         {

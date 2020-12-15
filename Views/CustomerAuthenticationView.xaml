@@ -24,5 +24,10 @@
                     HorizontalAlignment="Center" />
         <TextBlock Text="Customer Authentication" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold"
                     HorizontalAlignment="Center" />
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Margin="10" Width="100" Content="ATM" Command="{Binding ChangeViewCommand}" CommandParameter="ATMAuthentication" />
+            <Button Margin="10" Width="100" Content="Get Queue" Command="{Binding ChangeViewCommand}" CommandParameter="QueueMachine" />
+        </StackPanel>
+        <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>

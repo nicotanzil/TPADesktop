@@ -12,97 +12,33 @@ namespace TPA_Desktop_NT20_2.Models
     using System;
     using System.Collections.Generic;
     
-    public abstract partial class Account : ObservableObject
+    public partial class Account
     {
-        private string accountId;
-        private string name;
-        private Double balance;
-        private DateTime dob;
-        private string address;
-        private string email;
-        private string pin;
-        private DateTime createdAt;
-
-        public Account(){}
-
-        public Account(string accountId, string name, Double balance, DateTime dob, string address, string email, string pin)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Account()
         {
-            this.accountId = accountId;
-            this.name = name;
-            this.balance = balance;
-            this.dob = dob;
-            this.address = address;
-            this.email = email;
-            this.pin = pin;
-            this.createdAt = DateTime.Now; 
             this.CreditCards = new HashSet<CreditCard>();
-            this.DebitCards = new HashSet<DebitCard>();
             this.HOCCredits = new HashSet<HOCCredit>();
             this.Loans = new HashSet<Loan>();
             this.Transactions = new HashSet<Transaction>();
+            this.Transactions1 = new HashSet<Transaction>();
             this.VirtualAccounts = new HashSet<VirtualAccount>();
         }
-
-        public string AccountId
-        {
-            get { return accountId; }
-            set { accountId = value; OnPropertyChanged("AccountId"); }
-        }
-
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; OnPropertyChanged("Name"); }
-        }
-
-
-        public Double Balance
-        {
-            get { return balance; }
-            set { balance = value; OnPropertyChanged("Balance"); }
-        }
-
-
-        public DateTime Dob
-        {
-            get { return dob; }
-            set { dob = value; OnPropertyChanged("Dob"); }
-        }
-
-
-        public string Address
-        {
-            get { return address; }
-            set { address = value; OnPropertyChanged("Address"); }
-        }
-
-
-        public string Email
-        {
-            get { return email; }
-            set { email = value; OnPropertyChanged("Email"); }
-        }
-
-
-        public string Pin
-        {
-            get { return pin; }
-            set { pin = value; OnPropertyChanged("Pin"); }
-        }
-
-
-        public DateTime CreatedAt
-        {
-            get { return createdAt; }
-            set { createdAt = value; OnPropertyChanged("CreatedAt"); }
-        }
-
-
+    
+        public string AccountId { get; set; }
+        public string DebitCardId { get; set; }
+        public string Name { get; set; }
+        public decimal Balance { get; set; }
+        public System.DateTime Dob { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public string PIN { get; set; }
+        public bool IsActive { get; set; }
+        public System.DateTime CreatedAt { get; set; }
+    
+        public virtual DebitCard DebitCard { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CreditCard> CreditCards { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DebitCard> DebitCards { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOCCredit> HOCCredits { get; set; }
         public virtual IndividualAccount IndividualAccount { get; set; }
@@ -110,6 +46,8 @@ namespace TPA_Desktop_NT20_2.Models
         public virtual ICollection<Loan> Loans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction> Transactions1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VirtualAccount> VirtualAccounts { get; set; }
     }

@@ -12,76 +12,30 @@ namespace TPA_Desktop_NT20_2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee : ObservableObject
+    public partial class Employee
     {
-        #region attribute
-        private string employeeId;
-        private string name;
-        private DateTime dob;
-        private string email;
-        private string password;
-        private Department department;
-        #endregion
-
-        public Employee() { }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee(string employeeId, string name, DateTime dob, string email, string password, Department department)
+        public Employee()
         {
-            this.employeeId = employeeId;
-            this.name = name;
-            this.dob = dob;
-            this.email = email;
-            this.password = password;
-            this.department = department;
+            this.MaintenanceReports = new HashSet<MaintenanceReport>();
             this.RequestExpenses = new HashSet<RequestExpense>();
             this.SalaryRaiseRequests = new HashSet<SalaryRaiseRequest>();
             this.Transactions = new HashSet<Transaction>();
             this.ViolationReports = new HashSet<ViolationReport>();
         }
-
-        public Department Department
-        {
-            get { return department; }
-            set { department = value; OnPropertyChanged("Department"); }
-        }
-
-        #region properties 
-        public string EmployeeId
-        {
-            get { return employeeId; }
-            set { employeeId = value; OnPropertyChanged("EmployeeId"); }
-        }
-
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; OnPropertyChanged("Name"); }
-        }
-
-
-        public DateTime Dob
-        {
-            get { return dob; }
-            set { dob = value; OnPropertyChanged("Dob"); }
-        }
-
-        public string Email
-        {
-            get { return email; }
-            set { email = value; OnPropertyChanged("Email"); }
-        }
-
-
-        public string Password
-        {
-            get { return password; }
-            set { password = value; OnPropertyChanged("Password"); }
-        }
-
-        #endregion
-
+    
+        public string EmployeeId { get; set; }
+        public string Name { get; set; }
+        public System.DateTime Dob { get; set; }
+        public string DepartmentId { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public bool IsActive { get; set; }
+    
+        public virtual Department Department { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MaintenanceReport> MaintenanceReports { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RequestExpense> RequestExpenses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalaryRaiseRequest> SalaryRaiseRequests { get; set; }

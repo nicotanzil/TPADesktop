@@ -11,6 +11,7 @@ using TPA_Desktop_NT20_2.Models.SQL;
 using System.ComponentModel;
 using System.Windows;
 using TPA_Desktop_NT20_2.Views.Teller;
+using TPA_Desktop_NT20_2.Views.Maintenance;
 
 namespace TPA_Desktop_NT20_2.ViewModels
 {
@@ -18,16 +19,15 @@ namespace TPA_Desktop_NT20_2.ViewModels
     {
         #region attributes
         private string message;
-        private Employee employee;
-        private RelayCommand loginCommand;
         private Employee currentEmployee;
+        private RelayCommand loginCommand;
         #endregion
 
 
         public EmployeeAuthenticationViewModel()
         {
             Name = "EmployeeAuthentication";
-            employee = new Employee(); 
+            currentEmployee = new Employee(); 
         }
 
         public string Message
@@ -41,19 +41,11 @@ namespace TPA_Desktop_NT20_2.ViewModels
         }
 
 
-        public Employee Employee
-        {
-            get { return employee; }
-            set { employee = value; OnPropertyChanged("Employee"); }
-        }
-
-
         public Employee CurrentEmployee
         {
             get { return currentEmployee; }
             set { currentEmployee = value; OnPropertyChanged("CurrentEmployee"); }
         }
-
 
         public RelayCommand LoginCommand
         {
@@ -76,52 +68,44 @@ namespace TPA_Desktop_NT20_2.ViewModels
 
         private void LoadData(object parameter)
         {
-            DataTable dt = GetData("SELECT * FROM Employee WHERE Email = '" + employee.Email + "' AND Password = '" + employee.Password + "'");
-            if(IsEmpty(dt))
+            using(KongBuBankEntities db = new KongBuBankEntities())
             {
-                //Account not found
-                Message = "Invalid Email / Password!";
-                MessageBox.Show("Invalid Email / Password!", "Authentication Error"); 
-            }
-            else //Employee account is found
-            {
-                int index = 0;
-                string id = dt.Rows[index]["employeeId"].ToString();
-                string name = dt.Rows[index]["name"].ToString();
-                DateTime dob = (DateTime)dt.Rows[index]["dob"];
-                string departmentId = dt.Rows[index]["departmentId"].ToString();
-                string email = dt.Rows[index]["email"].ToString();
-                string password = dt.Rows[index]["password"].ToString();
+                Employee query = (from x in db.Employees
+                                  where x.Email == CurrentEmployee.Email
+                                  where x.Password == CurrentEmployee.Password
+                                  select x).FirstOrDefault();
 
-                DataTable dtDep = GetData("SELECT * FROM Department WHERE DepartmentId = '" + departmentId + "'");
-                Department department = new Department(departmentId, dtDep.Rows[0]["Name"].ToString());
-
-                currentEmployee = new Employee(id, name, dob, email, password, department); 
-
-                Console.WriteLine("Authentication success: " + currentEmployee.Name); 
-                Message = "Success!";
-
-                RedirectPage();
+                if(query != null)
+                {
+                    CurrentEmployee = query;
+                    RedirectPage(query.Department.Name); 
+                }
+                else
+                {
+                    //Account not found
+                    Message = "Invalid Email / Password!";
+                    MessageBox.Show("Invalid Email / Password!", "Authentication Error");
+                }
             }
         }
 
-        private void RedirectPage()
+        private void RedirectPage(string department)
         {
-            DataTable dt = GetData("SELECT * FROM Department WHERE departmentId = '" + currentEmployee.Department.DepartmentId + "'");
-            Console.WriteLine("Rows: " + dt.Rows.Count);
-            if (dt.Rows.Count == 1)
+            if (department == "Teller")
             {
-                string dep = (string)dt.Rows[0]["name"]; 
-                if (dep == "Teller")
-                {
-                    //GOTO teller page
-                    TellerWindow tellerWin = new TellerWindow(currentEmployee);
-                    tellerWin.ShowDialog(); 
-                }
-                else if(dep == "Customer Service")
-                {
-                    //GOTO customer service page
-                }
+                //GOTO teller page
+                TellerWindow tellerWin = new TellerWindow(CurrentEmployee);
+                tellerWin.ShowDialog();
+            }
+            else if (department == "Customer Service")
+            {
+                //GOTO customer service page
+            }
+            else if (department == "Maintenance Team")
+            {
+                //GOTO maintenance
+                MaintenanceWindow maintenanceWin = new MaintenanceWindow(CurrentEmployee);
+                maintenanceWin.ShowDialog(); 
             }
         }
     }

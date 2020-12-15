@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="TPA_Desktop_NT20_2.Views.Customer.ATMAuthenticationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.Customer"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="ATM" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+        <TextBlock Text="Enter Card ID" Grid.Row="1" Grid.Column="0" />
+        <TextBlock Text="Enter PIN" Grid.Row="2" Grid.Column="0" />
+        <TextBox Text="{Binding Path=Account.Account.DebitCardId}" Grid.Row="1" Grid.Column="1" Margin="40 10" />
+        <TextBox Text="{Binding Path=Account.Account.PIN}" Grid.Row="2" Grid.Column="1" Margin="40 10" />
+        <Button Content="ENTER" Grid.Row="3" Grid.Column="1" Width="150" Height="25" Command="{Binding Path=LoginCommand}" />
+        <TextBlock Text="{Binding Path=Message}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" />
+    </Grid>
+</UserControl>

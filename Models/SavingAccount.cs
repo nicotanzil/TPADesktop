@@ -12,25 +12,12 @@ namespace TPA_Desktop_NT20_2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SavingAccount : ObservableObject
+    public partial class SavingAccount
     {
-        private string savingAccountId;
-        private Double balance;
-
-        public string SavingAccountId
-        {
-            get { return savingAccountId; }
-            set { savingAccountId = value; OnPropertyChanged("SavingAccountId");  }
-        }
-
-
-        public Double Balance
-        {
-            get { return balance; }
-            set { balance = value; OnPropertyChanged("Balance"); }
-        }
-
-
+        public string SavingAccountId { get; set; }
+        public string AccountId { get; set; }
+        public decimal Balance { get; set; }
+    
         public virtual RegularAccount RegularAccount { get; set; }
     }
 }

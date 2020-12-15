@@ -50,6 +50,8 @@ namespace TPA_Desktop_NT20_2.Models
         public virtual DbSet<Level> Levels { get; set; }
         public virtual DbSet<Loan> Loans { get; set; }
         public virtual DbSet<LoanType> LoanTypes { get; set; }
+        public virtual DbSet<MaintenanceReport> MaintenanceReports { get; set; }
+        public virtual DbSet<MaintenanceSchedule> MaintenanceSchedules { get; set; }
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
         public virtual DbSet<RegularAccount> RegularAccounts { get; set; }
@@ -57,6 +59,7 @@ namespace TPA_Desktop_NT20_2.Models
         public virtual DbSet<SalaryRaiseRequest> SalaryRaiseRequests { get; set; }
         public virtual DbSet<SavingAccount> SavingAccounts { get; set; }
         public virtual DbSet<StudentAccount> StudentAccounts { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<ViolationReport> ViolationReports { get; set; }
         public virtual DbSet<VirtualAccount> VirtualAccounts { get; set; }

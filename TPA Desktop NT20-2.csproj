@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.props" Condition="Exists('packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -29,6 +30,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -59,6 +62,24 @@
     <Reference Include="QRCoder, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\QRCoder.1.4.1\lib\net40\QRCoder.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Core.XForms, Version=18.3451.0.53, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Xamarin.Core.18.3.0.53\lib\netstandard2.0\Syncfusion.Core.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=18.3460.0.53, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Licensing.18.3.0.53\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfInput.WPF, Version=18.3460.0.53, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.SfInput.WPF.18.3.0.53\lib\net46\Syncfusion.SfInput.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfPicker.XForms, Version=18.3451.0.53, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Xamarin.SfPicker.18.3.0.53\lib\netstandard2.0\Syncfusion.SfPicker.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfShared.WPF, Version=18.3460.0.53, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.SfShared.WPF.18.3.0.53\lib\net46\Syncfusion.SfShared.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.WPF, Version=18.3460.0.53, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Shared.WPF.18.3.0.53\lib\net46\Syncfusion.Shared.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
@@ -78,6 +99,15 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Xamarin.Forms.4.8.0.1687\lib\netstandard2.0\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Xamarin.Forms.4.8.0.1687\lib\netstandard2.0\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Xamarin.Forms.4.8.0.1687\lib\netstandard2.0\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -117,6 +147,7 @@
     <Compile Include="Models\Currency.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataAccess.cs" />
     <Compile Include="Models\DebitCard.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
@@ -174,6 +205,12 @@
     <Compile Include="Models\LoanType.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MaintenanceReport.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaintenanceSchedule.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Manager.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
@@ -196,6 +233,9 @@
     <Compile Include="Models\StudentAccount.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Transaction.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
@@ -208,24 +248,82 @@
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\Customer\ATMAuthenticationViewModel.cs" />
+    <Compile Include="ViewModels\Customer\ATM\ATMAccountViewModel.cs" />
+    <Compile Include="ViewModels\Customer\ATM\ATMDepositViewModel.cs" />
+    <Compile Include="ViewModels\Customer\ATM\ATMPaymentViewModel.cs" />
+    <Compile Include="ViewModels\Customer\ATM\ATMTransferViewModel.cs" />
+    <Compile Include="ViewModels\Customer\ATM\ATMViewModel.cs" />
+    <Compile Include="ViewModels\Customer\ATM\ATMWithdrawViewModel.cs" />
+    <Compile Include="ViewModels\Customer\QueueMachineViewModel.cs" />
     <Compile Include="ViewModels\CustomerAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\EmployeeAuthenticationViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeGeneral\ReportItemViewModel.cs" />
+    <Compile Include="ViewModels\IEmployee.cs" />
+    <Compile Include="ViewModels\Maintenance\AddMaintenanceScheduleViewModel.cs" />
+    <Compile Include="ViewModels\Maintenance\MaintenanceViewModel.cs" />
+    <Compile Include="ViewModels\Maintenance\UpdateMaintenanceScheduleViewModel.cs" />
+    <Compile Include="ViewModels\Maintenance\ViewMaintenanceReportViewModel.cs" />
+    <Compile Include="ViewModels\Maintenance\ViewScheduleMaintenanceViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerDepositViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerPaymentViewModel.cs" />
+    <Compile Include="ViewModels\Teller\TellerReviewViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerTransferViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerWithdrawViewModel.cs" />
     <Compile Include="Views\CustomerAuthenticationView.xaml.cs">
       <DependentUpon>CustomerAuthenticationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Customer\ATMAuthenticationView.xaml.cs">
+      <DependentUpon>ATMAuthenticationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\ATM\ATMAccountView.xaml.cs">
+      <DependentUpon>ATMAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\ATM\ATMDepositView.xaml.cs">
+      <DependentUpon>ATMDepositView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\ATM\ATMPaymentView.xaml.cs">
+      <DependentUpon>ATMPaymentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\ATM\ATMTransferView.xaml.cs">
+      <DependentUpon>ATMTransferView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\ATM\ATMWindow.xaml.cs">
+      <DependentUpon>ATMWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\ATM\ATMWithdrawView.xaml.cs">
+      <DependentUpon>ATMWithdrawView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeeAuthenticationView.xaml.cs">
       <DependentUpon>EmployeeAuthenticationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeGeneral\ReportItemWindow.xaml.cs">
+      <DependentUpon>ReportItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Maintenance\AddMaintenanceScheduleView.xaml.cs">
+      <DependentUpon>AddMaintenanceScheduleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Maintenance\MaintenanceWindow.xaml.cs">
+      <DependentUpon>MaintenanceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Maintenance\UpdateScheduleMaintenanceView.xaml.cs">
+      <DependentUpon>UpdateScheduleMaintenanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Maintenance\ViewMaintenanceReportView.xaml.cs">
+      <DependentUpon>ViewMaintenanceReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Maintenance\ViewScheduleMaintenanceView.xaml.cs">
+      <DependentUpon>ViewScheduleMaintenanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Teller\TellerDepositView.xaml.cs">
       <DependentUpon>TellerDepositView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Teller\TellerPaymentView.xaml.cs">
       <DependentUpon>TellerPaymentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Teller\TellerReviewView.xaml.cs">
+      <DependentUpon>TellerReviewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Teller\TellerTransferView.xaml.cs">
       <DependentUpon>TellerTransferView.xaml</DependentUpon>
@@ -252,7 +350,59 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Customer\ATMAuthenticationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\ATM\ATMAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\ATM\ATMDepositView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\ATM\ATMPaymentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\ATM\ATMTransferView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\ATM\ATMWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\ATM\ATMWithdrawView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EmployeeAuthenticationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeGeneral\ReportItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Maintenance\AddMaintenanceScheduleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Maintenance\MaintenanceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Maintenance\UpdateScheduleMaintenanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Maintenance\ViewMaintenanceReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Maintenance\ViewScheduleMaintenanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -261,6 +411,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Teller\TellerPaymentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Teller\TellerReviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -348,4 +502,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.props'))" />
+    <Error Condition="!Exists('packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.targets'))" />
+  </Target>
+  <Import Project="packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.4.8.0.1687\build\Xamarin.Forms.targets')" />
 </Project>

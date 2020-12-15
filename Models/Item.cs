@@ -14,6 +14,12 @@ namespace TPA_Desktop_NT20_2.Models
     
     public partial class Item
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Item()
+        {
+            this.MaintenanceReports = new HashSet<MaintenanceReport>();
+        }
+    
         public string ItemId { get; set; }
         public string Name { get; set; }
         public string ItemTypeId { get; set; }
@@ -23,5 +29,7 @@ namespace TPA_Desktop_NT20_2.Models
     
         public virtual Department Department { get; set; }
         public virtual ItemType ItemType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MaintenanceReport> MaintenanceReports { get; set; }
     }
 }

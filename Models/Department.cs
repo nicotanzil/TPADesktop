@@ -12,25 +12,8 @@ namespace TPA_Desktop_NT20_2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Department : ObservableObject
+    public partial class Department
     {
-        private string departmentId;
-        private string name;
-
-        public string DepartmentId
-        {
-            get { return departmentId; }
-            set { departmentId = value; OnPropertyChanged("DepartmentId");  }
-        }
-
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; OnPropertyChanged("Name"); }
-        }
-
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Department()
         {
@@ -38,13 +21,11 @@ namespace TPA_Desktop_NT20_2.Models
             this.Employees = new HashSet<Employee>();
             this.Items = new HashSet<Item>();
         }
-
-        public Department(string departmentId, string name)
-        {
-            this.departmentId = departmentId;
-            this.name = name;
-        }
-
+    
+        public string DepartmentId { get; set; }
+        public string Name { get; set; }
+        public string BranchId { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
         public virtual Branch Branch { get; set; }

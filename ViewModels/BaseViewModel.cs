@@ -13,12 +13,26 @@ namespace TPA_Desktop_NT20_2.ViewModels
     public class BaseViewModel : ObservableObject
     {
         private string name;
+        private KongBuBankEntities kongBuBank;
+
+        public BaseViewModel()
+        {
+            kongBuBank = new KongBuBankEntities(); 
+        }
 
         public string Name
         {
             get { return name; }
             set { name = value; OnPropertyChanged("Name");  }
         }
+
+
+        public KongBuBankEntities KongBuBank
+        {
+            get { return kongBuBank; }
+            set { kongBuBank = value; OnPropertyChanged("KongBuBank"); }
+        }
+
 
         public bool IsEmpty(DataTable dt)
         {
@@ -43,8 +57,21 @@ namespace TPA_Desktop_NT20_2.ViewModels
 
         public int Count(string tableName)
         {
-            DbManager db = new DbManager();
-            return db.Count(tableName);  
+            using(KongBuBankEntities db = new KongBuBankEntities())
+            {
+                if(tableName == "Transaction")
+                {
+                    return (from x in db.Transactions select x).Count(); 
+                }
+                else if(tableName == "MaintenanceReport")
+                {
+                    return (from x in db.MaintenanceReports select x).Count(); 
+                }
+                else
+                {
+                    return -1; 
+                }
+            }
         }
 
         public String IdFormat(int index)

@@ -24,11 +24,11 @@
         <TextBlock Text="Enter Account ID" Grid.Row="1" Grid.Column="0" />
         <TextBlock Text="Payment Type" Grid.Row="2" Grid.Column="0" />
         <TextBlock Text="Enter Amount" Grid.Row="3" Grid.Column="0" />
-        <TextBox Text="{Binding Path=Account.AccountId, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="40 10"/>
+        <TextBox Text="{Binding Path=Account.Account.AccountId, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="40 10"/>
         <ComboBox Grid.Row="2" Grid.Column="1" Margin="40 10" 
                   ItemsSource="{Binding Path=PaymentTypes}"
                   SelectedValue="{Binding Path=PaymentType}"/>
-        <TextBox Text="{Binding Path=Amount, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Margin="40 10"/>
+        <TextBox Text="{Binding Path=Amount}" Grid.Row="3" Grid.Column="1" Margin="40 10"/>
         <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Button Content="VIEW ACCOUNT" Command="{Binding Path=ViewCommand}" Margin="10" Width="100" Height="25" />
             <Button Content="PAY" Command="{Binding Path=PaymentCommand}" Margin="10" Width="100" Height="25" />
@@ -42,10 +42,10 @@
                     <TextBlock Text="Account Email: " Width="100"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" >
-                    <TextBlock Text="{Binding Path=Account.AccountId}" Width="100"/>
-                    <TextBlock Text="{Binding Path=Account.Name}" Width="100"/>
-                    <TextBlock Text="{Binding Path=Account.Balance}" Width="100"/>
-                    <TextBlock Text="{Binding Path=Account.Email}" Width="100"/>
+                    <TextBlock Text="{Binding Path=Account.Account.AccountId}" Width="100"/>
+                    <TextBlock Text="{Binding Path=Account.Account.Name}" Width="100"/>
+                    <TextBlock Text="{Binding Path=Account.Account.Balance}" Width="100"/>
+                    <TextBlock Text="{Binding Path=Account.Account.Email}" Width="100"/>
                 </StackPanel>
             </StackPanel>
         </Border>    

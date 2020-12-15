@@ -83,6 +83,12 @@ CREATE TABLE ItemType(
 	[Name] VARCHAR(255) NOT NULL 
 )
 
+INSERT INTO ItemType VALUES
+('TY001', 'Stationary'), 
+('TY002', 'Accessories'), 
+('TY003', 'Electronics')
+
+
 ------------------------------------------------
 
 ------------ITEM------------
@@ -98,6 +104,19 @@ CREATE TABLE Item(
 	FOREIGN KEY (ItemTypeId) REFERENCES ItemType(ItemTypeId), 
 	FOREIGN KEY (DepartmentId) REFERENCES Department(DepartmentId) 
 )
+
+INSERT INTO Item VALUES 
+('IT001', 'Desk', 'TY001', 'DE001', 750000, GETDATE()), 
+('IT002', 'Desk', 'TY001', 'DE002', 750000, GETDATE()), 
+('IT003', 'Wastebasket', 'TY001', 'DE001', 150000, GETDATE()), 
+('IT004', 'Wastebasket', 'TY001', 'DE003', 150000, GETDATE()), 
+('IT005', 'Flower Pot', 'TY002', 'DE001', 75000, GETDATE()), 
+('IT006', 'Flower Pot', 'TY002', 'DE002', 75000, GETDATE()),
+('IT007', 'Laptop', 'TY003', 'DE001', 6500000, GETDATE()),
+('IT008', 'Computer', 'TY003', 'DE002', 6500000, GETDATE()),
+('IT009', 'Computer', 'TY003', 'DE003', 6500000, GETDATE())
+
+SELECT * FROM Item
 
 ------------------------------------------------
 
@@ -144,7 +163,8 @@ CREATE TABLE [Employee] (
 
 INSERT INTO Employee VALUES 
 ('EM001', 'William', '2002-03-18', 'DE001', 'william@mail.com', 'password', 1), 
-('EM002', 'James', '2000-05-12', 'DE002', 'james@mail.com', 'password', 1)
+('EM002', 'James', '2000-05-12', 'DE002', 'james@mail.com', 'password', 1),
+('EM003', 'Tom', '2001-03-20', 'DE003', 'tom@mail.com', 'password', 1)
 
 ------------------------------------------------
 
@@ -155,10 +175,14 @@ CREATE TABLE [MaintenanceReport] (
 	EmployeeId VARCHAR(5) NOT NULL, 
 	ItemId VARCHAR(5) NOT NULL, 
 	ReportDate DATETIME NOT NULL, 
+	[Status] BIT NOT NULL, 
+	[Description] VARCHAR(255), 
 
 	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId), 
 	FOREIGN KEY (ItemId) REFERENCES Item(ItemId)
 )
+
+SELECT * FROM MaintenanceReport
 
 ------------------------------------------------
 

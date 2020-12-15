@@ -14,9 +14,17 @@ namespace TPA_Desktop_NT20_2.Models
     
     public partial class VirtualAccount
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public VirtualAccount()
+        {
+            this.Transactions = new HashSet<Transaction>();
+        }
+    
         public string VirtualId { get; set; }
         public string AccountId { get; set; }
     
         public virtual Account Account { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

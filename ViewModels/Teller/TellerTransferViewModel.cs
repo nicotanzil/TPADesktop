@@ -14,19 +14,25 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
     {
         #region Attributes
         private string message;
+        private Account tempAccount, tempAccountTarget; 
         private IndividualAccount account, targetAccount; 
         private RelayCommand viewCommand, transferCommand;
         private Employee currentEmployee;
-        private int amount;
+        private Decimal amount;
         #endregion
 
 
         public TellerTransferViewModel(Employee _employee)
         {
             Name = "TellerTransfer";
+            tempAccount = new Account();
+            tempAccountTarget = new Account(); 
             account = new IndividualAccount();
-            targetAccount = new IndividualAccount(); 
-            CurrentEmployee = _employee; 
+            targetAccount = new IndividualAccount();
+            CurrentEmployee = _employee;
+
+            Account.Account = tempAccount;
+            TargetAccount.Account = tempAccountTarget; 
         }
 
         public IndividualAccount Account
@@ -49,7 +55,7 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
             set { currentEmployee = value; OnPropertyChanged("CurrentEmployee"); }
         }
 
-        public int Amount
+        public Decimal Amount
         {
             get { return amount; }
             set { amount = value; OnPropertyChanged("Amount"); }
@@ -101,121 +107,121 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
 
         private void LoadAccount(object parameter)
         {
-            DataTable dt = GetData("SELECT * FROM Account WHERE AccountId = '" + Account.AccountId + "'");
-            if (IsEmpty(dt))
+            using (KongBuBankEntities db = new KongBuBankEntities())
             {
-                //Account not found
-                Message = "Account Not Found!";
-                MessageBox.Show("Account Not Found!", "Invalid Data");
-            }
-            else
-            {
-                int index = 0;
-                string id = dt.Rows[index]["AccountId"].ToString();
-                string name = dt.Rows[index]["Name"].ToString();
-                string balance = dt.Rows[index]["Balance"].ToString();
-                string email = dt.Rows[index]["Email"].ToString();
+                Account query = (from x in db.Accounts
+                                 where x.AccountId == Account.Account.AccountId
+                                 select x).FirstOrDefault(); 
+                if(query == null)
+                {
+                    Message = "Account Not Found!";
+                    MessageBox.Show("Account Not Found!", "Error");
+                    return; 
+                }
+                else
+                {
+                    IndividualAccount temp = new IndividualAccount();
+                    temp.Account = query;
+                    Account = temp; 
+                }
 
-                Account.AccountId = id;
-                Account.Name = name;
-                Account.Balance = Convert.ToDouble(balance);
-                Account.Email = email;
-                Message = "Success!";
-            }
+                query = (from x in db.Accounts
+                         where x.AccountId == TargetAccount.Account.AccountId
+                         select x).FirstOrDefault();
 
-            dt = GetData("SELECT * FROM Account WHERE AccountId = '" + TargetAccount.AccountId + "'");
-            if(IsEmpty(dt))
-            {
-                Message = "Transfer Account Not Found!";
-                MessageBox.Show("Transfer Account Not Found!", "Invalid Data");
-            }
-            else
-            {
-                int index = 0;
-                string id = dt.Rows[index]["AccountId"].ToString();
-                string name = dt.Rows[index]["Name"].ToString();
-                string balance = dt.Rows[index]["Balance"].ToString();
-                string email = dt.Rows[index]["Email"].ToString();
-
-                TargetAccount.AccountId = id;
-                TargetAccount.Name = name;
-                TargetAccount.Balance = Convert.ToDouble(balance);
-                TargetAccount.Email = email;
-                Message = "Success!";
+                if (query == null)
+                {
+                    Message = "Account Not Found!";
+                    MessageBox.Show("Account Not Found!", "Error");
+                    return;
+                }
+                else
+                {
+                    IndividualAccount temp = new IndividualAccount();
+                    temp.Account = query;
+                    TargetAccount = temp;
+                }
             }
         }
 
         private void Transfer(object parameter)
         {
             LoadAccount(null); 
-            if(IsAccountExists(Account.AccountId) && IsAccountExists(TargetAccount.AccountId))
+            if (IsAccountExists(Account.Account.AccountId) && 
+                IsAccountExists(TargetAccount.Account.AccountId) && 
+                Account.Account.AccountId != TargetAccount.Account.AccountId)
             {
-                if(Amount > 0)
+                if (Amount > 0)
                 {
-                    //Generate transaction data send
-                    int count = Count("Transaction");
-                    string sendId = "TR" + IdFormat(count + 1);
-                    string sendTrType = "Send Transfer";
-                    string sendPaymentTypeId = "PA001";
-                    string debitCard = GetDebitCard(Account.AccountId);
-
-                    //Generate transaction data receive
-                    string recvId = "TR" + IdFormat(count + 2);
-                    string recvTrType = "Receive Transfer";
-                    string recvPaymentTypeId = "PA001";
-
-                    if(UpdateBalance(Account.AccountId, (-1)*Amount))
+                    if(ValidateAccountBalance(Account.Account.AccountId, Amount))
                     {
-                        //Update TargetAccount balance
-                        UpdateBalance(TargetAccount.AccountId, Amount);
-                        //Add Send Transaction
-                        AddTransaction(sendId, Account.AccountId, targetAccount.AccountId, 
-                            CurrentEmployee.EmployeeId, sendPaymentTypeId, debitCard, Amount, sendTrType);
-                        //Add Receive Transaction
-                        AddTransaction(recvId, TargetAccount.AccountId, Account.AccountId,
-                            CurrentEmployee.EmployeeId, recvPaymentTypeId, Amount, recvTrType);
-                        MessageBox.Show("Transfer Success!", "Success");
+                        using (KongBuBankEntities db = new KongBuBankEntities())
+                        {
+                            //Add Transaction (Send)
+                            Transaction sendTransaction = new Transaction();
+                            sendTransaction.TransactionId = "TR" + IdFormat(Count("Transaction") + 1);
+                            sendTransaction.AccountId = Account.Account.AccountId;
+                            sendTransaction.RelatedAccountId = TargetAccount.Account.AccountId;
+                            sendTransaction.EmployeeId = CurrentEmployee.EmployeeId;
+                            sendTransaction.PaymentTypeId = "PA001";
+                            sendTransaction.DebitCardId = Account.Account.DebitCardId;
+                            sendTransaction.TransactionDate = DateTime.Now;
+                            sendTransaction.Amount = Amount;
+                            sendTransaction.TransactionType = "Send Transfer";
+
+                            //Add Transaction (Receive)
+                            Transaction receiveTransaction = new Transaction();
+                            receiveTransaction.TransactionId = "TR" + IdFormat(Count("Transaction") + 2);
+                            receiveTransaction.AccountId = TargetAccount.Account.AccountId;
+                            receiveTransaction.RelatedAccountId = Account.Account.AccountId;
+                            receiveTransaction.EmployeeId = CurrentEmployee.EmployeeId;
+                            receiveTransaction.PaymentTypeId = "PA001";
+                            receiveTransaction.DebitCardId = TargetAccount.Account.DebitCardId;
+                            receiveTransaction.TransactionDate = DateTime.Now;
+                            receiveTransaction.Amount = Amount;
+                            receiveTransaction.TransactionType = "Receive Transaction";
+
+                            //Update Balance
+                            Account updateAccount = db.Accounts.Find(TargetAccount.Account.AccountId);
+                            updateAccount.Balance += Amount;
+
+                            updateAccount = db.Accounts.Find(Account.Account.AccountId);
+                            updateAccount.Balance -= Amount;
+
+                            db.Transactions.Add(sendTransaction);
+                            db.Transactions.Add(receiveTransaction);
+                            db.SaveChanges();
+
+                            MessageBox.Show("Transfer to " + TargetAccount.Account.AccountId + " Success!", "Success");
+                            LoadAccount(null);
+                        }
                     }
                     else MessageBox.Show("Insufficient Balance! Minimum IDR20,000 Balance in account", "Error");
                 }
+                else MessageBox.Show("Invalid Amount!", "Error"); 
             }
+            else MessageBox.Show("Invalid Account!", "Error");
             LoadAccount(null); 
         }
 
         private bool IsAccountExists(string accountId)
         {
-            DataTable dt = GetData("SELECT * FROM Account WHERE AccountId = '" + account.AccountId + "'");
-            if (IsEmpty(dt)) return false;
-            return true;
-        }
-
-        private void AddTransaction(string transactionId, string accountId, string targetId, string employeeId, string paymentTypeId, string debitCardId, Double amount, string transactionType)
-        {
-            Console.WriteLine("INSERT INTO [Transaction] VALUES ('" + transactionId + "', '" + accountId + "', '" + targetId + "', '" + employeeId + "', '" + paymentTypeId + "', '" + debitCardId + "', NULL, " + amount + ", GETDATE(), '" + transactionType + "')");
-            Execute("INSERT INTO [Transaction] VALUES ('" + transactionId + "', '" + accountId + "', '" + targetId + "', '" + employeeId + "', '" + paymentTypeId + "', '" + debitCardId + "', NULL, " + amount + ", GETDATE(), '" + transactionType + "')");
-        }
-
-        private void AddTransaction(string transactionId, string accountId, string targetId, string employeeId, string paymentTypeId, Double amount, string transactionType)
-        {
-            Console.WriteLine("INSERT INTO [Transaction] VALUES ('" + transactionId + "', '" + accountId + "', '" + targetId + "', '" + employeeId + "', '" + paymentTypeId + "', NULL, NULL, " + amount + ", GETDATE(), '" + transactionType + "')");
-            Execute("INSERT INTO [Transaction] VALUES ('" + transactionId + "', '" + accountId + "', '" + targetId + "', '" + employeeId + "', '" + paymentTypeId + "', NULL, NULL, " + amount + ", GETDATE(), '" + transactionType + "')");
-        }
-
-        private bool UpdateBalance(String _id, Double amount)
-        {
-            Double balance = Convert.ToDouble(GetData("SELECT * FROM Account WHERE AccountId = '" + _id + "'").Rows[0]["Balance"]);
-            balance += amount;
-            if (balance > 20000)
+            using (KongBuBankEntities db = new KongBuBankEntities())
             {
-                Execute("UPDATE Account SET Balance = " + balance + " WHERE AccountId = '" + _id + "'");
-                return true;
+                Account query = (from x in db.Accounts
+                                 where x.AccountId == accountId
+                                 select x).FirstOrDefault();
+                return query != null ? true : false;
             }
-            return false;
         }
 
-        private string GetDebitCard(string _id)
+        private bool ValidateAccountBalance(string _id, Decimal amount)
         {
-            return GetData("SELECT * FROM DebitCard WHERE AccountId = '" + _id + "'").Rows[0]["CardId"].ToString();
+            using (KongBuBankEntities db = new KongBuBankEntities())
+            {
+                Account checkAccount = db.Accounts.Find(_id);
+                return checkAccount.Balance - amount < 20000 ? false : true;
+            }
         }
     }
 }

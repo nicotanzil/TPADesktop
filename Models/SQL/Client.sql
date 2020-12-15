@@ -21,40 +21,42 @@ DROP TABLE IndividualAccount
 DROP TABLE [Level]
 DROP TABLE VirtualAccount
 DROP TABLE CreditCard
-DROP TABLE DebitCard
 DROP TABLE Account
+DROP TABLE DebitCard
+
+------------DEBIT CARD------------
+CREATE TABLE [DebitCard] (
+	CardId VARCHAR(12) PRIMARY KEY, 
+	ExpiredDate DATETIME NOT NULL, 
+)
+
+INSERT INTO [DebitCard] VALUES
+('123123123123', '2021-01-01 12:00:00'), 
+('234234234234', '2021-03-01 12:00:00'),
+('345345345345', '2021-03-01 12:00:00')
+------------------------------------------------
 
 ------------ACCOUNT------------
 CREATE TABLE [Account](
 	AccountId VARCHAR(5) PRIMARY KEY, 
+	DebitCardId VARCHAR(12) NOT NULL, 
 	[Name] VARCHAR(255) NOT NULL, 
 	Balance DECIMAL(20, 2) NOT NULL, 
 	Dob DATETIME NOT NULL, 
 	[Address] VARCHAR(255) NOT NULL, 
 	Email VARCHAR(255) NOT NULL, 
 	PIN VARCHAR(255) NOT NULL, 
-	CreatedAt DATETIME NOT NULL
+	IsActive BIT NOT NULL, 
+	CreatedAt DATETIME NOT NULL, 
+
+	FOREIGN KEY (DebitCardId) REFERENCES DebitCard(CardId) 
 )
 INSERT INTO Account VALUES
-('AC001', 'Nico', 15000000, '2001-07-02 12:00:00', 'Jakarta', 'nico@mail.com', '123123', GETDATE()), 
-('AC002', 'Michael', 7500000, '2001-06-25 12:00:00', 'Alam Sutera', 'john@mail.com', '123123', GETDATE()), 
-('AC003', 'Donald', 500000, '2005-10-12 12:00:00', 'Jakarta', 'donald@mail.com', '123123', GETDATE())
+('AC001', '123123123123', 'Nico', 15000000, '2001-07-02 12:00:00', 'Jakarta', 'nico@mail.com', '123123', 1, GETDATE()), 
+('AC002', '234234234234', 'Michael', 7500000, '2001-06-25 12:00:00', 'Alam Sutera', 'john@mail.com', '123123', 1, GETDATE()), 
+('AC003', '345345345345', 'Donald', 500000, '2005-10-12 12:00:00', 'Jakarta', 'donald@mail.com', '123123', 1, GETDATE())
 ------------------------------------------------
 
-------------DEBIT CARD------------
-CREATE TABLE [DebitCard] (
-	CardId VARCHAR(12) PRIMARY KEY, 
-	AccountId VARCHAR(5) NOT NULL, 
-	ExpiredDate DATETIME NOT NULL, 
-
-	FOREIGN KEY (AccountId) REFERENCES Account(AccountId)
-)
-
-INSERT INTO [DebitCard] VALUES
-('123123123123', 'AC001', '2021-01-01 12:00:00'), 
-('234234234234', 'AC002', '2021-03-01 12:00:00'),
-('345345345345', 'AC003', '2021-03-01 12:00:00')
-------------------------------------------------
 
 ------------VIRTUAL ACCOUNT------------
 CREATE TABLE [VirtualAccount] (
@@ -289,7 +291,7 @@ CREATE TABLE [Transaction] (
 	TransactionId VARCHAR(5) PRIMARY KEY, 
 	AccountId VARCHAR(5) NOT NULL, 
 	RelatedAccountId VARCHAR(5), 
-	EmployeeId VARCHAR(5) NOT NULL, 
+	EmployeeId VARCHAR(5), 
 	PaymentTypeId VARCHAR(5) NOT NULL, 
 	DebitCardId VARCHAR(12), 
 	VirtualAccountId VARCHAR(12), 

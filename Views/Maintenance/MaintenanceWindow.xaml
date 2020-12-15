@@ -1,0 +1,43 @@
+﻿<Window x:Class="TPA_Desktop_NT20_2.Views.Maintenance.MaintenanceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.Maintenance"
+        mc:Ignorable="d"
+        Title="MaintenanceWindow" Height="450" Width="800">
+    <Grid HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Kong Bu Bank" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" />
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right">
+            <Run Text="Welcome, " />
+            <Run Text="{Binding Path=CurrentEmployee.Name}" FontWeight="Bold" Foreground="OrangeRed"/>
+            <Run Text="(" />
+            <Run Text="{Binding Path=Name}" />
+            <Run Text=")" />
+        </TextBlock>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Margin="10" Width="100" Content="View Maintenance Reports" Command="{Binding ChangeViewCommand}" CommandParameter="ViewReports"/>
+            <Button Margin="10" Width="100" Content="View Maintenance Schedule" Command="{Binding ChangeViewCommand}" CommandParameter="ViewSchedules" />
+            <Button Margin="10" Width="100" Content="Add Maintenance Schedule" Command="{Binding ChangeViewCommand}" CommandParameter="AddSchedules"/>
+            <Button Margin="10" Width="100" Content="Update Maintenance Schedule" Command="{Binding ChangeViewCommand}" CommandParameter="UpdateSchedules"/>
+        </StackPanel>
+        <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="3" Grid.RowSpan="4"/>
+        <Button Grid.Row="7" Grid.Column="1" Content="Report Item" Margin="0 10" Padding="5" Command="{Binding ReportItemCommand}" CommandParameter=""/>
+        <Button Grid.Row="8" Grid.Column="1" Content="Log Out" Click="LogOut_Click" Margin="0 10" Padding="5" />
+    </Grid>
+</Window>

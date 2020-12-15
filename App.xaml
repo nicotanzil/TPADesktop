@@ -6,6 +6,12 @@
              xmlns:viewmodels="clr-namespace:TPA_Desktop_NT20_2.ViewModels"
              xmlns:viewmodels_teller="clr-namespace:TPA_Desktop_NT20_2.ViewModels.Teller"
              xmlns:views_teller="clr-namespace:TPA_Desktop_NT20_2.Views.Teller"
+             xmlns:viewmodels_customer="clr-namespace:TPA_Desktop_NT20_2.ViewModels.Customer"
+             xmlns:views_customer="clr-namespace:TPA_Desktop_NT20_2.Views.Customer"
+             xmlns:viewmodels_atm="clr-namespace:TPA_Desktop_NT20_2.ViewModels.Customer.ATM"
+             xmlns:views_atm="clr-namespace:TPA_Desktop_NT20_2.Views.Customer.ATM"
+             xmlns:viewmodels_maintenance="clr-namespace:TPA_Desktop_NT20_2.ViewModels.Maintenance"
+             xmlns:views_maintenance="clr-namespace:TPA_Desktop_NT20_2.Views.Maintenance"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <DataTemplate DataType="{x:Type viewmodels:EmployeeAuthenticationViewModel}">
@@ -25,6 +31,33 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels_teller:TellerPaymentViewModel}">
             <views_teller:TellerPaymentView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_customer:ATMAuthenticationViewModel}">
+            <views_customer:ATMAuthenticationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_atm:ATMAccountViewModel}">
+            <views_atm:ATMAccountView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_atm:ATMDepositViewModel}">
+            <views_atm:ATMDepositView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_atm:ATMWithdrawViewModel}">
+            <views_atm:ATMWithdrawView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_atm:ATMTransferViewModel}">
+            <views_atm:ATMTransferView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_atm:ATMPaymentViewModel}">
+            <views_atm:ATMPaymentView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_maintenance:ViewScheduleMaintenanceViewModel}">
+            <views_maintenance:ViewScheduleMaintenanceView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_maintenance:ViewMaintenanceReportViewModel}">
+            <views_maintenance:ViewMaintenanceReportView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_maintenance:AddMaintenanceScheduleViewModel}">
+            <views_maintenance:AddMaintenanceScheduleView />
         </DataTemplate>
     </Application.Resources>
 </Application>

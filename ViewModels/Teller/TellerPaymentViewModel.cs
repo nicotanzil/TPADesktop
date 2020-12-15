@@ -15,10 +15,11 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
     {
         #region Attributes
         private string message;
+        private Account tempAccount; 
         private IndividualAccount account;
         private RelayCommand viewCommand, paymentCommand;
         private Employee currentEmployee;
-        private int amount;
+        private Decimal amount;
         private CollectionView paymentTypes;
         private string paymentType;
         #endregion
@@ -26,8 +27,13 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
         public TellerPaymentViewModel(Employee _employee)
         {
             Name = "TellerPayment";
+            tempAccount = new Account(); 
             account = new IndividualAccount();
-            CurrentEmployee = _employee; 
+            CurrentEmployee = _employee;
+
+            Account.Account = tempAccount; 
+
+            //ComboBox
             IList<string> list = new List<string>();
             list.Add("Electricity");
             list.Add("Water");
@@ -58,12 +64,11 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
             set { paymentType = value; OnPropertyChanged("PaymentType"); }
         }
 
-        public int Amount
+        public Decimal Amount
         {
             get { return amount; }
             set { amount = value; OnPropertyChanged("Amount"); }
         }
-
 
         public string Message
         {
@@ -110,97 +115,94 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
 
         private void LoadAccount(object parameter)
         {
-            DataTable dt = GetData("SELECT * FROM Account WHERE AccountId = '" + account.AccountId + "'");
-            if (IsEmpty(dt))
+            using (KongBuBankEntities db = new KongBuBankEntities())
             {
-                //Account not found
-                Message = "Account Not Found!";
-                MessageBox.Show("Account Not Found!", "Invalid Data");
-            }
-            else
-            {
-                int index = 0;
-                string id = dt.Rows[index]["AccountId"].ToString();
-                string name = dt.Rows[index]["Name"].ToString();
-                string balance = dt.Rows[index]["Balance"].ToString();
-                string email = dt.Rows[index]["Email"].ToString();
-
-                Account.AccountId = id;
-                Account.Name = name;
-                Account.Balance = Convert.ToDouble(balance);
-                Account.Email = email;
-                Message = "Success!";
+                Account query = (from x in db.Accounts
+                                 where x.AccountId == Account.Account.AccountId
+                                 select x).FirstOrDefault();
+                if (query == null)
+                {
+                    //Account not found
+                    Message = "Account Not Found!";
+                    MessageBox.Show("Account Not Found!", "Error");
+                }
+                else
+                {
+                    IndividualAccount temp = new IndividualAccount();
+                    temp.Account = query;
+                    Account = temp;
+                }
             }
         }
 
         private void Payment(object parameter)
         {
             LoadAccount(null); 
-            if(IsAccountExists(Account.AccountId))
+            if(IsAccountExists(Account.Account.AccountId))
             {
                 //Account exists
                 if(Amount > 0)
                 {
-                    //Generate transaction data
-                    int count = Count("Transaction");
-                    string id = "TR" + IdFormat(count + 1);
-                    Double amount = Amount;
-                    string trType = PaymentType; 
-                    string paymentTypeId = "PA001";
-                    string debitCard = GetDebitCard(Account.AccountId);
-
-                    Console.WriteLine(id + " " + amount + " " + trType + " " + paymentTypeId);
-
-                    Console.WriteLine("Payment Type: " + PaymentType); 
-                    //Validate combobox
-                    if(PaymentType == null)
+                    if(ValidateAccountBalance(Account.Account.AccountId, Amount))
                     {
-                        MessageBox.Show("Payment Type must be choosed!");
-                        return; 
-                    }
+                        using (KongBuBankEntities db = new KongBuBankEntities())
+                        {
+                            //Add Transaction
+                            Transaction transaction = new Transaction();
+                            transaction.TransactionId = "TR" + IdFormat(Count("Transaction") + 1);
+                            transaction.AccountId = Account.Account.AccountId;
+                            transaction.EmployeeId = CurrentEmployee.EmployeeId;
+                            transaction.PaymentTypeId = "PA001";
+                            transaction.DebitCardId = Account.Account.DebitCardId;
+                            transaction.TransactionDate = DateTime.Now;
+                            transaction.Amount = Amount;
 
-                    //Update account balance
-                    if (UpdateBalance(Account.AccountId))
-                    {
-                        Console.WriteLine("Payment Success!");
-                        //Create Transaction Log
-                        AddTransaction(id, Account.AccountId, CurrentEmployee.EmployeeId, paymentTypeId, debitCard, amount, trType);
-                        MessageBox.Show("Payment: " + PaymentType + " Success!", "Success");
+                            //Validate combobox
+                            if(PaymentType == null)
+                            {
+                                MessageBox.Show("Payment Type must be choosed!", "Error");
+                                return; 
+                            }
+
+                            transaction.TransactionType = "Payment " + PaymentType;
+
+                            //Update Balance
+                            Account updateAccount = db.Accounts.Find(Account.Account.AccountId);
+                            updateAccount.Balance -= Amount;
+
+                            db.Transactions.Add(transaction);
+                            db.SaveChanges();
+
+                            MessageBox.Show("Payment: " + paymentType + " Success!", "Success");
+                            LoadAccount(null); 
+                        }
                     }
                     else MessageBox.Show("Insufficient Balance! Minimum IDR20,000 Balance in account", "Error");
                 }
+                else MessageBox.Show("Invalid Amount!", "Error");
             }
+            else MessageBox.Show("Account not found!", "Error");
             LoadAccount(null);
         }
 
         private bool IsAccountExists(string accountId)
         {
-            DataTable dt = GetData("SELECT * FROM Account WHERE AccountId = '" + account.AccountId + "'");
-            if (IsEmpty(dt)) return false;
-            return true;
-        }
-
-        private void AddTransaction(string transactionId, string accountId, string employeeId, string paymentTypeId, string debitCardId, Double amount, string transactionType)
-        {
-            Console.WriteLine("INSERT INTO [Transaction] VALUES ('" + transactionId + "', '" + accountId + "', NULL, '" + employeeId + "', '" + paymentTypeId + "', '" + debitCardId + "', NULL, " + amount + ", GETDATE(), '" + transactionType + "')");
-            Execute("INSERT INTO [Transaction] VALUES ('" + transactionId + "', '" + accountId + "', NULL, '" + employeeId + "', '" + paymentTypeId + "', '" + debitCardId + "', NULL, " + amount + ", GETDATE(), '" + transactionType + "')");
-        }
-
-        private bool UpdateBalance(String _id)
-        {
-            Double balance = Convert.ToDouble(GetData("SELECT * FROM Account WHERE AccountId = '" + _id + "'").Rows[0]["Balance"]);
-            balance -= Amount;
-            if (balance > 20000)
+            using (KongBuBankEntities db = new KongBuBankEntities())
             {
-                Execute("UPDATE Account SET Balance = " + balance + " WHERE AccountId = '" + _id + "'");
-                return true;
+                Account query = (from x in db.Accounts
+                                 where x.AccountId == accountId
+                                 select x).FirstOrDefault();
+                return query != null ? true : false;
             }
-            return false;
         }
 
-        private string GetDebitCard(string _id)
+        private bool ValidateAccountBalance(string _id, Decimal amount)
         {
-            return GetData("SELECT * FROM DebitCard WHERE AccountId = '" + _id + "'").Rows[0]["CardId"].ToString();
+            using (KongBuBankEntities db = new KongBuBankEntities())
+            {
+                Account checkAccount = db.Accounts.Find(_id);
+                return checkAccount.Balance - amount < 20000 ? false : true;
+            }
         }
     }
 }

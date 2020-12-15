@@ -27,5 +27,10 @@ namespace TPA_Desktop_NT20_2.Views.Teller
 
             DataContext = new TellerViewModel(employee); 
         }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close(); 
+        }
     }
 }

@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 using TPA_Desktop_NT20_2.Models;
 using System.Windows.Input;
 using TPA_Desktop_NT20_2.ViewModels.Commands;
-using TPA_Desktop_NT20_2.ViewModels.Teller; 
-
+using TPA_Desktop_NT20_2.ViewModels.Teller;
+using System.Windows;
+using TPA_Desktop_NT20_2.Views.EmployeeGeneral;
 
 namespace TPA_Desktop_NT20_2.ViewModels.Teller
 {
 
     public class TellerViewModel : ApplicationViewModel
     {
-
+        #region Attributes
         private Employee employee;
         private string role;
+        #endregion
 
         public Employee Employee
         {
@@ -40,7 +42,7 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
             SelectedViewModel = new TellerDepositViewModel(Employee); 
         }
 
-        protected override void changeViewMethod(object parameter)
+        protected override void ChangeViewMethod(object parameter)
         {
             if(parameter.ToString() == "TellerDeposit")
             {
@@ -58,6 +60,12 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
             {
                 this.SelectedViewModel = new TellerPaymentViewModel(Employee); 
             }
+        }
+
+        protected override void ReportItemMethod(object parameter)
+        {
+            ReportItemWindow reportWin = new ReportItemWindow(Employee);
+            reportWin.ShowDialog(); 
         }
     }
 }
