@@ -105,7 +105,7 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
                 {
                     //Account not found
                     Message = "Account Not Found!";
-                    MessageBox.Show("Account Not Found!", "Invalid Data");
+                    MessageBox.Show(Message, "Invalid Data");
                 }
                 else
                 {

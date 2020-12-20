@@ -20,7 +20,7 @@ namespace TPA_Desktop_NT20_2.Models
         public decimal LoanAmount { get; set; }
         public string GuranteeDocument { get; set; }
         public string LoanReason { get; set; }
-        public bool IsApproved { get; set; }
+        public string IsApproved { get; set; }
         public bool IsPaid { get; set; }
         public System.DateTime DueDate { get; set; }
         public System.DateTime PaidDate { get; set; }

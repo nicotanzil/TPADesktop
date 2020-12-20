@@ -18,14 +18,14 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="View Maintenance Report" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+        <TextBlock Text="View Maintenance Schedule" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
         <DataGrid ItemsSource="{Binding Schedules}" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ReportId}" />
-                <DataGridTextColumn Header="Employee" Binding="{Binding Status}" />
-                <DataGridTextColumn Header="Item ID" Binding="{Binding StartDate}" />
-                <DataGridTextColumn Header="Report Date" Binding="{Binding EndDate}" />
-                <DataGridTextColumn Header="Status" Binding="{Binding EstimateCost}" />
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                <DataGridTextColumn Header="Start" Binding="{Binding StartDate}" />
+                <DataGridTextColumn Header="End" Binding="{Binding EndDate}" />
+                <DataGridTextColumn Header="Cost" Binding="{Binding EstimateCost}" />
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
             </DataGrid.Columns>
         </DataGrid>

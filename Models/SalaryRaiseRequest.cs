@@ -17,7 +17,7 @@ namespace TPA_Desktop_NT20_2.Models
         public string RequestId { get; set; }
         public string EmployeeId { get; set; }
         public decimal Amount { get; set; }
-        public bool IsApproved { get; set; }
+        public string IsApproved { get; set; }
         public System.DateTime RequestDate { get; set; }
     
         public virtual Employee Employee { get; set; }

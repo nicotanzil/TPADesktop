@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="TPA_Desktop_NT20_2.Views.HRM.RemoveCandidateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.HRM"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Remove Candidate" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" />
+        <TextBlock Text="Candidate Id" Grid.Row="1" Grid.Column="0" />
+        <TextBox Text="{Binding Path=CandidateId}" Grid.Row="1" Grid.Column="1" Margin="40 10" />
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" >
+            <Button Content="View Candidate" Command="{Binding Path=ViewCommand}" Margin="10" Width="100" Height="25" />
+            <Button Content="Reject" Command="{Binding Path=RemoveCommand}" Margin="10" Width="100" Height="25" />
+        </StackPanel>
+        <Border Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" CornerRadius="6" BorderBrush="CadetBlue" Background="LightBlue" BorderThickness="2" >
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" Margin="40 10">
+                <StackPanel Orientation="Vertical" >
+                    <TextBlock Text="Id: " Width="100"/>
+                    <TextBlock Text="Name: " Width="100"/>
+                    <TextBlock Text="Date of Birth: " Width="100"/>
+                    <TextBlock Text="Registration Date: " Width="100"/>
+                    <TextBlock Text="Status: " Width="100"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" >
+                    <TextBlock Text="{Binding Path=CurrentCandidate.CandidateId}" Width="150"/>
+                    <TextBlock Text="{Binding Path=CurrentCandidate.Name}" Width="150"/>
+                    <TextBlock Text="{Binding Path=CurrentCandidate.Dob}" Width="150"/>
+                    <TextBlock Text="{Binding Path=CurrentCandidate.RegistrationDate}" Width="150"/>
+                    <TextBlock Text="{Binding Path=CurrentCandidate.Status}" Width="150"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

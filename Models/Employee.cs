@@ -17,6 +17,8 @@ namespace TPA_Desktop_NT20_2.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
+            this.FiringRequests = new HashSet<FiringRequest>();
+            this.LeavingPermits = new HashSet<LeavingPermit>();
             this.MaintenanceReports = new HashSet<MaintenanceReport>();
             this.RequestExpenses = new HashSet<RequestExpense>();
             this.SalaryRaiseRequests = new HashSet<SalaryRaiseRequest>();
@@ -25,14 +27,23 @@ namespace TPA_Desktop_NT20_2.Models
         }
     
         public string EmployeeId { get; set; }
+        public string CandidateId { get; set; }
         public string Name { get; set; }
         public System.DateTime Dob { get; set; }
         public string DepartmentId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public decimal PerformanceScore { get; set; }
+        public decimal ViolationScore { get; set; }
+        public decimal Salary { get; set; }
         public bool IsActive { get; set; }
     
+        public virtual Candidate Candidate { get; set; }
         public virtual Department Department { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FiringRequest> FiringRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeavingPermit> LeavingPermits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MaintenanceReport> MaintenanceReports { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

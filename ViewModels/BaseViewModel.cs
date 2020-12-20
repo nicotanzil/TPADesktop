@@ -12,6 +12,9 @@ namespace TPA_Desktop_NT20_2.ViewModels
 {
     public class BaseViewModel : ObservableObject
     {
+        protected Decimal VIOLATIONTHRESHOLD = 10;
+
+
         private string name;
         private KongBuBankEntities kongBuBank;
 
@@ -59,17 +62,21 @@ namespace TPA_Desktop_NT20_2.ViewModels
         {
             using(KongBuBankEntities db = new KongBuBankEntities())
             {
-                if(tableName == "Transaction")
-                {
-                    return (from x in db.Transactions select x).Count(); 
-                }
-                else if(tableName == "MaintenanceReport")
-                {
-                    return (from x in db.MaintenanceReports select x).Count(); 
-                }
+                if (tableName == "Transaction")
+                    return (from x in db.Transactions select x).Count();
+                else if (tableName == "MaintenanceReport")
+                    return (from x in db.MaintenanceReports select x).Count();
+                else if (tableName == "Candidate")
+                    return (from x in db.Candidates select x).Count();
+                else if (tableName == "Employee")
+                    return (from x in db.Employees select x).Count();
+                else if (tableName == "SalaryRaiseRequest")
+                    return (from x in db.SalaryRaiseRequests select x).Count();
+                else if (tableName == "LeavingPermit")
+                    return (from x in db.LeavingPermits select x).Count(); 
                 else
                 {
-                    return -1; 
+                    return -1;
                 }
             }
         }

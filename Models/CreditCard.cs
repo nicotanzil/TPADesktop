@@ -26,7 +26,7 @@ namespace TPA_Desktop_NT20_2.Models
         public string FamilyCard { get; set; }
         public string IdentityCard { get; set; }
         public decimal Limit { get; set; }
-        public bool IsApproved { get; set; }
+        public string IsApproved { get; set; }
         public bool IsActive { get; set; }
     
         public virtual Account Account { get; set; }

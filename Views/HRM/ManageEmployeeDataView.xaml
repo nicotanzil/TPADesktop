@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="TPA_Desktop_NT20_2.Views.HRM.ManageEmployeeDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.HRM"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="175" />
+            <ColumnDefinition Width="450" />
+            <ColumnDefinition Width="175" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Manage Employee Data" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" />
+        <Button Content="View Employee" Grid.Row="1" Grid.Column="0" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="ViewEmployee" />
+        <Button Content="Insert Employee" Grid.Row="2" Grid.Column="0" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="InsertEmployee" />
+        <Button Content="Update Employee" Grid.Row="3" Grid.Column="0" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="UpdateEmployee" />
+        <Button Content="Remove Employee" Grid.Row="4" Grid.Column="0" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="RemoveEmployee" />
+        <Button Content="View Position" Grid.Row="1" Grid.Column="2" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="ViewPosition" />
+        <Button Content="View Candidate" Grid.Row="2" Grid.Column="2" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="ViewCandidate" />
+        <Button Content="Insert Candidate" Grid.Row="3" Grid.Column="2" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="InsertCandidate" />
+        <Button Content="Remove Candidate" Grid.Row="4" Grid.Column="2" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="RemoveCandidate" />
+        <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="1" Grid.RowSpan="12" Grid.Column="1"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="TPA_Desktop_NT20_2.Views.HRM.HRMWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.HRM"
+        mc:Ignorable="d"
+        Title="HRMWindow" Height="650" Width="1000">
+    <Grid HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Kong Bu Bank" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" />
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right">
+            <Run Text="Welcome, " />
+            <Run Text="{Binding Path=CurrentEmployee.Name}" FontWeight="Bold" Foreground="OrangeRed"/>
+            <Run Text="(" />
+            <Run Text="{Binding Path=Name}" />
+            <Run Text=")" />
+        </TextBlock>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Margin="10" Width="150" Content="Employee Data" Command="{Binding ChangeViewCommand}" CommandParameter="EmployeeData"/>
+            <Button Margin="10" Width="150" Content="Violation" Command="{Binding ChangeViewCommand}" CommandParameter="Violation" />
+            <Button Margin="10" Width="150" Content="Salary Raise" Command="{Binding ChangeViewCommand}" CommandParameter="SalaryRaise"/>
+            <Button Margin="10" Width="150" Content="Leaving Permit" Command="{Binding ChangeViewCommand}" CommandParameter="LeavingPermit"/>
+        </StackPanel>
+        <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="3" Grid.RowSpan="4"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Report Item" Margin="0 10" Padding="5" Command="{Binding ReportItemCommand}" CommandParameter="" Height="35"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="Log Out" Click="LogOut_Click" Margin="0 10" Padding="5" Height="35" />
+    </Grid>
+</Window>

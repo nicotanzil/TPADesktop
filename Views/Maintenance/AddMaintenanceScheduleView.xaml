@@ -23,23 +23,25 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="View Maintenance Report" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
+        <TextBlock Text="Add Maintenance Schedule" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
         <TextBlock Text="Report ID" Grid.Row="1" Grid.Column="0" />
         <TextBlock Text="Start Date" Grid.Row="2" Grid.Column="0" />
         <TextBlock Text="End Date" Grid.Row="3" Grid.Column="0" />
         <TextBlock Text="Cost" Grid.Row="4" Grid.Column="0" />
         <TextBlock Text="Description" Grid.Row="5" Grid.Column="0" />
         <TextBox Text="{Binding Path=ReportId}" Grid.Row="1" Grid.Column="1" Margin="40 10" />
-        <StackPanel Grid.Row="2" Grid.Column="1" Margin="40 10">
-            <syncfusion:SfTimePicker Value="12:00:00"  />
-            <syncfusion:SfDatePicker Value="" FormatString="D" />
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="40 10">
+            <ComboBox ItemsSource="{Binding Path=HourStartTypes}" SelectedValue="{Binding Path=StartHour}" />
+            <ComboBox ItemsSource="{Binding Path=MinuteStartTypes}" SelectedValue="{Binding Path=StartMinute}" />
+            <DatePicker SelectedDate="{Binding Path=StartTime, Mode=TwoWay}"/>
         </StackPanel>
-        <StackPanel Grid.Row="3" Grid.Column="1" Margin="40 10">
-            <syncfusion:SfTimePicker Value="" FormatString="HH:mm:ss"/>
-            <syncfusion:SfDatePicker Value="" FormatString="D" />
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" Margin="40 10">
+            <ComboBox ItemsSource="{Binding Path=HourEndTypes}" SelectedValue="{Binding Path=EndHour}" />
+            <ComboBox ItemsSource="{Binding Path=MinuteEndTypes}" SelectedValue="{Binding Path=EndMinute}" />
+            <DatePicker SelectedDate="{Binding Path=EndTime, Mode=TwoWay}"/>
         </StackPanel>
-        <TextBox Text="" Grid.Row="4" Grid.Column="1" Margin="40 10"/>
-        <TextBox Text="" Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Foreground="Gray" Margin="40 10" TextWrapping="Wrap" Height="75"/>
+        <TextBox Text="{Binding Path=EstimateCost}" Grid.Row="4" Grid.Column="1" Margin="40 10"/>
+        <TextBox Text="{Binding Path=Description}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Foreground="Gray" Margin="40 10" TextWrapping="Wrap" Height="75"/>
         <Button Content="Submit" Command="{Binding SubmitCommand}" CommandParameter="" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Width="100" />
     </Grid>
 </UserControl>

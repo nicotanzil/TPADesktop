@@ -22,7 +22,7 @@ namespace TPA_Desktop_NT20_2.Models
         public int CreditPeriod { get; set; }
         public System.DateTime StartDate { get; set; }
         public decimal GrossIncome { get; set; }
-        public bool IsApproved { get; set; }
+        public string IsApproved { get; set; }
         public decimal Amount { get; set; }
     
         public virtual Account Account { get; set; }

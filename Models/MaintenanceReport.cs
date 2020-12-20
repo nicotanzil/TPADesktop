@@ -11,8 +11,8 @@ namespace TPA_Desktop_NT20_2.Models
 {
     using System;
     using System.Collections.Generic;
-
-    public partial class MaintenanceReport : ObservableObject
+    
+    public partial class MaintenanceReport
     {
         public string ReportId { get; set; }
         public string EmployeeId { get; set; }
@@ -20,10 +20,9 @@ namespace TPA_Desktop_NT20_2.Models
         public System.DateTime ReportDate { get; set; }
         public bool Status { get; set; }
         public string Description { get; set; }
-
+    
         public virtual Employee Employee { get; set; }
         public virtual Item Item { get; set; }
         public virtual MaintenanceSchedule MaintenanceSchedule { get; set; }
-
     }
 }

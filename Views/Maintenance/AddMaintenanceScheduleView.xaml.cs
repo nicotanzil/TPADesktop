@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.Windows.Controls.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace TPA_Desktop_NT20_2.Views.Maintenance
         public AddMaintenanceScheduleView()
         {
             InitializeComponent();
+
+            //SfTimePicker startTimePicker = StartTimePicker; 
+            //startTimePicker.Value = null; 
         }
     }
 }

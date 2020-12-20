@@ -30,6 +30,7 @@ namespace TPA_Desktop_NT20_2.Models
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<BusinessAccount> BusinessAccounts { get; set; }
+        public virtual DbSet<Candidate> Candidates { get; set; }
         public virtual DbSet<Card> Cards { get; set; }
         public virtual DbSet<CardType> CardTypes { get; set; }
         public virtual DbSet<CreditCard> CreditCards { get; set; }
@@ -40,6 +41,7 @@ namespace TPA_Desktop_NT20_2.Models
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<DepositAccount> DepositAccounts { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<FiringRequest> FiringRequests { get; set; }
         public virtual DbSet<HOCCredit> HOCCredits { get; set; }
         public virtual DbSet<HOCCreditDetail> HOCCreditDetails { get; set; }
         public virtual DbSet<HouseCompany> HouseCompanies { get; set; }
@@ -47,6 +49,7 @@ namespace TPA_Desktop_NT20_2.Models
         public virtual DbSet<IndividualAccount> IndividualAccounts { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemType> ItemTypes { get; set; }
+        public virtual DbSet<LeavingPermit> LeavingPermits { get; set; }
         public virtual DbSet<Level> Levels { get; set; }
         public virtual DbSet<Loan> Loans { get; set; }
         public virtual DbSet<LoanType> LoanTypes { get; set; }

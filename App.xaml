@@ -12,6 +12,8 @@
              xmlns:views_atm="clr-namespace:TPA_Desktop_NT20_2.Views.Customer.ATM"
              xmlns:viewmodels_maintenance="clr-namespace:TPA_Desktop_NT20_2.ViewModels.Maintenance"
              xmlns:views_maintenance="clr-namespace:TPA_Desktop_NT20_2.Views.Maintenance"
+             xmlns:viewmodels_hrm="clr-namespace:TPA_Desktop_NT20_2.ViewModels.HRM"
+             xmlns:views_hrm="clr-namespace:TPA_Desktop_NT20_2.Views.HRM"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <DataTemplate DataType="{x:Type viewmodels:EmployeeAuthenticationViewModel}">
@@ -59,5 +61,45 @@
         <DataTemplate DataType="{x:Type viewmodels_maintenance:AddMaintenanceScheduleViewModel}">
             <views_maintenance:AddMaintenanceScheduleView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_maintenance:UpdateMaintenanceScheduleViewModel}">
+            <views_maintenance:UpdateScheduleMaintenanceView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:ManageEmployeeDataViewModel}">
+            <views_hrm:ManageEmployeeDataView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:ViewEmployeeViewModel}">
+            <views_hrm:ViewEmployeeView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:ViewCandidateViewModel}">
+            <views_hrm:ViewCandidateView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:ViewPositionViewModel}">
+            <views_hrm:ViewPositionView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:InsertCandidateViewModel}">
+            <views_hrm:InsertCandidateView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:RemoveCandidateViewModel}">
+            <views_hrm:RemoveCandidateView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:InsertEmployeeViewModel}">
+            <views_hrm:InsertEmployeeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:UpdateEmployeeViewModel}">
+            <views_hrm:UpdateEmployeeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:RemoveEmployeeViewModel}">
+            <views_hrm:RemoveEmployeeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:ManageViolationViewModel}">
+            <views_hrm:ManageViolationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:ManageSalaryRequestViewModel}">
+            <views_hrm:ManageSalaryRequestView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:ManageLeavingPermitViewModel}">
+            <views_hrm:ManageLeavingPermitView />
+        </DataTemplate>
     </Application.Resources>
 </Application>
+

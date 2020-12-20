@@ -258,7 +258,7 @@ CREATE TABLE [CreditCard] (
     FamilyCard VARCHAR(255) NOT NULL, 
     IdentityCard VARCHAR(255) NOT NULL, 
     [Limit] DECIMAL(20, 2) NOT NULL, 
-	IsApproved BIT NOT NULL, 
+	IsApproved VARCHAR(20) NOT NULL, 
 	IsActive BIT NOT NULL, 
 
 	FOREIGN KEY (AccountId) REFERENCES Account(AccountId), 
@@ -334,7 +334,7 @@ CREATE TABLE HOCCredit (
 	CreditPeriod INT NOT NULL, 
 	StartDate DATETIME NOT NULL,
 	GrossIncome DECIMAL(20, 2) NOT NULL, 
-	IsApproved BIT NOT NULL, 
+	IsApproved VARCHAR(20) NOT NULL, 
 	Amount DECIMAL(20, 2) NOT NULL, 
 	
 	FOREIGN KEY (AccountId) REFERENCES Account(AccountId), 
@@ -382,7 +382,7 @@ CREATE TABLE Loan (
 	LoanAmount DECIMAL(20, 2) NOT NULL, 
 	GuranteeDocument VARCHAR(255) NOT NULL, 
 	LoanReason VARCHAR(255) NOT NULL, 
-	IsApproved BIT NOT NULL, 
+	IsApproved VARCHAR(20) NOT NULL, 
 	IsPaid BIT NOT NULL, 
 	DueDate DATETIME NOT NULL, 
 	PaidDate DATETIME NOT NULL,

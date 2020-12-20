@@ -24,6 +24,7 @@ namespace TPA_Desktop_NT20_2.Models
     
         public string DepartmentId { get; set; }
         public string Name { get; set; }
+        public int AvailablePosition { get; set; }
         public string BranchId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

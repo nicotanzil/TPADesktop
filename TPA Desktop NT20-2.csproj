@@ -129,6 +129,9 @@
     <Compile Include="Models\BusinessAccount.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Candidate.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Card.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
@@ -158,6 +161,9 @@
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FiringRequest.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HOCCredit.cs">
@@ -195,6 +201,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>KongBuBank.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LeavingPermit.cs">
+      <DependentUpon>KongBuBank.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Level.cs">
       <DependentUpon>KongBuBank.tt</DependentUpon>
@@ -259,6 +268,19 @@
     <Compile Include="ViewModels\CustomerAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\EmployeeAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\EmployeeGeneral\ReportItemViewModel.cs" />
+    <Compile Include="ViewModels\HRM\HRMViewModel.cs" />
+    <Compile Include="ViewModels\HRM\InsertCandidateViewModel.cs" />
+    <Compile Include="ViewModels\HRM\InsertEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\HRM\ManageEmployeeDataViewModel.cs" />
+    <Compile Include="ViewModels\HRM\ManageLeavingPermitViewModel.cs" />
+    <Compile Include="ViewModels\HRM\ManageSalaryRequestViewModel.cs" />
+    <Compile Include="ViewModels\HRM\ManageViolationViewModel.cs" />
+    <Compile Include="ViewModels\HRM\RemoveCandidateViewModel.cs" />
+    <Compile Include="ViewModels\HRM\RemoveEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\HRM\UpdateEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\HRM\ViewCandidateViewModel.cs" />
+    <Compile Include="ViewModels\HRM\ViewEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\HRM\ViewPositionViewModel.cs" />
     <Compile Include="ViewModels\IEmployee.cs" />
     <Compile Include="ViewModels\Maintenance\AddMaintenanceScheduleViewModel.cs" />
     <Compile Include="ViewModels\Maintenance\MaintenanceViewModel.cs" />
@@ -300,6 +322,45 @@
     </Compile>
     <Compile Include="Views\EmployeeGeneral\ReportItemWindow.xaml.cs">
       <DependentUpon>ReportItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\HRMWindow.xaml.cs">
+      <DependentUpon>HRMWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\InsertCandidateView.xaml.cs">
+      <DependentUpon>InsertCandidateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\InsertEmployeeView.xaml.cs">
+      <DependentUpon>InsertEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\ManageEmployeeDataView.xaml.cs">
+      <DependentUpon>ManageEmployeeDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\ManageLeavingPermitView.xaml.cs">
+      <DependentUpon>ManageLeavingPermitView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\ManageSalaryRequestView.xaml.cs">
+      <DependentUpon>ManageSalaryRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\ManageViolationView.xaml.cs">
+      <DependentUpon>ManageViolationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\RemoveCandidateView.xaml.cs">
+      <DependentUpon>RemoveCandidateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\RemoveEmployeeView.xaml.cs">
+      <DependentUpon>RemoveEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\UpdateEmployeeView.xaml.cs">
+      <DependentUpon>UpdateEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\ViewCandidateView.xaml.cs">
+      <DependentUpon>ViewCandidateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\ViewEmployeeView.xaml.cs">
+      <DependentUpon>ViewEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\ViewPositionView.xaml.cs">
+      <DependentUpon>ViewPositionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Maintenance\AddMaintenanceScheduleView.xaml.cs">
       <DependentUpon>AddMaintenanceScheduleView.xaml</DependentUpon>
@@ -383,6 +444,58 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EmployeeGeneral\ReportItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\HRMWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\InsertCandidateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\InsertEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\ManageEmployeeDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\ManageLeavingPermitView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\ManageSalaryRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\ManageViolationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\RemoveCandidateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\RemoveEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\UpdateEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\ViewCandidateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\ViewEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\ViewPositionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Windows;
 using TPA_Desktop_NT20_2.Views.Teller;
 using TPA_Desktop_NT20_2.Views.Maintenance;
+using TPA_Desktop_NT20_2.Views.HRM;
 
 namespace TPA_Desktop_NT20_2.ViewModels
 {
@@ -106,6 +107,13 @@ namespace TPA_Desktop_NT20_2.ViewModels
                 //GOTO maintenance
                 MaintenanceWindow maintenanceWin = new MaintenanceWindow(CurrentEmployee);
                 maintenanceWin.ShowDialog(); 
+            }
+            else if(department == "HRM")
+            {
+                //GOTO HRM
+                Console.WriteLine("HRM"); 
+                HRMWindow hrmWin = new HRMWindow(CurrentEmployee);
+                hrmWin.ShowDialog(); 
             }
         }
     }

@@ -17,7 +17,9 @@ namespace TPA_Desktop_NT20_2.Models
         public string ViolationId { get; set; }
         public string EmployeeId { get; set; }
         public decimal Score { get; set; }
+        public string Description { get; set; }
         public System.DateTime Date { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual Employee Employee { get; set; }
     }

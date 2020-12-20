@@ -1,10 +1,13 @@
 ﻿--Dropping all table 
+DROP TABLE LeavingPermit
+DROP TABLE FiringRequest
 DROP TABLE SalaryRaiseRequest
 DROP TABLE RequestExpense
 DROP TABLE ViolationReport
 DROP TABLE MaintenanceSchedule
 DROP TABLE MaintenanceReport
 DROP TABLE Employee
+DROP TABLE Candidate
 DROP TABLE ATM
 DROP TABLE HouseCompanyPartner
 DROP TABLE Item
@@ -48,17 +51,18 @@ INSERT INTO Branch VALUES
 CREATE TABLE [Department] (
 	DepartmentId VARCHAR(5) PRIMARY KEY, 
 	[Name] VARCHAR(255) NOT NULL, 
+	AvailablePosition INT NOT NULL, 
 	BranchId VARCHAR(5) NOT NULL, 
 
 	FOREIGN KEY (BranchId) REFERENCES Branch(BranchId) 
 )
 
 INSERT INTO Department VALUES
-('DE001', 'Teller', 'BR001'), 
-('DE002', 'Customer Service', 'BR001'), 
-('DE003', 'Maintenance Team', 'BR001'), 
-('DE004', 'Human Resource Management Team', 'BR001'), 
-('DE005', 'Finance Team', 'BR001')
+('DE001', 'Teller', 10, 'BR001'), 
+('DE002', 'Customer Service', 10, 'BR001'), 
+('DE003', 'Maintenance Team', 15, 'BR001'), 
+('DE004', 'HRM', 10, 'BR001'), 
+('DE005', 'Finance Team', 10, 'BR001')
 
 ------------------------------------------------
 
@@ -147,24 +151,48 @@ CREATE TABLE ATM (
 
 ------------------------------------------------
 
+------------CANDIDATE------------
+
+CREATE TABLE Candidate (
+	CandidateId VARCHAR(5) PRIMARY KEY,
+	[Name] VARCHAR(255) NOT NULL, 
+	Dob DATETIME NOT NULL, 
+	RegistrationDate DATETIME NOT NULL,
+	[Status] VARCHAR(20) NOT NULL
+)
+
+INSERT INTO Candidate VALUES
+('CA001', 'William', '2002-03-18', GETDATE(), 'Accepted'),
+('CA002', 'James', '2000-05-12', GETDATE(), 'Accepted'),
+('CA003', 'Tom', '2001-03-20', GETDATE(), 'Accepted'),
+('CA004', 'John', '2001-04-23', GETDATE(), 'Accepted')
+
+------------------------------------------------
+
 ------------EMPLOYEE------------
 
 CREATE TABLE [Employee] (
 	EmployeeId VARCHAR(5) PRIMARY KEY, 
+	CandidateId VARCHAR(5) NOT NULL,
 	[Name] VARCHAR(255) NOT NULL, 
 	Dob DATETIME NOT NULL, 
 	DepartmentId VARCHAR(5) NOT NULL, 
 	Email VARCHAR(255) NOT NULL, 
 	[Password] VARCHAR(255) NOT NULL, 
+	PerformanceScore DECIMAL(20, 2) NOT NULL, 
+	ViolationScore DECIMAL(20, 2) NOT NULL, 
+	Salary DECIMAL(20, 2) NOT NULL, 
 	IsActive BIT NOT NULL, 
 
+	FOREIGN KEY(CandidateId) REFERENCES Candidate(CandidateId),
 	FOREIGN KEY(DepartmentId) REFERENCES Department(DepartmentId)
 )
 
 INSERT INTO Employee VALUES 
-('EM001', 'William', '2002-03-18', 'DE001', 'william@mail.com', 'password', 1), 
-('EM002', 'James', '2000-05-12', 'DE002', 'james@mail.com', 'password', 1),
-('EM003', 'Tom', '2001-03-20', 'DE003', 'tom@mail.com', 'password', 1)
+('EM001', 'CA001', 'William', '2002-03-18', 'DE001', 'william@mail.com', 'password', 0, 0, 4500000, 1), 
+('EM002', 'CA002', 'James', '2000-05-12', 'DE002', 'james@mail.com', 'password', 0, 0, 4500000, 1),
+('EM003', 'CA003', 'Tom', '2001-03-20', 'DE003', 'tom@mail.com', 'password', 0, 0, 4500000, 1),
+('EM004', 'CA004', 'John', '2001-04-23', 'DE004', 'john@mail.com', 'password', 0, 0, 5000000, 1)
 
 ------------------------------------------------
 
@@ -204,7 +232,9 @@ CREATE TABLE ViolationReport(
 	ViolationId VARCHAR(5) PRIMARY KEY, 
 	EmployeeId VARCHAR(5) NOT NULL, 
 	Score DECIMAL(5, 2) NOT NULL, 
+	[Description] VARCHAR(255) NOT NULL,
 	[Date] DATETIME NOT NULL, 
+	IsActive BIT NOT NULL,
 
 	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId)
 )
@@ -218,7 +248,7 @@ CREATE TABLE RequestExpense(
 	EmployeeId VARCHAR(5) NOT NULL, 
 	Amount DECIMAL(20, 2) NOT NULL, 
 	[Description] VARCHAR(255) NOT NULL, 
-	IsApproved BIT NOT NULL, 
+	IsApproved VARCHAR(20) NOT NULL, 
 	RequestDate DATETIME NOT NULL, 
 
 	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId)
@@ -232,8 +262,35 @@ CREATE TABLE SalaryRaiseRequest(
 	RequestId VARCHAR(5) PRIMARY KEY, 
 	EmployeeId VARCHAR(5) NOT NULL, 
 	Amount DECIMAL(20, 2) NOT NULL, 
-	IsApproved BIT NOT NULL, 
+	IsApproved VARCHAR(20) NOT NULL, 
 	RequestDate DATETIME NOT NULL, 
+
+	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId)
+)
+
+------------------------------------------------
+
+------------FIRING REQUEST------------
+
+CREATE TABLE FiringRequest(
+	RequestId VARCHAR(5) PRIMARY KEY,
+	TargetEmployeeId VARCHAR(5) NOT NULL, 
+	[Description] VARCHAR(255) NOT NULL, 
+	RequestDate DATETIME NOT NULL, 
+	IsActive BIT NOT NULL,
+
+	FOREIGN KEY (TargetEmployeeId) REFERENCES Employee(EmployeeId)
+)
+
+------------------------------------------------
+
+------------LEAVING PERMIT------------
+
+CREATE TABLE LeavingPermit(
+	LeavingPermitId VARCHAR(5) PRIMARY KEY, 
+	EmployeeId VARCHAR(5) NOT NULL, 
+	LeaveDate DATETIME NOT NULL, 
+	Reason VARCHAR(255) NOT NULL,
 
 	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId)
 )
