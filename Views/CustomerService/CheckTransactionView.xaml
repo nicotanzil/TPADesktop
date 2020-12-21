@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="TPA_Desktop_NT20_2.Views.CustomerService.CheckTransactionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.CustomerService"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="View Transaction" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" />
+        <TextBlock Text="{Binding Path=Period}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold" />
+        <TextBlock Text="Account ID" Grid.Row="2" Grid.Column="0" />
+        <TextBox Text="{Binding Path=AccountId}" Grid.Row="2" Grid.Column="1" Margin="40 10"/>
+        <Button Content="Submit" Command="{Binding SubmitCommand}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="100" />
+        <DataGrid ItemsSource="{Binding Transactions}" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="40 10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Transaction ID" Binding="{Binding AccountId}" />
+                <DataGridTextColumn Header="Related ID" Binding="{Binding RelatedAccountId}" />
+                <DataGridTextColumn Header="Payment Type ID" Binding="{Binding PaymentTypeId}" />
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
+                <DataGridTextColumn Header="Transaction Date" Binding="{Binding TransactionDate}" />
+                <DataGridTextColumn Header="Transaction Type" Binding="{Binding TransactionType}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

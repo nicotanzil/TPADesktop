@@ -257,6 +257,8 @@
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\CustomerService\CheckTransactionViewModel.cs" />
+    <Compile Include="ViewModels\CustomerService\CustomerServiceViewModel.cs" />
     <Compile Include="ViewModels\Customer\ATMAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\Customer\ATM\ATMAccountViewModel.cs" />
     <Compile Include="ViewModels\Customer\ATM\ATMCheckTransactionViewModel.cs" />
@@ -269,6 +271,8 @@
     <Compile Include="ViewModels\CustomerAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\EmployeeAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\EmployeeGeneral\ReportItemViewModel.cs" />
+    <Compile Include="ViewModels\Finance\FinanceViewModel.cs" />
+    <Compile Include="ViewModels\Finance\HandleSalaryRequestViewModel.cs" />
     <Compile Include="ViewModels\HRM\CreateViolationReportViewModel.cs" />
     <Compile Include="ViewModels\HRM\HRMViewModel.cs" />
     <Compile Include="ViewModels\HRM\InsertCandidateViewModel.cs" />
@@ -300,6 +304,12 @@
     <Compile Include="Views\CustomerAuthenticationView.xaml.cs">
       <DependentUpon>CustomerAuthenticationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CustomerService\CheckTransactionView.xaml.cs">
+      <DependentUpon>CheckTransactionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerService\CustomerServiceWindow.xaml.cs">
+      <DependentUpon>CustomerServiceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Customer\ATMAuthenticationView.xaml.cs">
       <DependentUpon>ATMAuthenticationView.xaml</DependentUpon>
     </Compile>
@@ -329,6 +339,12 @@
     </Compile>
     <Compile Include="Views\EmployeeGeneral\ReportItemWindow.xaml.cs">
       <DependentUpon>ReportItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Finance\FinanceWindow.xaml.cs">
+      <DependentUpon>FinanceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Finance\HandleSalaryRequestView.xaml.cs">
+      <DependentUpon>HandleSalaryRequestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HRM\CreateViolationReportView.xaml.cs">
       <DependentUpon>CreateViolationReportView.xaml</DependentUpon>
@@ -430,6 +446,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CustomerService\CheckTransactionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CustomerService\CustomerServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Customer\ATMAuthenticationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -467,6 +491,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EmployeeGeneral\ReportItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Finance\FinanceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Finance\HandleSalaryRequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="TPA_Desktop_NT20_2.Views.ManagerFolder.ViewFiringRequestView"
+﻿<UserControl x:Class="TPA_Desktop_NT20_2.Views.Finance.HandleSalaryRequestView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.ManagerFolder"
+             xmlns:local="clr-namespace:TPA_Desktop_NT20_2.Views.Finance"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -20,12 +20,12 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="View Firing Request" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" />
-        <DataGrid ItemsSource="{Binding FiringRequests}" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="40 10">
+        <TextBlock Text="Handle Salary Raise Request" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" />
+        <DataGrid ItemsSource="{Binding SalaryRaiseRequests}" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="40 10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Request ID" Binding="{Binding RequestId}" />
-                <DataGridTextColumn Header="Employee ID" Binding="{Binding TargetEmployeeId}" />
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeId}" />
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
                 <DataGridTextColumn Header="Request Date" Binding="{Binding RequestDate}" />
             </DataGrid.Columns>
         </DataGrid>
@@ -33,8 +33,8 @@
         <TextBlock Text="Update Status" Grid.Row="3" Grid.Column="0" />
         <TextBox Text="{Binding Path=RequestId}" Grid.Row="2" Grid.Column="1" Margin="40 10" />
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="40 10">
-            <RadioButton IsChecked="{Binding Path=Selected, Mode=TwoWay}" Margin="10 0">Fire</RadioButton>
-            <RadioButton Margin="10 0">Not Fire</RadioButton>
+            <RadioButton IsChecked="{Binding Path=Selected, Mode=TwoWay}" Margin="10 0">Accept</RadioButton>
+            <RadioButton Margin="10 0">Reject</RadioButton>
         </StackPanel>
         <Button Content="Update" Command="{Binding UpdateCommand}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Width="100" />
     </Grid>

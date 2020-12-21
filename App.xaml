@@ -16,6 +16,10 @@
              xmlns:views_hrm="clr-namespace:TPA_Desktop_NT20_2.Views.HRM"
              xmlns:viewmodels_manager="clr-namespace:TPA_Desktop_NT20_2.ViewModels.ManagerFolder"
              xmlns:views_manager="clr-namespace:TPA_Desktop_NT20_2.Views.ManagerFolder"
+             xmlns:viewmodels_cs="clr-namespace:TPA_Desktop_NT20_2.ViewModels.CustomerService"
+             xmlns:views_cs="clr-namespace:TPA_Desktop_NT20_2.Views.CustomerService"
+             xmlns:viewmodels_finance="clr-namespace:TPA_Desktop_NT20_2.ViewModels.Finance"
+             xmlns:views_finance="clr-namespace:TPA_Desktop_NT20_2.Views.Finance"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <DataTemplate DataType="{x:Type viewmodels:EmployeeAuthenticationViewModel}">
@@ -113,6 +117,12 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels_manager:ViewFiringRequestViewModel}">
             <views_manager:ViewFiringRequestView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_cs:CheckTransactionViewModel}">
+            <views_cs:CheckTransactionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_finance:HandleSalaryRequestViewModel}">
+            <views_finance:HandleSalaryRequestView/>
         </DataTemplate>
     </Application.Resources>
 </Application>

@@ -13,6 +13,8 @@ using System.Windows;
 using TPA_Desktop_NT20_2.Views.Teller;
 using TPA_Desktop_NT20_2.Views.Maintenance;
 using TPA_Desktop_NT20_2.Views.HRM;
+using TPA_Desktop_NT20_2.Views.CustomerService;
+using TPA_Desktop_NT20_2.Views.Finance;
 
 namespace TPA_Desktop_NT20_2.ViewModels
 {
@@ -104,6 +106,8 @@ namespace TPA_Desktop_NT20_2.ViewModels
             else if (department == "Customer Service")
             {
                 //GOTO customer service page
+                CustomerServiceWindow csWin = new CustomerServiceWindow(CurrentEmployee);
+                csWin.ShowDialog();
             }
             else if (department == "Maintenance Team")
             {
@@ -114,9 +118,14 @@ namespace TPA_Desktop_NT20_2.ViewModels
             else if(department == "HRM")
             {
                 //GOTO HRM
-                Console.WriteLine("HRM"); 
                 HRMWindow hrmWin = new HRMWindow(CurrentEmployee);
                 hrmWin.ShowDialog(); 
+            }
+            else if(department == "Finance Team")
+            {
+                //GOTO Finance Team
+                FinanceWindow financeWin = new FinanceWindow(CurrentEmployee);
+                financeWin.ShowDialog(); 
             }
         }
     }

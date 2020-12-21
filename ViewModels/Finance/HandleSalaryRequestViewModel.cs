@@ -8,39 +8,39 @@ using System.Windows;
 using TPA_Desktop_NT20_2.Models;
 using TPA_Desktop_NT20_2.ViewModels.Commands;
 
-namespace TPA_Desktop_NT20_2.ViewModels.ManagerFolder
+namespace TPA_Desktop_NT20_2.ViewModels.Finance
 {
-    class ViewFiringRequestViewModel : BaseViewModel
+    class HandleSalaryRequestViewModel : BaseViewModel
     {
         #region Attributes
-        private List<FiringRequest> listRequests;
-        private ObservableCollection<FiringRequest> firingRequests;
+        private List<SalaryRaiseRequest> listRequests;
+        private ObservableCollection<SalaryRaiseRequest> salaryRaiseRequests;
         private string requestId;
         private bool selected;
         private RelayCommand updateCommand;
         #endregion
 
-        public ViewFiringRequestViewModel()
+        public HandleSalaryRequestViewModel()
         {
             Selected = true; 
-            LoadDataGrid(); 
+            LoadDataGrid();
         }
 
-        public ObservableCollection<FiringRequest> FiringRequests
+        public ObservableCollection<SalaryRaiseRequest> SalaryRaiseRequests
         {
-            get { return firingRequests; }
-            set { firingRequests = value; OnPropertyChanged("FiringRequests"); }
+            get { return salaryRaiseRequests; }
+            set { salaryRaiseRequests = value; OnPropertyChanged("SalaryRaiseRequests"); }
         }
 
         private void LoadDataGrid()
         {
             using (KongBuBankEntities db = new KongBuBankEntities())
             {
-                listRequests = new List<FiringRequest>((from x in db.FiringRequests
-                                                        where x.IsActive == true
+                listRequests = new List<SalaryRaiseRequest>((from x in db.SalaryRaiseRequests
+                                                        where x.IsApproved == "Pending"
                                                         select x).ToList());
 
-                FiringRequests = new ObservableCollection<FiringRequest>(listRequests);
+                SalaryRaiseRequests = new ObservableCollection<SalaryRaiseRequest>(listRequests);
             }
         }
 
@@ -82,26 +82,25 @@ namespace TPA_Desktop_NT20_2.ViewModels.ManagerFolder
             {
                 using (KongBuBankEntities db = new KongBuBankEntities())
                 {
-                    FiringRequest request = db.FiringRequests.Find(RequestId);
-                    if(Selected)
+                    SalaryRaiseRequest request = db.SalaryRaiseRequests.Find(RequestId);
+                    if (Selected)
                     {
-                        //Fire the employee
-                        Employee employee = db.Employees.Find(request.TargetEmployeeId);
-                        employee.IsActive = false;
-                        employee.ViolationScore = 0; 
+                        //Approve raise
+                        Employee employee = db.Employees.Find(request.EmployeeId);
+                        employee.Salary += request.Amount; 
 
-                        request.IsActive = false;
+                        request.IsApproved = "Accepted";
 
-                        MessageBox.Show("Employee Fired!!!", "Success"); 
+                        MessageBox.Show("Salary Raise Request Accepted!", "Success");
                     }
                     else
                     {
-                        request.IsActive = false;
-                        MessageBox.Show("Firing Request Removed!", "Success"); 
+                        request.IsApproved = "Rejected"; 
+                        MessageBox.Show("Salary Raise Request Rejected!", "Rejected");
                     }
-                    RequestId = null; 
+                    RequestId = null;
                     db.SaveChanges();
-                    LoadDataGrid(); 
+                    LoadDataGrid();
                 }
             }
         }
@@ -110,21 +109,21 @@ namespace TPA_Desktop_NT20_2.ViewModels.ManagerFolder
         {
             using (KongBuBankEntities db = new KongBuBankEntities())
             {
-                FiringRequest request = db.FiringRequests.Find(_requestId); 
-                if(request == null)
+                SalaryRaiseRequest request = db.SalaryRaiseRequests.Find(_requestId);
+                if (request == null)
                 {
-                    MessageBox.Show("Firing Request not found!", "Error");
-                    return false; 
+                    MessageBox.Show("Salary Request not found!", "Error");
+                    return false;
                 }
                 else
                 {
-                    if(!request.IsActive)
+                    if (request.IsApproved != "Pending")
                     {
-                        MessageBox.Show("Firing Request is inactive!", "Error");
-                        return false; 
+                        MessageBox.Show("Salary Request already processed!", "Error");
+                        return false;
                     }
                 }
-                return true; 
+                return true;
             }
         }
     }
