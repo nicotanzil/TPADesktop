@@ -15,11 +15,29 @@ namespace TPA_Desktop_NT20_2.Models
     
     public partial class KongBuBankEntities : DbContext
     {
+        private static KongBuBankEntities instance = null;
+        private static readonly object padlock = new object();
+
         public KongBuBankEntities()
             : base("name=KongBuBankEntities")
         {
         }
-    
+
+        public static KongBuBankEntities Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new KongBuBankEntities();
+                    }
+                    return instance;
+                }
+            }
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

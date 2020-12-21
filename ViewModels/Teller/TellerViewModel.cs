@@ -38,7 +38,6 @@ namespace TPA_Desktop_NT20_2.ViewModels.Teller
         {
             Name = "Teller"; 
             Employee = _employee;
-            Console.WriteLine("Teller: " + Employee.Name); 
             SelectedViewModel = new TellerDepositViewModel(Employee); 
         }
 

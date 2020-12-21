@@ -48,6 +48,10 @@ namespace TPA_Desktop_NT20_2.ViewModels.Customer.ATM
             {
                 this.SelectedViewModel = new ATMPaymentViewModel(Account); 
             }
+            else if(parameter.ToString() == "CheckTransaction")
+            {
+                this.SelectedViewModel = new ATMCheckTransactionViewModel(Account); 
+            }
         }
 
         public void UpdateBalance()

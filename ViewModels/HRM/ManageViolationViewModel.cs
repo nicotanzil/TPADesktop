@@ -147,11 +147,19 @@ namespace TPA_Desktop_NT20_2.ViewModels.HRM
                 {
                     using (KongBuBankEntities db = new KongBuBankEntities())
                     {
-                        Employee employee = db.Employees.Find(EmployeeId); 
-
+                        Employee employee = db.Employees.Find(EmployeeId);
                         int score = CalculateViolation();
                         employee.ViolationScore += score;
 
+                        ViolationReport report = new ViolationReport();
+                        report.ViolationId = "VR" + IdFormat(Count("ViolationReport") + 1);
+                        report.EmployeeId = employee.EmployeeId;
+                        report.Score = score;
+                        report.Description = Description;
+                        report.Date = DateTime.Now;
+                        report.IsActive = true;
+
+                        db.ViolationReports.Add(report); 
                         db.SaveChanges(); 
 
                         CurrentEmployee = employee;
@@ -160,7 +168,7 @@ namespace TPA_Desktop_NT20_2.ViewModels.HRM
                         
                         if(CurrentEmployee.ViolationScore > VIOLATIONTHRESHOLD)
                         {
-                            MessageBox.Show("Violation Threshold Exceeded. Firing Request Sent to Manager!", "Warning");
+                            MessageBox.Show("Violation Threshold Exceeded. Please send firing request to Manager!", "Warning");
                         }
                     }
                 }

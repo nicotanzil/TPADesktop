@@ -1,0 +1,7 @@
+Design Pattern
+--------------
+1. Creational Patterns: Singleton
+	-> KongBuBankEntities 
+2. Structural Patterns: Bridge
+	-> Individual Account generalized to Regular Account and Student Account
+	-> Individual Account has Level Attribute

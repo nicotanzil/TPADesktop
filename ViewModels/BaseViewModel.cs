@@ -73,7 +73,11 @@ namespace TPA_Desktop_NT20_2.ViewModels
                 else if (tableName == "SalaryRaiseRequest")
                     return (from x in db.SalaryRaiseRequests select x).Count();
                 else if (tableName == "LeavingPermit")
-                    return (from x in db.LeavingPermits select x).Count(); 
+                    return (from x in db.LeavingPermits select x).Count();
+                else if (tableName == "ViolationReport")
+                    return (from x in db.ViolationReports select x).Count();
+                else if (tableName == "FiringRequest")
+                    return (from x in db.FiringRequests select x).Count(); 
                 else
                 {
                     return -1;

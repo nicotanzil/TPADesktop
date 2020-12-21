@@ -14,6 +14,8 @@
              xmlns:views_maintenance="clr-namespace:TPA_Desktop_NT20_2.Views.Maintenance"
              xmlns:viewmodels_hrm="clr-namespace:TPA_Desktop_NT20_2.ViewModels.HRM"
              xmlns:views_hrm="clr-namespace:TPA_Desktop_NT20_2.Views.HRM"
+             xmlns:viewmodels_manager="clr-namespace:TPA_Desktop_NT20_2.ViewModels.ManagerFolder"
+             xmlns:views_manager="clr-namespace:TPA_Desktop_NT20_2.Views.ManagerFolder"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <DataTemplate DataType="{x:Type viewmodels:EmployeeAuthenticationViewModel}">
@@ -21,6 +23,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:CustomerAuthenticationViewModel}">
             <views:CustomerAuthenticationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ManagerAuthenticationViewModel}">
+            <views:ManagerAuthenticationView />
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels_teller:TellerDepositViewModel}">
             <views_teller:TellerDepositView />
@@ -51,6 +56,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels_atm:ATMPaymentViewModel}">
             <views_atm:ATMPaymentView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_atm:ATMCheckTransactionViewModel}">
+            <views_atm:ATMCheckTransactionView />
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels_maintenance:ViewScheduleMaintenanceViewModel}">
             <views_maintenance:ViewScheduleMaintenanceView />
@@ -99,6 +107,12 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels_hrm:ManageLeavingPermitViewModel}">
             <views_hrm:ManageLeavingPermitView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_hrm:CreateViolationReportViewModel}">
+            <views_hrm:CreateViolationReportView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels_manager:ViewFiringRequestViewModel}">
+            <views_manager:ViewFiringRequestView />
         </DataTemplate>
     </Application.Resources>
 </Application>

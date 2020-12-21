@@ -37,6 +37,10 @@ namespace TPA_Desktop_NT20_2.ViewModels.HRM
             {
                 SelectedViewModel = new ManageViolationViewModel(); 
             }
+            else if(parameter.ToString() == "ViolationRequest")
+            {
+                SelectedViewModel = new CreateViolationReportViewModel(); 
+            }
             else if(parameter.ToString() == "SalaryRaise")
             {
                 SelectedViewModel = new ManageSalaryRequestViewModel(); 

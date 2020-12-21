@@ -16,8 +16,9 @@
         <ContentControl Content="{Binding SelectedViewModel}" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Margin="10" Width="200" Content="Customer" Command="{Binding ChangeViewCommand}" CommandParameter="CustomerAuthentication"/>
-            <Button Margin="10" Width="200" Content="Employee" Command="{Binding ChangeViewCommand}" CommandParameter="EmployeeAuthentication"/>
+            <Button Margin="10" Width="100" Content="Customer" Command="{Binding ChangeViewCommand}" CommandParameter="CustomerAuthentication"/>
+            <Button Margin="10" Width="100" Content="Employee" Command="{Binding ChangeViewCommand}" CommandParameter="EmployeeAuthentication"/>
+            <Button Margin="10" Width="100" Content="Manager" Command="{Binding ChangeViewCommand}" CommandParameter="ManagerAuthentication"/>
         </StackPanel>
     </Grid>
 </Window>

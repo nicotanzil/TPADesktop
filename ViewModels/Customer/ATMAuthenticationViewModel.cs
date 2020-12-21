@@ -62,30 +62,28 @@ namespace TPA_Desktop_NT20_2.ViewModels.Customer
 
         private void LoadData(object parameter)
         {
-            using (KongBuBankEntities db = new KongBuBankEntities())
+            KongBuBankEntities db = KongBuBankEntities.Instance;
+            Account query = (from x in db.Accounts
+                                where x.DebitCardId == Account.Account.DebitCardId
+                                where x.PIN == Account.Account.PIN
+                                select x).FirstOrDefault();
+
+            if(query == null)
             {
-                Account query = (from x in db.Accounts
-                                 where x.DebitCardId == Account.Account.DebitCardId
-                                 where x.PIN == Account.Account.PIN
-                                 select x).FirstOrDefault();
+                //Account Not Found
+                Message = "Account Not Found!";
+                MessageBox.Show("Invalid Card / PIN", "Error"); 
+            }
+            else
+            {
+                IndividualAccount temp = new IndividualAccount();
+                temp.Account = query;
+                Account = temp;
 
-                if(query == null)
-                {
-                    //Account Not Found
-                    Message = "Account Not Found!";
-                    MessageBox.Show("Invalid Card / PIN", "Error"); 
-                }
-                else
-                {
-                    IndividualAccount temp = new IndividualAccount();
-                    temp.Account = query;
-                    Account = temp;
+                Console.WriteLine("Authentication Success: " + Account.Account.Name);
+                Message = "Success!";
 
-                    Console.WriteLine("Authentication Success: " + Account.Account.Name);
-                    Message = "Success!";
-
-                    RedirectPage(); 
-                }
+                RedirectPage(); 
             }
         }
 

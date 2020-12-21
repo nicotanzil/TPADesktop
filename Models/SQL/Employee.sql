@@ -23,11 +23,13 @@ DROP TABLE Manager
 
 CREATE TABLE Manager(
 	ManagerId VARCHAR(5) PRIMARY KEY, 
-	[Name] VARCHAR(255) NOT NULL
+	[Name] VARCHAR(255) NOT NULL,
+	Email VARCHAR(255) NOT NULL, 
+	[Password] VARCHAR(255) NOT NULL
 )
 
 INSERT INTO Manager VALUES
-('MA001', 'Hao Pa')
+('MA001', 'Hao Pa', 'haopa@mail.com', 'password')
 
 ------------------------------------------------
 
@@ -165,7 +167,11 @@ INSERT INTO Candidate VALUES
 ('CA001', 'William', '2002-03-18', GETDATE(), 'Accepted'),
 ('CA002', 'James', '2000-05-12', GETDATE(), 'Accepted'),
 ('CA003', 'Tom', '2001-03-20', GETDATE(), 'Accepted'),
-('CA004', 'John', '2001-04-23', GETDATE(), 'Accepted')
+('CA004', 'John', '2001-04-23', GETDATE(), 'Accepted'),
+('CA005', 'Grace', '2001-03-15', GETDATE(), 'Pending'),
+('CA006', 'Michael', '2001-04-25', GETDATE(), 'Pending'),
+('CA007', 'Arthur', '2001-10-30', GETDATE(), 'Pending'),
+('CA008', 'Polly', '2001-11-13', GETDATE(), 'Rejected')
 
 ------------------------------------------------
 
@@ -209,6 +215,12 @@ CREATE TABLE [MaintenanceReport] (
 	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId), 
 	FOREIGN KEY (ItemId) REFERENCES Item(ItemId)
 )
+INSERT INTO MaintenanceReport VALUES 
+('MR001', 'EM001', 'IT001', GETDATE(), 1, 'fix item'),
+('MR002', 'EM002', 'IT002', GETDATE(), 0, 'fix item'),
+('MR003', 'EM003', 'IT004', GETDATE(), 1, 'fix item'),
+('MR004', 'EM001', 'IT003', GETDATE(), 0, 'fix item'),
+('MR005', 'EM002', 'IT005', GETDATE(), 0, 'fix item')
 
 SELECT * FROM MaintenanceReport
 
@@ -226,6 +238,10 @@ CREATE TABLE [MaintenanceSchedule] (
 	FOREIGN KEY (ReportId) REFERENCES MaintenanceReport(ReportId) 
 )
 
+INSERT INTO MaintenanceSchedule VALUES
+('MR001', 'Finish', '2020-11-20 08:00:00', '2020-11-21 10:00:00', 150000, 'schedule desc'),
+('MR003', 'Pending', '2020-12-21 11:00:00', '2020-12-23 08:00:00', 300000, 'schedule desc')
+
 ------------VIOLATION REPORT------------
 
 CREATE TABLE ViolationReport(
@@ -238,6 +254,10 @@ CREATE TABLE ViolationReport(
 
 	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId)
 )
+
+INSERT INTO ViolationReport VALUES
+('VR001', 'EM001', 5, 'violate rules', GETDATE(), 1),
+('VR002', 'EM002', 3, 'violate rules', GETDATE(), 1)
 
 ------------------------------------------------
 
@@ -268,6 +288,10 @@ CREATE TABLE SalaryRaiseRequest(
 	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId)
 )
 
+INSERT INTO SalaryRaiseRequest VALUES
+('SR001', 'EM001', '1500000', 'Pending', GETDATE()),
+('SR002', 'EM002', '500000', 'Pending', GETDATE())
+
 ------------------------------------------------
 
 ------------FIRING REQUEST------------
@@ -294,5 +318,9 @@ CREATE TABLE LeavingPermit(
 
 	FOREIGN KEY (EmployeeId) REFERENCES Employee(EmployeeId)
 )
+
+
+INSERT INTO LeavingPermit VALUES
+('LP001', 'EM003', '2020-12-27', 'christmas holiday')
 
 ------------------------------------------------

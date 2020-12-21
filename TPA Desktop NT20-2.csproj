@@ -259,6 +259,7 @@
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\Customer\ATMAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\Customer\ATM\ATMAccountViewModel.cs" />
+    <Compile Include="ViewModels\Customer\ATM\ATMCheckTransactionViewModel.cs" />
     <Compile Include="ViewModels\Customer\ATM\ATMDepositViewModel.cs" />
     <Compile Include="ViewModels\Customer\ATM\ATMPaymentViewModel.cs" />
     <Compile Include="ViewModels\Customer\ATM\ATMTransferViewModel.cs" />
@@ -268,6 +269,7 @@
     <Compile Include="ViewModels\CustomerAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\EmployeeAuthenticationViewModel.cs" />
     <Compile Include="ViewModels\EmployeeGeneral\ReportItemViewModel.cs" />
+    <Compile Include="ViewModels\HRM\CreateViolationReportViewModel.cs" />
     <Compile Include="ViewModels\HRM\HRMViewModel.cs" />
     <Compile Include="ViewModels\HRM\InsertCandidateViewModel.cs" />
     <Compile Include="ViewModels\HRM\InsertEmployeeViewModel.cs" />
@@ -281,12 +283,14 @@
     <Compile Include="ViewModels\HRM\ViewCandidateViewModel.cs" />
     <Compile Include="ViewModels\HRM\ViewEmployeeViewModel.cs" />
     <Compile Include="ViewModels\HRM\ViewPositionViewModel.cs" />
-    <Compile Include="ViewModels\IEmployee.cs" />
     <Compile Include="ViewModels\Maintenance\AddMaintenanceScheduleViewModel.cs" />
     <Compile Include="ViewModels\Maintenance\MaintenanceViewModel.cs" />
     <Compile Include="ViewModels\Maintenance\UpdateMaintenanceScheduleViewModel.cs" />
     <Compile Include="ViewModels\Maintenance\ViewMaintenanceReportViewModel.cs" />
     <Compile Include="ViewModels\Maintenance\ViewScheduleMaintenanceViewModel.cs" />
+    <Compile Include="ViewModels\ManagerAuthenticationViewModel.cs" />
+    <Compile Include="ViewModels\ManagerFolder\ManagerViewModel.cs" />
+    <Compile Include="ViewModels\ManagerFolder\ViewFiringRequestViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerDepositViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerPaymentViewModel.cs" />
     <Compile Include="ViewModels\Teller\TellerReviewViewModel.cs" />
@@ -301,6 +305,9 @@
     </Compile>
     <Compile Include="Views\Customer\ATM\ATMAccountView.xaml.cs">
       <DependentUpon>ATMAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\ATM\ATMCheckTransactionView.xaml.cs">
+      <DependentUpon>ATMCheckTransactionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\ATM\ATMDepositView.xaml.cs">
       <DependentUpon>ATMDepositView.xaml</DependentUpon>
@@ -322,6 +329,9 @@
     </Compile>
     <Compile Include="Views\EmployeeGeneral\ReportItemWindow.xaml.cs">
       <DependentUpon>ReportItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRM\CreateViolationReportView.xaml.cs">
+      <DependentUpon>CreateViolationReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HRM\HRMWindow.xaml.cs">
       <DependentUpon>HRMWindow.xaml</DependentUpon>
@@ -377,6 +387,15 @@
     <Compile Include="Views\Maintenance\ViewScheduleMaintenanceView.xaml.cs">
       <DependentUpon>ViewScheduleMaintenanceView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ManagerAuthenticationView.xaml.cs">
+      <DependentUpon>ManagerAuthenticationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManagerFolder\ManagerWindow.xaml.cs">
+      <DependentUpon>ManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManagerFolder\ViewFiringRequestView.xaml.cs">
+      <DependentUpon>ViewFiringRequestView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Teller\TellerDepositView.xaml.cs">
       <DependentUpon>TellerDepositView.xaml</DependentUpon>
     </Compile>
@@ -419,6 +438,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Customer\ATM\ATMCheckTransactionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Customer\ATM\ATMDepositView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -444,6 +467,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EmployeeGeneral\ReportItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRM\CreateViolationReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -516,6 +543,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Maintenance\ViewScheduleMaintenanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManagerAuthenticationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManagerFolder\ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManagerFolder\ViewFiringRequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

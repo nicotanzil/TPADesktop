@@ -32,7 +32,7 @@
         <Button Content="Withdraw" Grid.Row="3" Grid.Column="0" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="ATMWithdraw" />
         <Button Content="Transfer" Grid.Row="4" Grid.Column="0" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="ATMTransfer" />
         <Button Content="Payment" Grid.Row="1" Grid.Column="2" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="ATMPayment" />
-        <Button Content="Button 6" Grid.Row="2" Grid.Column="2" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="" />
+        <Button Content="Check Transaction" Grid.Row="2" Grid.Column="2" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="CheckTransaction" />
         <Button Content="Button 7" Grid.Row="3" Grid.Column="2" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="" />
         <Button Content="Button 8" Grid.Row="4" Grid.Column="2" Padding="10 5" Margin="25 10" Command="{Binding ChangeViewCommand}" CommandParameter="" />
         <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="1" Grid.RowSpan="4" Grid.Column="1" />

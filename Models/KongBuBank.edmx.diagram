@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4364afcee0084717a46ea66d13319e4c" Name="Diagram1">
+      <Diagram DiagramId="74023130dc8241dfb0f70baaa5574e9c" Name="Diagram1">
         <EntityTypeShape EntityType="KongBuBankModel.Account" Width="1.5" PointX="13.5" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KongBuBankModel.ATM" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KongBuBankModel.Bill" Width="1.5" PointX="7.5" PointY="22.25" IsExpanded="true" />
@@ -35,7 +35,7 @@
         <EntityTypeShape EntityType="KongBuBankModel.LoanType" Width="1.5" PointX="13.5" PointY="39.875" IsExpanded="true" />
         <EntityTypeShape EntityType="KongBuBankModel.MaintenanceReport" Width="1.5" PointX="15.75" PointY="20.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KongBuBankModel.MaintenanceSchedule" Width="1.5" PointX="18" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KongBuBankModel.Manager" Width="1.5" PointX="0.75" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KongBuBankModel.Manager" Width="1.5" PointX="0.75" PointY="22.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KongBuBankModel.PaymentType" Width="1.5" PointX="13.5" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KongBuBankModel.RegularAccount" Width="1.5" PointX="18" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="KongBuBankModel.RequestExpense" Width="1.5" PointX="12.75" PointY="25.5" IsExpanded="true" />
@@ -46,52 +46,52 @@
         <EntityTypeShape EntityType="KongBuBankModel.Transaction" Width="1.5" PointX="15.75" PointY="24.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KongBuBankModel.ViolationReport" Width="1.5" PointX="12.75" PointY="36.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KongBuBankModel.VirtualAccount" Width="1.5" PointX="13.5" PointY="32.5" IsExpanded="true" />
-        <AssociationConnector Association="KongBuBankModel.FK__Account__DebitCa__32EB7E57" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__CreditCar__Accou__5A054B78" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__HOCCredit__Accou__6B2FD77A" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Individua__Accou__3B80C458" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Loan__AccountId__74B941B4" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Accou__61A66D40" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Relat__629A9179" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__VirtualAc__Accou__35C7EB02" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__ATM__BranchId__1372D2FE" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Bill__Department__08012052" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Branch__ManagerI__024846FC" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Departmen__Branc__0524B3A7" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__HouseComp__Branc__10966653" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__BusinessA__Accou__4D9F7493" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Card__AccountId__526429B0" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Employee__Candid__1837881B" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Card__CardTypeId__53584DE9" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__CreditCar__Compa__5AF96FB1" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__CreditCar__Credi__5DD5DC5C" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__CreditCar__Payme__5ECA0095" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__DepositAc__Curre__4AC307E8" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Debit__6576FE24" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Employee__Depart__192BAC54" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Item__Department__0DB9F9A8" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__DepositAc__Accou__49CEE3AF" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__FiringReq__Targe__2B4A5C8F" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__LeavingPe__Emplo__2E26C93A" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Maintenan__Emplo__1C0818FF" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__RequestEx__Emplo__25918339" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__SalaryRai__Emplo__286DEFE4" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Emplo__638EB5B2" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Violation__Emplo__22B5168E" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__HOCCredit__Compa__6C23FBB3" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__HOCCredit__HOCId__6F00685E" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__HOCCredit__Payme__6FF48C97" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Individua__Level__3A8CA01F" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__RegularAc__Accou__3E5D3103" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__StudentAc__Accou__41399DAE" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Item__ItemTypeId__0CC5D56F" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Maintenan__ItemI__1CFC3D38" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Loan__LoanTypeNa__75AD65ED" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Maintenan__Repor__1FD8A9E3" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Payme__6482D9EB" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__SavingAcc__Accou__450A2E92" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__StudentAc__Guard__422DC1E7" ManuallyRouted="false" />
-        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Virtu__666B225D" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Account__DebitCa__2B155265" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__CreditCar__Accou__522F1F86" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__HOCCredit__Accou__6359AB88" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Individua__Accou__33AA9866" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Loan__AccountId__6CE315C2" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Accou__59D0414E" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Relat__5AC46587" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__VirtualAc__Accou__2DF1BF10" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__ATM__BranchId__0B9CA70C" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Bill__Department__002AF460" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Branch__ManagerI__7A721B0A" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Departmen__Branc__7D4E87B5" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__HouseComp__Branc__08C03A61" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__BusinessA__Accou__45C948A1" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Card__AccountId__4A8DFDBE" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Employee__Candid__10615C29" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Card__CardTypeId__4B8221F7" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__CreditCar__Compa__532343BF" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__CreditCar__Credi__55FFB06A" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__CreditCar__Payme__56F3D4A3" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__DepositAc__Curre__42ECDBF6" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Debit__5DA0D232" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Employee__Depart__11558062" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Item__Department__05E3CDB6" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__DepositAc__Accou__41F8B7BD" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__FiringReq__Targe__2374309D" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__LeavingPe__Emplo__26509D48" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Maintenan__Emplo__1431ED0D" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__RequestEx__Emplo__1DBB5747" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__SalaryRai__Emplo__2097C3F2" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Emplo__5BB889C0" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Violation__Emplo__1ADEEA9C" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__HOCCredit__Compa__644DCFC1" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__HOCCredit__HOCId__672A3C6C" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__HOCCredit__Payme__681E60A5" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Individua__Level__32B6742D" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__RegularAc__Accou__36870511" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__StudentAc__Accou__396371BC" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Item__ItemTypeId__04EFA97D" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Maintenan__ItemI__15261146" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Loan__LoanTypeNa__6DD739FB" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Maintenan__Repor__18027DF1" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Payme__5CACADF9" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__SavingAcc__Accou__3D3402A0" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__StudentAc__Guard__3A5795F5" ManuallyRouted="false" />
+        <AssociationConnector Association="KongBuBankModel.FK__Transacti__Virtu__5E94F66B" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

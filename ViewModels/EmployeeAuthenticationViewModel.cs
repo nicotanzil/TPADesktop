@@ -22,13 +22,14 @@ namespace TPA_Desktop_NT20_2.ViewModels
         private string message;
         private Employee currentEmployee;
         private RelayCommand loginCommand;
+        private DateTime test; 
         #endregion
 
 
         public EmployeeAuthenticationViewModel()
         {
             Name = "EmployeeAuthentication";
-            currentEmployee = new Employee(); 
+            currentEmployee = new Employee();
         }
 
         public string Message
@@ -69,24 +70,26 @@ namespace TPA_Desktop_NT20_2.ViewModels
 
         private void LoadData(object parameter)
         {
-            using(KongBuBankEntities db = new KongBuBankEntities())
-            {
-                Employee query = (from x in db.Employees
-                                  where x.Email == CurrentEmployee.Email
-                                  where x.Password == CurrentEmployee.Password
-                                  select x).FirstOrDefault();
+            KongBuBankEntities db = KongBuBankEntities.Instance;    
+            Employee query = (from x in db.Employees
+                                where x.Email == CurrentEmployee.Email
+                                where x.Password == CurrentEmployee.Password
+                                select x).FirstOrDefault();
 
-                if(query != null)
+            if(query != null)
+            {
+                if (query.IsActive)
                 {
                     CurrentEmployee = query;
-                    RedirectPage(query.Department.Name); 
+                    RedirectPage(query.Department.Name);
                 }
-                else
-                {
-                    //Account not found
-                    Message = "Invalid Email / Password!";
-                    MessageBox.Show("Invalid Email / Password!", "Authentication Error");
-                }
+                else MessageBox.Show("Employee is inactive!", "Invalid"); 
+            }
+            else
+            {
+                //Account not found
+                Message = "Invalid Email / Password!";
+                MessageBox.Show("Invalid Email / Password!", "Authentication Error");
             }
         }
 

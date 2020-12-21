@@ -66,6 +66,10 @@ namespace TPA_Desktop_NT20_2.ViewModels
             {
                 this.SelectedViewModel = new CustomerAuthenticationViewModel(); 
             }
+            else if(parameter.ToString() == "ManagerAuthentication")
+            {
+                this.SelectedViewModel = new ManagerAuthenticationViewModel(); 
+            }
         }
 
         protected virtual void ReportItemMethod(object parameter)

@@ -18,7 +18,7 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="View Employee Data" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" />
+        <TextBlock Text="Insert Candidate" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" />
         <TextBlock Text="Name" Grid.Row="1" Grid.Column="0" />
         <TextBlock Text="Date of Birth" Grid.Row="2" Grid.Column="0" />
         <TextBox Text="{Binding Path=CandidateName, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="40 10" />
